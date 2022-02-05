@@ -1,0 +1,4 @@
+{
+  "AUTH_HOST" : "http://192.168.210.201:8082",
+  "API_HOST"  : "http://localhost:8052/api"
+}
