@@ -13,6 +13,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ComponentsModule } from './components/components.module';
 
 
 const materialModules = [
@@ -29,6 +30,7 @@ const materialModules = [
   MatSelectModule,
   MatDialogModule,
   MatSnackBarModule,
+  ComponentsModule,
 ];
 
 @NgModule({
