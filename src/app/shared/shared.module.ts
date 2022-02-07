@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@ngneat/transloco';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 const sharedModule = [
@@ -21,7 +22,9 @@ const sharedModule = [
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ConfirmDialogComponent,
+  ],
   imports: [
     sharedModule,
     NgxMaskModule.forRoot(),

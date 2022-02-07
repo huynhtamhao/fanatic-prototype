@@ -1,0 +1,55 @@
+@import './dialog/dialog-variables';
+
+header {
+  color: white;
+  background-color: $primary-color;
+  h2 {
+    // height: 40px;
+    margin-block: 0px;
+    margin-left: 20px;
+    vertical-align: middle;
+  }
+}
+
+.mat-dialog-content {
+  word-break: break-word;
+  margin: 0px;
+  padding-inline: 10px;
+  padding-top: 8px;
+  min-height: 72px;
+
+  .content-message {
+    min-height: 60px;
+  }
+
+  .content-multi-line {
+    white-space: pre-wrap;
+  }
+}
+
+.mat-dialog-actions {
+  margin-bottom: 0px;
+}
+
+button {
+  height: 30px;
+  min-width: 90px;
+  width: auto;
+  border: 1px solid $primary-color;
+  border-radius: 4px;
+  color: $primary-color;
+  margin: 10px 10px;
+  background-color: white;
+
+  &:hover {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+mat-icon {
+  width: 3.4rem;
+  height: 3.4rem;
+  font-size: 3.4rem;
+  color: $primary-color;
+}
