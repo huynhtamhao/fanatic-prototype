@@ -2,14 +2,24 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslocoRootModule } from './transloco/transloco-root.module';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
-import { TranslocoModule } from '@ngneat/transloco';
+import { RouterModule } from '@angular/router';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { HeaderComponent } from './layout/header/header.component';
+import { MainComponent } from './layout/main/main.component';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    MainComponent,
+    HeaderComponent,
+    SidebarComponent,
+  ],
   imports: [
     CommonModule,
+    RouterModule,
+    MatSidenavModule,
   ],
   exports: [
     TranslocoRootModule,
