@@ -15,7 +15,7 @@ import { ROUTES } from './sidebar-items';
 import { RouteInfo } from './sidebar.metadata';
 
 @Component({
-  selector: 'karios-sidebar',
+  selector: 'kairos-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })

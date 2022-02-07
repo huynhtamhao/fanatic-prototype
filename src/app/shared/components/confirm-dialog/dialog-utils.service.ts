@@ -1,6 +1,6 @@
 import { Injectable, Optional } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { Constants } from '@shared/common/Constants';
+import { Constants } from 'src/app/core/constants/Constants';
 import { ConfirmDialogComponent } from './confirm-dialog.component';
 import { DialogData } from './dialog-data.metadata';
 

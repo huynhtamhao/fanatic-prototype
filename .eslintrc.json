@@ -23,7 +23,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "karios",
+            "prefix": "kairos",
             "style": "camelCase"
           }
         ],
@@ -31,7 +31,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "karios",
+            "prefix": "kairos",
             "style": "kebab-case"
           }
         ]

@@ -7,6 +7,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { HeaderComponent } from './layout/header/header.component';
 import { MainComponent } from './layout/main/main.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
+import { ErrorSummaryComponent } from './layout/error-summary/error-summary.component';
 
 
 
@@ -15,6 +16,7 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
     MainComponent,
     HeaderComponent,
     SidebarComponent,
+    ErrorSummaryComponent,
   ],
   imports: [
     CommonModule,
