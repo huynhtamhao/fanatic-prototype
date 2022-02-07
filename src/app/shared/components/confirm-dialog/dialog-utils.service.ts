@@ -2,7 +2,7 @@ import { Injectable, Optional } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Constants } from '@shared/common/Constants';
 import { ConfirmDialogComponent } from './confirm-dialog.component';
-import { DialogData } from './DialogData';
+import { DialogData } from './dialog-data.metadata';
 
 
 @Injectable({
