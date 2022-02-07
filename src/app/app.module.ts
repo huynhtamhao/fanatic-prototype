@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
-import { LayoutModule } from '@layout/layout.module';
 
 
 @NgModule({
@@ -19,7 +18,6 @@ import { LayoutModule } from '@layout/layout.module';
     HttpClientModule,
     BrowserAnimationsModule,
     CoreModule,
-    LayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,7 @@
-{}
+{
+  "title": "Root",
+  "sidebar": {
+    "salary": "Salary",
+    "user": "User"
+  }
+}
