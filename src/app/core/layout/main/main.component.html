@@ -1,3 +1,11 @@
 <karios-header></karios-header>
-<!-- <karios-sidebar></karios-sidebar> -->
-<router-outlet></router-outlet>
+<mat-sidenav-container>
+  <mat-sidenav mode="side" opened="">
+    <karios-sidebar></karios-sidebar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <p>Error Area works!</p>
+    <br />
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
