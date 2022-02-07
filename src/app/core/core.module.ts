@@ -1,17 +1,12 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslocoRootModule } from './transloco/transloco-root.module';
-import { HeaderComponent } from './layout/header/header.component';
-import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 
 
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    SidebarComponent,
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     TranslocoRootModule,
