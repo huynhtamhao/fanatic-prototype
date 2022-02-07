@@ -6,11 +6,17 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
+import { HeaderComponent } from './core/layout/header/header.component';
+import { SidebarComponent } from './core/layout/sidebar/sidebar.component';
+import { MainComponent } from './core/layout/main/main.component';
 
 
 @NgModule({
   declarations: [
     AppComponent, //
+    MainComponent,
+    HeaderComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule, //
