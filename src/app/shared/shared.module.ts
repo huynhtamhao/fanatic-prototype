@@ -6,9 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@ngneat/transloco';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 const sharedModule = [
   CommonModule,
+  FlexLayoutModule,
   MaterialModule,
   FormsModule,
   ReactiveFormsModule,
