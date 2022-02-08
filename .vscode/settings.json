@@ -4,5 +4,6 @@
         "kairos",
         "ngneat",
         "TRANSLOCO"
-    ]
+    ],
+    "editor.formatOnSave": true
 }

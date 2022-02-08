@@ -1,0 +1,14 @@
+package.json
+package-lock.json
+yarn.lock
+dist
+node_modules
+.vscode
+.angular
+
+# Application Config
+angular.json
+tsconfig.app.json
+tsconfig.json
+tsconfig.spec.json
+karma.conf.js
