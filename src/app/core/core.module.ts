@@ -8,6 +8,12 @@ import { HeaderComponent } from './layout/header/header.component';
 import { MainComponent } from './layout/main/main.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { ErrorSummaryComponent } from './layout/error-summary/error-summary.component';
+import { SidebarItemComponent } from './layout/sidebar/sidebar-item/sidebar-item.component';
+import { SidebarMainItemComponent } from './layout/sidebar/sidebar-main-item/sidebar-main-item.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 
@@ -16,13 +22,19 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   declarations: [
     MainComponent,
     HeaderComponent,
-    SidebarComponent,
     ErrorSummaryComponent,
+    SidebarComponent,
+    SidebarMainItemComponent,
+    SidebarItemComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
     MatSidenavModule,
+    MatCardModule,
+    MatListModule,
+    MatIconModule,
+    MatExpansionModule,
     FlexLayoutModule,
   ],
   exports: [

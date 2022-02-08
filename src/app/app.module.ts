@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
-import { PrototypeModule } from './prototype/prototype.module';
+import { KairosCommonComponentsModule } from '@shared/components/kairos-common-components.module';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { PrototypeModule } from './prototype/prototype.module';
     HttpClientModule,
     BrowserAnimationsModule,
     CoreModule,
-    PrototypeModule,
+    KairosCommonComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
