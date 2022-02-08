@@ -7,4 +7,5 @@ export abstract class Constants {
     WARNING: 'warning',
   };
 
+  static readonly timezoneJP = 'GMT +9';
 }
