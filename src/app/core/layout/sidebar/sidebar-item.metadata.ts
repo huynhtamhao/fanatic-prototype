@@ -5,12 +5,13 @@ export class SidebarItem {
   icon       : string;
   path       : string;
   moduleName : string;
-  submenu    : SidebarItem[] | undefined;
+  submenu    : SidebarItem[];
 
   constructor() {
-    this.text        = ''  ;
-    this.icon        = ''  ;
-    this.path        = ''  ;
-    this.moduleName  = ''  ;
+    this.text        = '';
+    this.icon        = '';
+    this.path        = '';
+    this.moduleName  = '';
+    this.submenu     = [];
   }
 }

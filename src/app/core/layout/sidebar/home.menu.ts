@@ -10,17 +10,40 @@ export const HOME_MENU: SidebarItem[] = [
     submenu: [
       {
         text       : 'Search List',
-        icon       : 'fitness_center',
+        icon       : '',
         path       : '/prototype/list-search',
         moduleName : '',
-        submenu: undefined
+        submenu: []
+      },
+      {
+        text       : 'Register',
+        icon       : '',
+        path       : '/prototype/register',
+        moduleName : '',
+        submenu: []
       },
       {
         text       : 'Casino',
         icon       : 'casino',
-        path       : '',
+        path       : '/prototype/list-search',
         moduleName : '',
-        submenu: undefined
+        submenu: [
+
+          {
+            text       : 'Casino2',
+            icon       : 'casino2',
+            path       : '/bbb',
+            moduleName : '',
+            submenu: []
+          },
+          {
+            text       : 'Casino3',
+            icon       : 'casino3',
+            path       : '/aaa',
+            moduleName : '',
+            submenu: []
+          },
+        ]
       },
     ]
   }

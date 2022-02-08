@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SidebarItem } from '../sidebar-item.metadata';
+
+
 
 @Component({
   selector: 'kairos-sidebar-item',
