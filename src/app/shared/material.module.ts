@@ -13,7 +13,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ComponentsModule } from './components/components.module';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTableModule } from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 const materialModules = [
@@ -30,7 +33,10 @@ const materialModules = [
   MatSelectModule,
   MatDialogModule,
   MatSnackBarModule,
-  ComponentsModule,
+  MatCardModule,
+  MatExpansionModule,
+  MatTableModule,
+  MatPaginatorModule ,
 ];
 
 @NgModule({
