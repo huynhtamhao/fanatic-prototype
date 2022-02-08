@@ -8,6 +8,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import { MainComponent } from './layout/main/main.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { ErrorSummaryComponent } from './layout/error-summary/error-summary.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 
@@ -22,6 +23,7 @@ import { ErrorSummaryComponent } from './layout/error-summary/error-summary.comp
     CommonModule,
     RouterModule,
     MatSidenavModule,
+    FlexLayoutModule,
   ],
   exports: [
     TranslocoRootModule,
