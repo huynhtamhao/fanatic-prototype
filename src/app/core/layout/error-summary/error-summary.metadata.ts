@@ -1,6 +1,6 @@
-export class ErrorSummary {
+export interface ErrorSummary {
 
-  errorCode: string | undefined;
-  errorMessage: string | undefined;
+  errorCode: string;
+  errorMessage: string;
 }
 
