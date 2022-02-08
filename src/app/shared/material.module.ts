@@ -36,7 +36,7 @@ const materialModules = [
   MatCardModule,
   MatExpansionModule,
   MatTableModule,
-  MatPaginatorModule ,
+  MatPaginatorModule,
 ];
 
 @NgModule({
