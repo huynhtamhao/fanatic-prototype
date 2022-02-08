@@ -3,12 +3,14 @@ import { PrototypeRoutingModule } from './prototype-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
 import { RegisterComponent } from './register/register.component';
+import { ListSearchComponent } from './list-search/list-search.component';
 
 
 
 @NgModule({
   declarations: [
-    RegisterComponent
+    RegisterComponent,
+    ListSearchComponent,
   ],
   imports: [
     SharedModule,

@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@ngneat/transloco';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ComponentsModule } from './components/components.module';
 
 const sharedModule = [
   CommonModule,
@@ -18,6 +19,7 @@ const sharedModule = [
   RouterModule,
   NgbModule,
   TranslocoModule,
+  ComponentsModule,
 ]
 
 

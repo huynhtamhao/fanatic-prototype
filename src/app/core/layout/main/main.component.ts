@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 
 @Component({
-  selector: 'karios-main',
+  selector: 'kairos-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
 

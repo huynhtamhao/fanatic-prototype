@@ -1,8 +1,9 @@
 {
     "cSpell.words": [
         "devkit",
-        "karios",
+        "kairos",
         "ngneat",
         "TRANSLOCO"
-    ]
+    ],
+    "editor.formatOnSave": true
 }
