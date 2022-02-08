@@ -1,0 +1,18 @@
+.header-system {
+  color: white;
+  min-height: 38px;
+  padding: 10px 0px;
+  background-color: #4d6fdb;
+
+  div {
+    padding-left: 10px;
+  }
+}
+
+.system-name a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
