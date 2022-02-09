@@ -1,9 +1,11 @@
-.btn-normal {
+.btn-normal,
+.btn-normal.mat-button {
   border: 2px solid rgb(191, 191, 191);
   background-color: white;
 }
 
-.btn-main {
+.btn-main,
+.btn-main.mat-button {
   border: 2px solid #c6d9f1;
   background-color: $main-color;
 }
