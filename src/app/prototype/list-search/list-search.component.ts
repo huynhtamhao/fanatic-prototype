@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-
 export interface Product {
   productCd: string;
   productName: string;
@@ -34,11 +33,11 @@ export class ListSearchComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
   ) { }
-  public flexGap = `calc(800px *  1/31)`;
   public displayedColumns: string[] = ['productCd', 'productName', 'description', 'quantity', 'processing'];
   public productList = this.formBuilder.array([]);
   public quantityTotal = 0;
   public dataSource = new MatTableDataSource<Product>();
+  public menuList = ['参照', '更新', 'コピー新規'];
   // form array in search condition
   public formSearch : FormGroup  = new FormGroup({
     productCd: new FormControl(''),
@@ -52,7 +51,7 @@ export class ListSearchComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    this.paginator.page.subscribe(() => this.onSearch());
+    this.paginator.page.subscribe(() => this.onSearch(this.paginator.pageIndex));
   }
 
   private getQuantityTotal() {
@@ -61,28 +60,37 @@ export class ListSearchComponent implements OnInit {
     this.quantityTotal = sum;
   }
 
-  public onSearch() {
+  public onSearch(page: number = 0) {
     this.accordion.closeAll();
     this.dataSource.data = PRODUCT_DATA;
     const code = this.formSearch.get("productCd")?.value;
     const name = this.formSearch.get("productName")?.value;
     if (!!code) {
       this.dataSource.data = this.dataSource.data.filter(pro =>pro.productCd.includes(code));
-
     }
-
     if (!!name) {
       this.dataSource.data = this.dataSource.data.filter(pro => pro.productName.includes(name));
     }
     this.paginator.length = this.dataSource.data.length;
-    this.dataSource.data = this.dataSource.data.slice(this.paginator.pageSize * this.paginator.pageIndex, 
-                                               this.paginator.pageSize * this.paginator.pageIndex + this.paginator.pageSize);
+    this.dataSource.data = this.dataSource.data.slice(this.paginator.pageSize * page, 
+                                               this.paginator.pageSize * page + this.paginator.pageSize);
+    this.paginator.pageIndex = page;
     this.getQuantityTotal();
   }
 
   public onClear(): void {
     this.formSearch.reset("");
     this.accordion.openAll();
+  }
+
+  public moveScreen(i: number, value: any) {
+    if (this.menuList[value.itemId] === '参照') {
+      console.log("参照");
+    } else if (this.menuList[value.itemId]  === '更新') {
+      console.log("更新");
+    }else if (this.menuList[value.itemId]  === 'コピー新規') {
+      console.log("コピー新規");
+    }
   }
 
   public calcFlex(ratio: number) {
