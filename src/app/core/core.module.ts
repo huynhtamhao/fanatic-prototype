@@ -15,7 +15,6 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 
 
 @NgModule({
@@ -36,7 +35,6 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
     MatIconModule,
     MatExpansionModule,
     FlexLayoutModule,
-    PerfectScrollbarModule,
   ],
   exports: [
     TranslocoRootModule,

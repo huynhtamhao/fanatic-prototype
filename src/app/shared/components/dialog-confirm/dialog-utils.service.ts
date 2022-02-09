@@ -1,7 +1,7 @@
 import { Injectable, Optional } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Constants } from 'src/app/core/constants/Constants';
-import { ConfirmDialogComponent } from './confirm-dialog.component';
+import { DialogConfirmComponent } from './dialog-confirm.component';
 import { DialogData } from './dialog-data.metadata';
 
 
@@ -18,14 +18,14 @@ export class DialogUtilsService {
 
   constructor(
     private dialog: MatDialog,
-    @Optional() public dialogRef: MatDialogRef<ConfirmDialogComponent>
+    @Optional() public dialogRef: MatDialogRef<DialogConfirmComponent>
   ) { }
 
-  public openDialog(dialogData: DialogData): MatDialogRef<ConfirmDialogComponent> {
+  public openDialog(dialogData: DialogData): MatDialogRef<DialogConfirmComponent> {
     return this.dialogRef = this.openDefaultDialog(dialogData);
   }
 
-  public openDialogSuccessRegistry(): MatDialogRef<ConfirmDialogComponent> {
+  public openDialogSuccessRegistry(): MatDialogRef<DialogConfirmComponent> {
     this.dialogData = new DialogData();
     this.dialogData.title = TITLE.REGISTRY;
     this.dialogData.messageType = this.messageType.INFO;
@@ -34,7 +34,7 @@ export class DialogUtilsService {
     return this.dialogRef = this.openDefaultDialog(this.dialogData);
   }
 
-  public openDialogSuccessUpdate(): MatDialogRef<ConfirmDialogComponent> {
+  public openDialogSuccessUpdate(): MatDialogRef<DialogConfirmComponent> {
     this.dialogData = new DialogData();
     this.dialogData.title = TITLE.UPDATE;
     this.dialogData.messageType = this.messageType.INFO;
@@ -43,7 +43,7 @@ export class DialogUtilsService {
     return this.dialogRef = this.openDefaultDialog(this.dialogData);
   }
 
-  public openDialogErrorRegistry(): MatDialogRef<ConfirmDialogComponent> {
+  public openDialogErrorRegistry(): MatDialogRef<DialogConfirmComponent> {
     this.dialogData = new DialogData();
     this.dialogData.title = TITLE.REGISTRY;
     this.dialogData.messageType = this.messageType.ERROR;
@@ -52,7 +52,7 @@ export class DialogUtilsService {
     return this.dialogRef = this.openDefaultDialog(this.dialogData);
   }
 
-  public openDialogErrorUpdate(): MatDialogRef<ConfirmDialogComponent> {
+  public openDialogErrorUpdate(): MatDialogRef<DialogConfirmComponent> {
     this.dialogData = new DialogData();
     this.dialogData.title = TITLE.UPDATE;
     this.dialogData.messageType = this.messageType.ERROR;
@@ -61,7 +61,7 @@ export class DialogUtilsService {
     return this.dialogRef = this.openDefaultDialog(this.dialogData);
   }
 
-  public openDialogConfirmDelete(): MatDialogRef<ConfirmDialogComponent> {
+  public openDialogConfirmDelete(): MatDialogRef<DialogConfirmComponent> {
     this.dialogData = new DialogData();
     this.dialogData.title = TITLE.DELETE;
     this.dialogData.messageType = this.messageType.CONFIRM;
@@ -71,8 +71,8 @@ export class DialogUtilsService {
     return this.dialogRef = this.openDefaultDialog(this.dialogData);
   }
 
-  private openDefaultDialog(data: DialogData): MatDialogRef<ConfirmDialogComponent> {
-    return this.dialog.open(ConfirmDialogComponent, {
+  private openDefaultDialog(data: DialogData): MatDialogRef<DialogConfirmComponent> {
+    return this.dialog.open(DialogConfirmComponent, {
       width: '350px',
       minWidth: '250px',
       maxWidth: '350px',
@@ -87,8 +87,8 @@ export class DialogUtilsService {
     this.dialogConfig = new MatDialogConfig<any>();
   }
 
-  public openDialogCustom(): MatDialogRef<ConfirmDialogComponent> {
-    return this.dialogRef = this.dialog.open(ConfirmDialogComponent, this.dialogConfig);
+  public openDialogCustom(): MatDialogRef<DialogConfirmComponent> {
+    return this.dialogRef = this.dialog.open(DialogConfirmComponent, this.dialogConfig);
   }
 
   public getDefaultButtonActions(dialogData: DialogData): void {
