@@ -4,10 +4,20 @@ import { SidebarItem } from './data/sidebar-item.metadata';
 @Component({
   selector: 'kairos-sidebar-main-item',
   template: `
-    <div class="header">
-      <mat-icon>{{ mainIcon }}</mat-icon> -- {{ mainText }}
+    <div class="icon-text">
+      <mat-icon>{{ mainIcon }}</mat-icon>
+      <span><strong>{{ mainText }}</strong></span>
     </div>
-    <kairos-sidebar-item *ngFor="let menuitem of subMenu" [menuitem]="menuitem"></kairos-sidebar-item>
+    <!-- <mat-toolbar>
+      <button mat-icon-button>
+        <mat-icon>{{ mainIcon }}</mat-icon>
+      </button>
+      <span><strong>{{ mainText }}</strong></span>
+    </mat-toolbar> -->
+    <!-- <mat-list-item>
+      <mat-icon>{{ mainIcon }}</mat-icon> <strong>{{ mainText }}</strong>
+    </mat-list-item> -->
+    <kairos-sidebar-item *ngFor="let menu of subMenu" [menuItem]="menu"></kairos-sidebar-item>
   `,
   styleUrls: ['./sidebar.component.scss']
 })
