@@ -2,27 +2,6 @@
   <mat-card-title>一覧表示画面</mat-card-title>
   <br />
   <form [formGroup]="formSearch">
-    <!-- <fieldset class="collapsible">
-      <legend onclick="" class='material-icons material-icons-outlined'>arrow_forward_ios</legend>
-      <mat-card-content>
-        <div fxLayout="column">
-          <div fxLayout="row wrap" [fxLayoutGap] ="flexGap">
-            <div fxLayout="row" >
-              <div class="label-header">商品コード</div>
-            </div>
-            <div fxLayout="row"  fxFlex="calcFlex(1/30)">
-              <input id="txt-productCd" formControlName="productCd">
-            </div>
-            <div fxLayout="row">
-              <div class="label-header">商品名</div>
-            </div>
-            <div fxLayout="row" fxFlex="calcFlex(1/30)">
-              <input id="txt-productName" formControlName="productName">
-            </div>
-          </div>
-        </div>
-      </mat-card-content>
-    </fieldset> -->
     <mat-accordion class="collapsible" multi>
       <mat-expansion-panel [togglePosition]="'before'">
         <mat-expansion-panel-header>
@@ -45,37 +24,27 @@
               </div>
             </div>
           </div>
-        </mat-card-content>
-        <!-- <mat-form-field appearance="fill">
-          <mat-label>First name</mat-label>
-          <input matInput>
-        </mat-form-field>
-    
-        <mat-form-field appearance="fill">
-          <mat-label>Age</mat-label>
-          <input matInput type="number" min="1">
-        </mat-form-field> -->
-    
+        </mat-card-content>  
       </mat-expansion-panel>
     </mat-accordion>
     <br>
     <div fxLayout="row wrap">
-      <div fxFlex="20">
+      <div fxFlex="15">
         <button type="button" id="btn-search" (click)="onSearch()" mat-raised-button class="button-size-modal-bottom button-primary">検索</button>       
       </div>
-      <div fxFlex="30"> 
+      <div> 
         <button type="button" id="btn-clear" (click)="onClear()"  mat-raised-button class="button-size-modal-bottom button-left">条件クリア</button>     
       </div>
     </div>
     <br>
     <div>
-      <mat-table #table [dataSource]="productList.controls" class="table-custom table-scroll mat-elevation-z2">
+      <mat-table [dataSource]="dataSource" class="table-custom table-scroll mat-elevation-z2">
         <!-- product Cd Column -->
         <ng-container matColumnDef="productCd">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(2/20)">商品コード</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(2/20)">
             <!-- <a id="lbl-productCd-{{i}}">{{row.get('productCd').value}}</a> -->
-            <a mat-list-item >{{row.get('productCd').value}}</a> 
+            <a mat-list-item >{{row.productCd}}</a> 
           </mat-cell>
           <mat-footer-cell *matFooterCellDef [fxFlex]="calcFlex(2/20)"></mat-footer-cell>
         </ng-container>
@@ -83,7 +52,7 @@
         <ng-container matColumnDef="productName">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(5/20)">商品名</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(5/20)">
-            <label id="lbl-productName-{{i}}">{{row.get('productName').value}}</label>
+            <label id="lbl-productName-{{i}}">{{row.productName}}</label>
           </mat-cell>
           <mat-footer-cell *matFooterCellDef [fxFlex]="calcFlex(5/20)"></mat-footer-cell>
         </ng-container>
@@ -91,7 +60,7 @@
         <ng-container matColumnDef="description">
           <mat-header-cell *matHeaderCellDef >説明</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;">
-            <label id="lbl-description-{{i}}">{{row.get('description').value}}</label>
+            <label id="lbl-description-{{i}}">{{row.description}}</label>
           </mat-cell>
           <mat-footer-cell *matFooterCellDef class="mat-footer" fxLayoutAlign="end center">合計</mat-footer-cell>
         </ng-container>
@@ -99,7 +68,7 @@
         <ng-container matColumnDef="quantity">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(2/20)">数量</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" fxLayoutAlign="end center" [fxFlex]="calcFlex(2/20)">
-            <label id="lbl-quantity-{{i}}">{{row.get('quantity').value | number}}</label>
+            <label id="lbl-quantity-{{i}}">{{row.quantity | number}}</label>
           </mat-cell>
           <mat-footer-cell *matFooterCellDef [fxFlex]="calcFlex(2/20)" fxLayoutAlign="end center">{{quantityTotal | number}}</mat-footer-cell>
         </ng-container>
@@ -113,6 +82,7 @@
           </mat-cell>
           <mat-footer-cell *matFooterCellDef [fxFlex]="calcFlex(1/20)" fxLayoutAlign="end center"></mat-footer-cell>
         </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         <mat-footer-row *matFooterRowDef="displayedColumns; sticky:true"></mat-footer-row>

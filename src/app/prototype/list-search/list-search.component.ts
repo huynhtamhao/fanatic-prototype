@@ -1,16 +1,17 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
-export interface PeriodicElement {
+export interface Product {
   productCd: string;
   productName: string;
   description: string;
   quantity: number;
 }
 
-const PRODUCT_DATA: PeriodicElement[] = [
+const PRODUCT_DATA: Product[] = [
   {productCd: 'CD0001', productName: 'productName 001', description: 'description of product 001', quantity: 10001},
   {productCd: 'CD0002', productName: 'productName 002', description: 'description of product 002', quantity: 10002},
   {productCd: 'CD0003', productName: 'productName 003', description: 'description of product 003', quantity: 10003},
@@ -28,6 +29,7 @@ const PRODUCT_DATA: PeriodicElement[] = [
 
 export class ListSearchComponent implements OnInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion ;
+  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,37 +38,46 @@ export class ListSearchComponent implements OnInit {
   public displayedColumns: string[] = ['productCd', 'productName', 'description', 'quantity', 'processing'];
   public productList = this.formBuilder.array([]);
   public quantityTotal = 0;
-  public dataSource = [];
-
+  public dataSource = new MatTableDataSource<Product>();
   // form array in search condition
   public formSearch : FormGroup  = new FormGroup({
     productCd: new FormControl(''),
     productName: new FormControl(''),
-    managementNo: new FormControl(''),
-    printCount: new FormControl('0')
   });
 
   ngOnInit(): void {
-    var i = 0 ;
-    while (i !== 5) {
-      this.productList.push(this.formBuilder.group({
-        productCd: "CD000" + i,
-        productName: "product name " + i,
-        description: "description of product " + i,
-        quantity: 1000 + i,
-      }));
-      this.quantityTotal = this.quantityTotal + this.productList.at(i).get("quantity")?.value;
-      i++;
-    }
-    
+    this.dataSource.data = PRODUCT_DATA.slice(0,5);
+    this.paginator.length = PRODUCT_DATA.length;
+    this.getQuantityTotal();
+  }
+
+  ngAfterViewInit(): void {
+    this.paginator.page.subscribe(() => this.onSearch());
   }
 
   private getQuantityTotal() {
-    // for ()
+    var sum = 0;
+    this.dataSource.data.forEach(pro => sum = sum + pro.quantity);
+    this.quantityTotal = sum;
   }
 
   public onSearch() {
     this.accordion.closeAll();
+    this.dataSource.data = PRODUCT_DATA;
+    const code = this.formSearch.get("productCd")?.value;
+    const name = this.formSearch.get("productName")?.value;
+    if (!!code) {
+      this.dataSource.data = this.dataSource.data.filter(pro =>pro.productCd.includes(code));
+
+    }
+
+    if (!!name) {
+      this.dataSource.data = this.dataSource.data.filter(pro => pro.productName.includes(name));
+    }
+    this.paginator.length = this.dataSource.data.length;
+    this.dataSource.data = this.dataSource.data.slice(this.paginator.pageSize * this.paginator.pageIndex, 
+                                               this.paginator.pageSize * this.paginator.pageIndex + this.paginator.pageSize);
+    this.getQuantityTotal();
   }
 
   public onClear(): void {
