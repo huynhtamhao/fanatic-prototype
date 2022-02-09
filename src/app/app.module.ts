@@ -28,7 +28,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     BrowserAnimationsModule,
     CoreModule,
     KairosCommonComponentsModule,
-    PerfectScrollbarModule,
   ],
   providers: [
     {
