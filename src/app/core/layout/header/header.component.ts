@@ -8,36 +8,23 @@ import { Constants } from '../../constants/Constants';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  timezoneJP = Constants.timezoneJP;
 
-  public currentDate = new Date();
-  public currentTime = this.currentDate;
-  private midnight = new Date(this.currentDate.setHours(0, 0, 0, 0));
-  private lastNight = this.midnight.setDate(this.midnight.getDate() + 1);
   private subscription = new Subscription();
+  private currentDate = new Date();
+  public dateTimeJP = this.convertDateTimeZone(this.currentDate, Constants.localeJP, Constants.timezoneJP).getTime();
 
   constructor() { }
 
   ngOnInit(): void {
     // time annotation
     this.subscription = timer(0, 1000)
-      .pipe(
-        map(() => new Date()),
-        share()
-      )
-      .subscribe(time => {
-        this.currentTime = time;
-        if (this.currentTime.getTime() === this.lastNight) {
-          this.setTime();
-        }
+      .subscribe(() => {
+        this.dateTimeJP = this.dateTimeJP + 1000;
       });
   }
 
-  // next date
-  setTime() {
-    this.currentDate = new Date();
-    this.midnight = new Date(this.currentDate.setHours(0, 0, 0, 0));
-    this.lastNight = this.midnight.setDate(this.midnight.getDate() + 1);
+  convertDateTimeZone(date: Date, locale: string, timeZone: string) {
+    return new Date(date.toLocaleString(locale, { timeZone: timeZone }));
   }
 
   ngOnDestroy(): void {

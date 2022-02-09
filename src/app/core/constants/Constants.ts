@@ -7,5 +7,6 @@ export abstract class Constants {
     WARNING: 'warning',
   };
 
-  static readonly timezoneJP = 'GMT +9';
+  static readonly localeJP = 'ja-JP';
+  static readonly timezoneJP = 'Asia/Tokyo';
 }
