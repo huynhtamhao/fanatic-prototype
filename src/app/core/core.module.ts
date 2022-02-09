@@ -36,7 +36,6 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
     MatIconModule,
     MatExpansionModule,
     FlexLayoutModule,
-    PerfectScrollbarModule,
   ],
   exports: [
     TranslocoRootModule,
