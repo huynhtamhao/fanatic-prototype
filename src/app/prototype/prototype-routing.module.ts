@@ -13,4 +13,9 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class PrototypeRoutingModule { }
+export class PrototypeRoutingModule {
+  static components = [
+    RegisterComponent,
+    ListSearchComponent
+  ]
+}

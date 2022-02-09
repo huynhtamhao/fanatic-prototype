@@ -1,0 +1,6 @@
+<button mat-list-item>
+  <mat-icon>{{ mainIcon }}</mat-icon> {{ mainText }}
+</button>
+<div class="collapse" id="collapseExample">
+  <kairos-sidebar-item *ngFor="let menuitem of subMenu" [menuitem]="menuitem"></kairos-sidebar-item>
+</div>

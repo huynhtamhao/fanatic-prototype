@@ -1,1 +1,11 @@
-<p>header works!</p>
+<div class="header-system" fxLayout="row">
+  <div class="system-name" fxLayoutAlign="start center" fxFlex="17.65">
+    <a href="/">KAIROS</a>
+  </div>
+  <div fxLayoutAlign="start center" fxFlex="11.75">受注登録</div>
+  <div fxLayoutAlign="start center" fxFlex="17.65">業務日付：{{ dateTimeJP | date:'YYYY/MM/dd' }}</div>
+  <div fxLayoutAlign="start center" fxFlex="11.75">時刻：{{ dateTimeJP | date: 'HH:mm:ss' }}</div>
+  <div fxLayoutAlign="start center" fxFlex="17.65">株式会社ファナティック</div>
+  <div fxLayoutAlign="start center" fxFlex="11.75">システム開発部</div>
+  <div fxLayoutAlign="end center" fxFlex="11.75">◎255：堀尾公彦</div>
+</div>

@@ -5,7 +5,7 @@
 <mat-dialog-content>
   <div fxLayout="row">
     <div fxLayoutAlign="baseline center" fxFlex="20">
-      <mat-icon class>{{data.messageType}}</mat-icon>
+      <mat-icon class="material-icons">{{data.messageType}}</mat-icon>
     </div>
     <div fxLayoutAlign="baseline center" class="content-message content-multi-line" fxFlex="80">{{getMessageContent()}}
     </div>
@@ -16,12 +16,12 @@
   <br>
   <div fxLayout="row">
     <div fxLayoutAlign="start" fxFlex="50">
-      <button class="btn-normal" [mat-dialog-close]="false" *ngIf="!!data.buttonActions.leftButton">
+      <button class="btn-main" [mat-dialog-close]="true" *ngIf="!!data.buttonActions.leftButton">
         {{data.buttonActions.leftButton}}
       </button>
     </div>
     <div fxLayoutAlign="end" fxFlex="50" *ngIf="!!data.buttonActions.rightButton">
-      <button class="btn-main" [mat-dialog-close]="true" cdkFocusInitial>
+      <button class="btn-normal" [mat-dialog-close]="false" cdkFocusInitial>
         {{data.buttonActions.rightButton}}
       </button>
     </div>
