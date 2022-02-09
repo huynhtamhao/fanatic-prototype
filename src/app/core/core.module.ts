@@ -9,6 +9,7 @@ import { MainComponent } from './layout/main/main.component';
 import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { ErrorSummaryComponent } from './layout/error-summary/error-summary.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -23,6 +24,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CommonModule,
     RouterModule,
     MatSidenavModule,
+    MatIconModule,
     FlexLayoutModule,
   ],
   exports: [
