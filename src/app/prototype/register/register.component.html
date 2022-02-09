@@ -1,1 +1,50 @@
-<p>register works!</p>
+<mat-card class="form-card">
+  <mat-card-title>明細</mat-card-title>
+  <br>
+  <mat-card-content>
+    <form [formGroup]="form" class="form-detail">
+      <div fxLayout="row wrap" class="row-style">
+        <div fxLayout="column" [fxFlex]="setFlex(5)">品目コード</div>
+        <div fxLayout="column" [fxFlex]="setFlex(9)">
+          <input type="text" class="full-width">
+        </div>
+        <div fxFlex></div>
+        <div fxLayout="column" [fxFlex]="setFlex(5)">シリアル番号</div>
+        <div fxLayout="column" [fxFlex]="setFlex(9)">
+          <input type="text" class="full-width">
+        </div>
+      </div>
+
+      <div fxLayout="row wrap" class="row-style">
+        <div fxLayout="column" [fxFlex]="setFlex(5)">保管場所</div>
+        <div fxLayout="column" [fxFlex]="setFlex(9)">
+          <input type="text" class="full-width">
+        </div>
+        <div fxFlex></div>
+        <div fxLayout="column" [fxFlex]="setFlex(5)">納品書番号</div>
+        <div fxLayout="column" [fxFlex]="setFlex(9)">
+          <input type="text" class="full-width">
+        </div>
+      </div>
+
+      <div fxLayout="row wrap" class="row-style">
+        <div fxLayout="column" [fxFlex]="setFlex(5)">代替品入荷保管場所</div>
+        <div fxLayout="column" [fxFlex]="setFlex(9)">
+          <input type="text" class="full-width">
+        </div>
+      </div>
+      <br>
+      <div fxLayout="row">
+        <div>
+          <button mat-button type="button" class="btn-main" [fxFlex]="setFlex(5)" id="btn-close">登録</button>
+        </div>
+        <div fxFlex></div>
+        <div fxLayoutAlign="end">
+          <button mat-button type="button" class="btn-normal" [fxFlex]="setFlex(5)" id="btn-close">閉じる</button>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+<!-- TODO: delete later -->
+<br>
