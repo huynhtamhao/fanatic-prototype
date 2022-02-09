@@ -1,4 +1,4 @@
-@import "variables";
+@import './common/variables';
 
 header {
   color: white;
@@ -37,22 +37,6 @@ button {
   border-radius: 4px;
   font-weight: bold;
   margin: 10px 10px;
-}
-
-button:disabled,
-button[disabled] {
-  border: 2px solid $disabled-color;
-  background-color: $disabled-color;
-}
-
-.btn-normal {
-  border: 2px solid rgb(191, 191, 191);
-  background-color: white;
-}
-
-.btn-main {
-  border: 2px solid #c6d9f1;
-  background-color: $main-color;
 }
 
 .material-icons {
