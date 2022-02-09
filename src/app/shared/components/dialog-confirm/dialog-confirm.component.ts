@@ -13,8 +13,7 @@ export class DialogConfirmComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   getMessageContent(): string | undefined {
     if (!!this.data.messageCode) {
