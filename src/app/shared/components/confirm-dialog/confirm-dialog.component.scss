@@ -56,8 +56,8 @@ button[disabled] {
 }
 
 .material-icons {
-  width: 3.4rem;
-  height: 3.4rem;
   font-size: 3.4rem;
+  width: fit-content;
+  height: fit-content;
   color: $main-color;
 }
