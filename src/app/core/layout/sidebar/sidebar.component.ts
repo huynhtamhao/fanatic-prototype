@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HOME_MENU } from './home.menu';
-import { SidebarItem } from './sidebar-item.metadata';
+import { HOME_MENU } from './data/home.menu';
+import { SidebarItem } from './data/sidebar-item.metadata';
 
 
 @Component({
@@ -15,5 +15,4 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     this.homeMenu = HOME_MENU;
   }
-
 }
