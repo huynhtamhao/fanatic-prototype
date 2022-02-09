@@ -5,8 +5,8 @@ export class DialogData {
   messageContent: string | undefined;
   messageType: string | undefined;
   buttonActions = {
-    leftButton: '',
-    rightButton: 'OK'
+    leftButton: 'OK',
+    rightButton: ''
   };
 
 }

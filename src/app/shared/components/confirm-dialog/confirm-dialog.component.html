@@ -16,12 +16,12 @@
   <br>
   <div fxLayout="row">
     <div fxLayoutAlign="start" fxFlex="50">
-      <button class="btn-normal" [mat-dialog-close]="false" *ngIf="!!data.buttonActions.leftButton">
+      <button class="btn-main" [mat-dialog-close]="true" *ngIf="!!data.buttonActions.leftButton">
         {{data.buttonActions.leftButton}}
       </button>
     </div>
     <div fxLayoutAlign="end" fxFlex="50" *ngIf="!!data.buttonActions.rightButton">
-      <button class="btn-main" [mat-dialog-close]="true" cdkFocusInitial>
+      <button class="btn-normal" [mat-dialog-close]="false" cdkFocusInitial>
         {{data.buttonActions.rightButton}}
       </button>
     </div>

@@ -1,7 +1,7 @@
 @import "variables";
 
 .error-summary {
-  height: 68px;
+  height: 72px;
   color: red;
   background-color: $main-color;
   border: 1px solid rgb(191, 191, 191);
@@ -9,12 +9,25 @@
   padding: 5px;
   line-height: 1;
   overflow-y: auto;
+  box-sizing: border-box;
 
   p {
     margin-bottom: 3px;
   }
 }
 
-.error {
+.error-box {
   border: 1px solid red;
+}
+
+.material-icons {
+  vertical-align: middle;
+  font-size: 1rem;
+  width: fit-content;
+  height: fit-content;
+
+  &.icon-error {
+    color: red;
+    margin-top: -3px;
+  }
 }

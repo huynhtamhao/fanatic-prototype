@@ -92,8 +92,8 @@ export class DialogUtilsService {
   }
 
   public getDefaultButtonActions(dialogData: DialogData): void {
-    dialogData.buttonActions.leftButton = 'いいえ';
-    dialogData.buttonActions.rightButton = 'はい';
+    dialogData.buttonActions.leftButton = 'はい';
+    dialogData.buttonActions.rightButton = 'いいえ';
   }
 
   public changePosition(position: object): void {
