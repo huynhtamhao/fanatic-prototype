@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
   template: `
     <mat-accordion>
       <ng-container *ngIf="menuitem.submenu.length > 0; else elseTemplate">
-        <mat-expansion-panel [ngStyle]="style">
+        <mat-expansion-panel class="mat-elevation-z0">
           <mat-expansion-panel-header>
             <mat-panel-title>
               <mat-icon>{{ menuitem.icon }}</mat-icon> {{ menuitem.text }}
@@ -17,7 +17,7 @@ import { Component, Input, OnInit } from '@angular/core';
       <mat-accordion>
 
       <ng-template #elseTemplate>
-        <mat-action-list *ngIf="menuitem.path" [ngStyle]="styleLink">
+        <mat-action-list *ngIf="menuitem.path">
           <button mat-list-item [routerLink]="menuitem.path">
             <mat-icon>{{ menuitem.icon }}</mat-icon> {{ menuitem.text }}
           </button>
@@ -27,13 +27,7 @@ import { Component, Input, OnInit } from '@angular/core';
   `,
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarItemComponent implements OnInit {
+export class SidebarItemComponent {
 
   @Input("menuitem") menuitem: any;
-
-  style: any;
-  styleLink: any;
-  ngOnInit(): void {
-
-  }
 }

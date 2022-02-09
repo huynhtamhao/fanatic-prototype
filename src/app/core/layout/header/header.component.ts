@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { map, share, Subscription, timer } from 'rxjs';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Subscription, timer } from 'rxjs';
 import { Constants } from '../../constants/Constants';
 
 @Component({
@@ -12,6 +12,8 @@ export class HeaderComponent implements OnInit {
   private subscription = new Subscription();
   private currentDate = new Date();
   public dateTimeJP = this.convertDateTimeZone(this.currentDate, Constants.localeJP, Constants.timezoneJP).getTime();
+
+  @Output() toggleSidebarEvent = new EventEmitter<void>();
 
   constructor() { }
 
@@ -31,6 +33,10 @@ export class HeaderComponent implements OnInit {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
+  }
+
+  toggleSidebar() {
+    this.toggleSidebarEvent.emit();
   }
 
 }
