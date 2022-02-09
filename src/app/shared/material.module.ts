@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 const materialModules = [
@@ -37,6 +38,7 @@ const materialModules = [
   MatExpansionModule,
   MatTableModule,
   MatPaginatorModule,
+  MatMenuModule,
 ];
 
 @NgModule({

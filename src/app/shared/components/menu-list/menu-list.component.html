@@ -1,1 +1,10 @@
-<p>menu-list works!</p>
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu" >
+  <ng-container *ngFor="let item of items; let i = index">
+    <button mat-menu-item (click)="onClick(i, item)">
+      <span>{{item}}</span>
+    </button>
+  </ng-container> 
+</mat-menu>
