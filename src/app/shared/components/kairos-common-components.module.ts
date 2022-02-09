@@ -1,24 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuListComponent } from './menu-list/menu-list.component';
-import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { MaterialModule } from '@shared/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 
 
 
 @NgModule({
   declarations: [
-    ConfirmDialogComponent,
+    DialogConfirmComponent,
     MenuListComponent,
   ],
   imports: [
     CommonModule,
     NgbModule,
     MaterialModule,
+    FlexLayoutModule,
   ],
   exports : [
-    ConfirmDialogComponent,
+    DialogConfirmComponent,
     MenuListComponent,
   ]
 })
