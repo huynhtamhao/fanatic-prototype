@@ -2,34 +2,13 @@
   font-weight: bold;
   font-size: 14px;
   min-height: 1.5em;
+  text-align: right;
+  padding: 15px 10px;
 }
 
-.label-display {
-  margin-top: 3px;
-  font-size: 14px;
-  margin-bottom: 24px;
-}
 $main-color : #d9e1f2;
-.collapsible {
-  border-width: 1px 0 0 0;
-  // cursor: pointer;
-  // padding-left: 18px;
-  // background-position: 4px;
-}
+$button-primary-color: #b7dee8;
 
-// fieldset.collapsible>legend {
-//     cursor: pointer;
-//     padding-left: 18px;
-//     background-position: 4px;
-// }
-
-// .icon-collapsed {
-//     background-image: url(../images/arrow_right.png);
-// }
-
-// .legend {
-//     color: #333;
-// }
 .table-custom {
   input {
     font-size: 9pt !important;
@@ -101,27 +80,22 @@ $main-color : #d9e1f2;
   background-color: $main-color;
 }
 
-.no-data {
-  border-bottom: 1px solid #bdbdbd;
-  color: black! important; 
-  font-size: 14px;
-}
-
 .button-size-modal-bottom{
   min-width: 130px;
   width: calc(800px / 6);
 }
 
 .button-primary {
-  background-color: $main-color;
+  background-color: $button-primary-color;
 }
 
 .form-card {
-  // max-width: 800px;
-  // min-width: 300px;
   margin: 15px auto;
 }
 
-.remove-background {
-  background-color: white !important;
+.textbox-common {
+  .mat-form-field-infix {
+      border-top:  0px !important;
+      width: 100% !important;
+  }
 }
