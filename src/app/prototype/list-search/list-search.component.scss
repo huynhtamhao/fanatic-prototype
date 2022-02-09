@@ -9,7 +9,7 @@
   font-size: 14px;
   margin-bottom: 24px;
 }
-$main-color : #b4c6e7;
+$main-color : #d9e1f2;
 .collapsible {
   border-width: 1px 0 0 0;
   // cursor: pointer;
@@ -41,7 +41,7 @@ $main-color : #b4c6e7;
     padding-right: 0.5em;
     font-size: 9pt;
     &:not(:last-child) {
-      border-right: 1px solid #e0e0e0;
+      border-right: 1px solid #bdbdbd;
     }
 
     align-self: stretch;
@@ -52,7 +52,7 @@ $main-color : #b4c6e7;
     padding-right: 0.5em;
     font-size: 9pt;
     &:not(:last-child) {
-      border-right: 1px solid #e0e0e0;
+      border-right: 1px solid #bdbdbd;
     }
     align-self: stretch;
   }
@@ -101,6 +101,12 @@ $main-color : #b4c6e7;
   background-color: $main-color;
 }
 
+.no-data {
+  border-bottom: 1px solid #bdbdbd;
+  color: black! important; 
+  font-size: 14px;
+}
+
 .button-size-modal-bottom{
   min-width: 130px;
   width: calc(800px / 6);
@@ -111,7 +117,11 @@ $main-color : #b4c6e7;
 }
 
 .form-card {
-  max-width: 800px;
-  min-width: 300px;
+  // max-width: 800px;
+  // min-width: 300px;
   margin: 15px auto;
+}
+
+.remove-background {
+  background-color: white !important;
 }
