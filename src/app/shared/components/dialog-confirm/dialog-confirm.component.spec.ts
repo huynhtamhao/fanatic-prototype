@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SidebarMainItemComponent } from './sidebar-main-item.component';
+import { DialogConfirmComponent } from './dialog-confirm.component';
 
-describe('SidebarMainItemComponent', () => {
-  let component: SidebarMainItemComponent;
-  let fixture: ComponentFixture<SidebarMainItemComponent>;
+describe('DialogConfirmComponent', () => {
+  let component: DialogConfirmComponent;
+  let fixture: ComponentFixture<DialogConfirmComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SidebarMainItemComponent ]
+      declarations: [ DialogConfirmComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SidebarMainItemComponent);
+    fixture = TestBed.createComponent(DialogConfirmComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

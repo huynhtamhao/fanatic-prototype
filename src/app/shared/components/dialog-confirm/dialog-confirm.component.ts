@@ -3,11 +3,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from './dialog-data.metadata';
 
 @Component({
-  selector: 'kairos-confirm-dialog',
-  templateUrl: './confirm-dialog.component.html',
-  styleUrls: ['./confirm-dialog.component.scss']
+  selector: 'kairos-dialog-confirm',
+  templateUrl: './dialog-confirm.component.html',
+  styleUrls: ['./dialog-confirm.component.scss']
 })
-export class ConfirmDialogComponent implements OnInit {
+export class DialogConfirmComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
