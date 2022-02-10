@@ -27,3 +27,10 @@ mat-icon {
     font-size: 18px;
   }
 }
+
+.mat-elevation-z0 {
+  ::ng-deep .mat-expansion-panel-body{
+    padding: 0 24px;
+  }
+}
+

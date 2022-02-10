@@ -3,7 +3,7 @@
     <button mat-icon-button (click)="toggleSidebar()"><mat-icon>menu</mat-icon></button>
   </div>
   <div class="system-name" fxLayoutAlign="start center" fxFlex="18">
-    <a href="/">KAIROS</a>
+    <a href="/">{{ 'header.systemName' | transloco }}</a>
   </div>
   <div fxLayoutAlign="start center" fxFlex="12">受注登録</div>
   <div fxLayoutAlign="start center" fxFlex="18">業務日付：{{ dateTimeJP | date:'YYYY/MM/dd' }}</div>
