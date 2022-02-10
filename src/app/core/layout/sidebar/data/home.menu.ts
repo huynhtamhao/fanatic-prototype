@@ -1,45 +1,46 @@
+import { PROTOTYPE_PATH } from "src/app/prototype/prototype-routing.module";
 import { SidebarItem } from "./sidebar-item.metadata";
 
 // prettier-ignore
 export const HOME_MENU: SidebarItem[] = [
   {
-    text       : 'prototype',
+    id         : 'prototype',
     icon       : 'public',
-    path       : '',
+    path       : PROTOTYPE_PATH.RegisterComponent.path,
     moduleName : '',
     submenu: [
       {
-        text       : 'Search List',
+        id         : 'Search List',
         icon       : '',
-        path       : '/prototype/list-search',
+        path       : PROTOTYPE_PATH.SearchListComponent.path,
         moduleName : '',
         submenu: []
       },
       {
-        text       : 'Register',
+        id         : 'Register',
         icon       : '',
-        path       : '/prototype/register',
+        path       : PROTOTYPE_PATH.RegisterComponent.path,
         moduleName : '',
         submenu: []
       },
       {
-        text       : 'Casino',
+        id         : 'Casino',
         icon       : 'casino',
-        path       : '/prototype/list-search',
+        path       : '',
         moduleName : '',
         submenu: [
 
           {
-            text       : 'Casino2',
+            id         : 'Casino2',
             icon       : 'casino2',
-            path       : '/bbb',
+            path       : '',
             moduleName : '',
             submenu: []
           },
           {
-            text       : 'Casino3',
+            id         : 'Casino3',
             icon       : 'casino3',
-            path       : '/aaa',
+            path       : '',
             moduleName : '',
             submenu: []
           },
