@@ -3,34 +3,57 @@
   <br>
   <mat-card-content>
     <form [formGroup]="form" class="form-detail">
-      <div fxLayout="row wrap" class="row-style">
-        <div fxLayout="column" [fxFlex]="setFlex(5)">品目コード</div>
-        <div fxLayout="column" [fxFlex]="setFlex(9)">
-          <input type="text" class="full-width">
+      <div fxLayout="row wrap">
+        <div [fxFlex]="setFlex(14)">
+          <div fxLayout="column" [fxFlex]="setFlex(5)">品目コード</div>
+          <div fxLayout="column" [fxFlex]="setFlex(9)">
+            <mat-form-field appearance="outline" class="input-text-outline">
+              <input matInput type="text" formControlName="productCd">
+              <mat-error>required error</mat-error>
+            </mat-form-field>
+          </div>
         </div>
         <div fxFlex></div>
-        <div fxLayout="column" [fxFlex]="setFlex(5)">シリアル番号</div>
-        <div fxLayout="column" [fxFlex]="setFlex(9)">
-          <input type="text" class="full-width">
+        <div [fxFlex]="setFlex(14)">
+          <div fxLayout="column" [fxFlex]="setFlex(5)">シリアル番号</div>
+          <div fxLayout="column" [fxFlex]="setFlex(9)">
+            <mat-form-field appearance="outline" class="input-text-outline">
+              <input matInput type="text" formControlName="serialNo">
+            </mat-form-field>
+          </div>
         </div>
       </div>
 
-      <div fxLayout="row wrap" class="row-style">
-        <div fxLayout="column" [fxFlex]="setFlex(5)">保管場所</div>
-        <div fxLayout="column" [fxFlex]="setFlex(9)">
-          <input type="text" class="full-width">
+      <div fxLayout="row wrap">
+        <div [fxFlex]="setFlex(14)">
+          <div fxLayout="column" [fxFlex]="setFlex(5)">保管場所</div>
+          <div fxLayout="column" [fxFlex]="setFlex(9)">
+            <mat-form-field appearance="outline" class="input-text-outline">
+              <input matInput type="text" formControlName="storageLocation">
+              <mat-error>required error</mat-error>
+            </mat-form-field>
+          </div>
         </div>
         <div fxFlex></div>
-        <div fxLayout="column" [fxFlex]="setFlex(5)">納品書番号</div>
-        <div fxLayout="column" [fxFlex]="setFlex(9)">
-          <input type="text" class="full-width">
+        <div [fxFlex]="setFlex(14)">
+          <div fxLayout="column" [fxFlex]="setFlex(5)">納品書番号</div>
+          <div fxLayout="column" [fxFlex]="setFlex(9)">
+            <mat-form-field appearance="outline" class="input-text-outline">
+              <input matInput type="text" formControlName="invoiceNo">
+              <mat-error>required error</mat-error>
+            </mat-form-field>
+          </div>
         </div>
       </div>
 
-      <div fxLayout="row wrap" class="row-style">
-        <div fxLayout="column" [fxFlex]="setFlex(5)">代替品入荷保管場所</div>
-        <div fxLayout="column" [fxFlex]="setFlex(9)">
-          <input type="text" class="full-width">
+      <div fxLayout="row wrap">
+        <div [fxFlex]="setFlex(14)">
+          <div fxLayout="column" [fxFlex]="setFlex(5)">代替品入荷保管場所</div>
+          <div fxLayout="column" [fxFlex]="setFlex(9)">
+            <mat-form-field appearance="outline" class="input-text-outline">
+              <input matInput type="text" formControlName="inboundDeliveryStorageLocation">
+            </mat-form-field>
+          </div>
         </div>
       </div>
       <br>
