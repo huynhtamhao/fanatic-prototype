@@ -3,11 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { ListSearchComponent } from './list-search/list-search.component';
 
-export const PROTOTYPE_PATH: any = {
-  RegisterComponent: { id: '登録画面', path: '/prototype/register' },
-  SearchListComponent: { id: '一覧表示画面', path: '/prototype/list-search' },
-}
-
 
 const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
@@ -22,6 +17,6 @@ const routes: Routes = [
 export class PrototypeRoutingModule {
   static components = [
     RegisterComponent,
-    ListSearchComponent
+    ListSearchComponent,
   ]
 }
