@@ -1,9 +1,7 @@
 .label-header {
   font-weight: bold;
   font-size: 14px;
-  min-height: 1.5em;
-  text-align: right;
-  padding: 15px 10px;
+  padding-top: 10px;
 }
 
 $main-color : #d9e1f2;
@@ -93,9 +91,26 @@ $button-primary-color: #b7dee8;
   margin: 15px auto;
 }
 
-.textbox-common {
-  .mat-form-field-infix {
-      border-top:  0px !important;
-      width: 100% !important;
-  }
+// .textbox-common {
+//   .mat-form-field-infix {
+//       border-top:  0px !important;
+//       width: 100% !important;
+//   }
+// }
+
+.button-size-modal-bottom{
+  min-width: 130px;
+  // width: calc(800px / 6);
 }
+
+.button-right {
+  float: right;
+}
+
+//  .mat-form-field-infix {
+//   border-top: 0.6em solid transparent;
+// }
+
+// ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+//   padding: 0;
+// }
