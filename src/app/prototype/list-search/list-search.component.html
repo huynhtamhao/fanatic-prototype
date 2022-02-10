@@ -41,7 +41,7 @@
         <ng-container matColumnDef="productCd">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(2/20)">商品コード</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(2/20)">
-            <a [routerLink]="['/']" id="lnk-productCd-{{i}}">{{row.productCd}}</a>
+            <a routerLink="['/']" id ="lnk-productCd-{{i}}">{{row.productCd}}</a>
           </mat-cell>
           <mat-footer-cell *matFooterCellDef [fxFlex]="calcFlex(2/20)"></mat-footer-cell>
         </ng-container>
@@ -89,13 +89,13 @@
   <br>
     <div fxLayout="row wrap">
       <div fxFlex="12">
-        <button type="button" id="btn-create" routerLink="/" mat-raised-button class="button-size-modal-bottom button-primary">新規作成</button>       
+        <button type="button" id="btn-create" routerLink="/prototype/register" mat-raised-button class="button-size-modal-bottom button-primary">新規作成</button>       
       </div>
       <div fxFlex="38"> 
         <button type="button" id="btn-download" routerLink="/"  mat-raised-button class="button-size-modal-bottom button-primary">ダウンロード</button>     
       </div>
       <div fxFlex="50"> 
-        <button type="button" id="btn-home" routerLink="/"  mat-raised-button class="button-size-modal-bottom button-right">ホーム</button>     
+        <button type="button" id="btn-home" (click)="goHome()"  mat-raised-button class="button-size-modal-bottom button-right">ホーム</button>     
       </div>
     </div>
     <br> 
