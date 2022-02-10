@@ -1,6 +1,5 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslocoRootModule } from './transloco/transloco-root.module';
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -16,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { TranslocoModule } from '@ngneat/transloco';
 
 
 @NgModule({
@@ -37,10 +37,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatExpansionModule,
     MatToolbarModule,
     FlexLayoutModule,
+    TranslocoModule,
   ],
-  exports: [
-    TranslocoRootModule,
-  ]
+  exports: [ ],
+  providers: [ ]
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {
   // Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)
