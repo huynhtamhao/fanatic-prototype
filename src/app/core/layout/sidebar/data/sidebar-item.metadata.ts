@@ -1,14 +1,14 @@
 // prettier-ignore
 export class SidebarItem {
 
-  text       : string;
+  id         : string;
   icon       : string;
   path       : string;
   moduleName : string;
   submenu    : SidebarItem[];
 
   constructor() {
-    this.text        = '';
+    this.id          = '';
     this.icon        = '';
     this.path        = '';
     this.moduleName  = '';

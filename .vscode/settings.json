@@ -3,6 +3,8 @@
         "devkit",
         "kairos",
         "ngneat",
+        "sidenav",
+        "toastr",
         "TRANSLOCO"
     ],
 }

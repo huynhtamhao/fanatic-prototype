@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { KairosCommonComponentsModule } from '@shared/components/kairos-common-components.module';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { KairosCommonComponentsModule } from '@shared/components/kairos-common-c
     BrowserAnimationsModule,
     CoreModule,
     KairosCommonComponentsModule,
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   bootstrap: [AppComponent]
 })
