@@ -6,20 +6,20 @@ export const HOME_MENU: SidebarItem[] = [
   {
     id         : 'prototype',
     icon       : 'public',
-    path       : PROTOTYPE_PATH.RegisterComponent,
+    path       : PROTOTYPE_PATH.RegisterComponent.path,
     moduleName : '',
     submenu: [
       {
         id         : 'Search List',
         icon       : '',
-        path       : PROTOTYPE_PATH.SearchListComponent,
+        path       : PROTOTYPE_PATH.SearchListComponent.path,
         moduleName : '',
         submenu: []
       },
       {
         id         : 'Register',
         icon       : '',
-        path       : PROTOTYPE_PATH.RegisterComponent,
+        path       : PROTOTYPE_PATH.RegisterComponent.path,
         moduleName : '',
         submenu: []
       },
