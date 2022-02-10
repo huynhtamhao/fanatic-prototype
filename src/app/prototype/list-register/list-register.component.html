@@ -1,0 +1,83 @@
+<mat-card class="form-card">
+  <mat-card-title>一覧登録</mat-card-title>
+  <br>
+  <form [formGroup]="formSearch">
+    <mat-accordion>
+      <mat-expansion-panel [togglePosition]="'before'">
+        <mat-expansion-panel-header>
+          <mat-panel-title> 検索条件</mat-panel-title> 
+        </mat-expansion-panel-header>   
+        <mat-card-content>       
+          <div fxLayout="row wrap">
+            <div fxLayout="row" [fxFlex]="calcFlex(1/3)">
+              <div class="label-header">商品コード：</div>
+              <mat-form-field fxFlex="50" appearance="outline" class="input-text-outline">
+                <input matInput type="text" id="txt-productCd" formControlName="productCd" />
+              </mat-form-field>      
+            </div>
+            <div fxLayout="row" [fxFlex]="calcFlex(2/3)">
+              <div class="label-header">商品名：</div>
+              <mat-form-field fxFlex="80" appearance="outline" class="input-text-outline">
+                <input matInput type="text" id="txt-productName" formControlName="productName"/>
+              </mat-form-field>        
+            </div>
+          </div>    
+        </mat-card-content>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <br>
+    <div fxLayout="row wrap">
+      <div fxFlex="12">
+        <button type="button" id="btn-search" (click)="onSearch()" mat-raised-button class="button-size-modal-bottom button-primary">検索</button>       
+      </div>
+      <div> 
+        <button type="button" id="btn-clear" (click)="onClear()"  mat-raised-button class="button-size-modal-bottom button-left">条件クリア</button>     
+      </div>
+    </div>
+  </form>
+  <br>
+  <div>
+    <mat-table #table [dataSource]="factoryList.controls" class="table-custom table-scroll mat-elevation-z2">
+      <!-- factory id Column -->
+      <ng-container matColumnDef="factoryCd">
+        <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(2/20)">仕入先CD</mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(2/20)">
+          <a mat-list-item>{{row.get('factoryCd').value}}</a>
+        </mat-cell>
+      </ng-container>
+      <!-- factory name Column -->
+      <ng-container matColumnDef="factoryName">
+        <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(5/20)">仕入先名</mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(5/20)">
+          <label id="lbl-productName-{{i}}">{{row.get('factoryName').value}}</label>
+        </mat-cell>
+      </ng-container>
+      <!-- factory identifier Column -->
+      <ng-container matColumnDef="factoryIdentifier">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index;">
+          <label id="lbl-description-{{i}}">{{row.get('factoryIdentifier').value}}</label>
+        </mat-cell>
+      </ng-container>
+      <!-- storage location Column -->
+      <ng-container matColumnDef="storageLocation">
+        <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(2/20)"></mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index;" fxLayoutAlign="end center" [fxFlex]="calcFlex(2/20)">
+          <label id="lbl-quantity-{{i}}">{{row.get('storageLocation').value }}</label>
+        </mat-cell>
+      </ng-container>
+      <!-- trash Column -->
+      <ng-container matColumnDef="trash">
+        <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(1/20)">削除</mat-header-cell>
+        <mat-cell *matCellDef="let row ; let i = index" fxLayoutAlign="center" [fxFlex]="calcFlex(1/20)">
+          <mat-checkbox formControlName ="{{row.get('delete').value}}"></mat-checkbox>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  <br>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+  <br>
+</mat-card>

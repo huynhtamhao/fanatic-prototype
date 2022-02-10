@@ -17,6 +17,13 @@ export const HOME_MENU: SidebarItem[] = [
         submenu: []
       },
       {
+        id         : 'Register List',
+        icon       : '',
+        path       : PROTOTYPE_PATH.ListRegisterComponent.path,
+        moduleName : '',
+        submenu: []
+      },
+      {
         id         : 'Register',
         icon       : '',
         path       : PROTOTYPE_PATH.RegisterComponent.path,
