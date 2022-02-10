@@ -2,13 +2,12 @@
   max-width: 800px;
   align-items: center;
   margin: 0px auto;
-  font-family: Meiryo; // TODO: common
+  overflow-x: auto;
+  font-family: Meiryo; // TODO: delete later
+
+  div {
+    align-items: baseline;
+  }
 }
-
-.row-style {
-  min-height: 31px;
-}
-
-
 
 
