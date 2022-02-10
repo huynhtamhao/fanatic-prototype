@@ -1,8 +1,7 @@
-<ng-container *transloco="let t">
+<ng-container>
   <mat-nav-list>
-    {{ t('sidebar.mainText.home') }}
-    <kairos-sidebar-main-item [mainIcon]="'home'" [mainText]="t('sidebar.mainText.home')" [subMenu]="homeMenu"></kairos-sidebar-main-item>
-    <kairos-sidebar-main-item [mainIcon]="'build'" [mainText]="t('sidebar.mainText.master')" [subMenu]="masterMenu"></kairos-sidebar-main-item>
-    <kairos-sidebar-main-item [mainIcon]="'person'" [mainText]="t('sidebar.mainText.admin')" [subMenu]="adminMenu"></kairos-sidebar-main-item>
+    <kairos-sidebar-main-item [mainIcon]="'home'" [mainText]="'sidebar.mainText.home' | transloco" [subMenu]="homeMenu"></kairos-sidebar-main-item>
+    <kairos-sidebar-main-item [mainIcon]="'build'" [mainText]="'sidebar.mainText.master' | transloco" [subMenu]="masterMenu"></kairos-sidebar-main-item>
+    <kairos-sidebar-main-item [mainIcon]="'person'" [mainText]="'sidebar.mainText.admin' | transloco" [subMenu]="adminMenu"></kairos-sidebar-main-item>
   </mat-nav-list>
 </ng-container>
