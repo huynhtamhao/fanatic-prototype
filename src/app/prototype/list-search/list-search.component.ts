@@ -83,7 +83,7 @@ export class ListSearchComponent implements OnInit {
     this.accordion.openAll();
   }
 
-  public moveScreen(i: number, value: any) {
+  public moveScreen(i: number, value: any = null) {
     if (this.menuList[value.itemId] === '参照') {
       console.log("参照");
     } else if (this.menuList[value.itemId]  === '更新') {
@@ -94,7 +94,7 @@ export class ListSearchComponent implements OnInit {
   }
 
   public calcFlex(ratio: number) {
-    return `0 0 calc(800px * ${ratio})`;
+    return `0 0 calc(100% * ${ratio})`;
   }
 
 }
