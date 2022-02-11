@@ -108,7 +108,7 @@ export class ListSearchComponent implements OnInit {
   }
 
   public calcFlex(ratio: number) {
-    return `0 0 calc(100% * ${ratio})`;
+    return `0 0 calc(100% * ${ratio} /30)`;
   }
 
 }

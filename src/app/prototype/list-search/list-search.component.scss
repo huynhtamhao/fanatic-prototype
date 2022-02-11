@@ -4,8 +4,8 @@
   padding-top: 10px;
 }
 
-$main-color : #d9e1f2;
-$button-primary-color: #b7dee8;
+$main-color : #cce8ff;
+$button-primary-color: #cce8ff;
 
 .table-custom {
   input {
@@ -67,6 +67,7 @@ $button-primary-color: #b7dee8;
   .mat-header-row {
     background-color: $main-color;
   }
+  position: relative;
   overflow-x: auto;
   display: -ms-grid;
   display: grid;
@@ -78,24 +79,6 @@ $button-primary-color: #b7dee8;
   background-color: $main-color;
 }
 
-.button-size-modal-bottom{
-  min-width: 130px;
-  width: calc(800px / 6);
-}
-
-.button-primary {
-  background-color: $button-primary-color;
-}
-
 .form-card {
   margin: 15px auto;
-}
-
-
-.button-size-modal-bottom{
-  min-width: 130px;
-}
-
-.button-right {
-  float: right;
 }
