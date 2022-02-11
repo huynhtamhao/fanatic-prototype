@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { ListSearchComponent } from './list-search/list-search.component';
+import { ListRegisterComponent } from './list-register/list-register.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
   { path: 'list-search', component: ListSearchComponent},
+  { path: 'list-register', component: ListRegisterComponent},
 ];
 
 @NgModule({

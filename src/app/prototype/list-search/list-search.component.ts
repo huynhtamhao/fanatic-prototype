@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 export interface Product {
   productCd: string;
   productName: string;
@@ -31,10 +32,9 @@ export class ListSearchComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private routerLink: Router,
   ) { }
   public displayedColumns: string[] = ['productCd', 'productName', 'description', 'quantity', 'processing'];
-  public productList = this.formBuilder.array([]);
   public quantityTotal = 0;
   public dataSource = new MatTableDataSource<Product>();
   public menuList = ['参照', '更新', 'コピー新規'];
@@ -45,13 +45,16 @@ export class ListSearchComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.dataSource.data = PRODUCT_DATA.slice(0,5);
-    this.paginator.length = PRODUCT_DATA.length;
-    this.getQuantityTotal();
+    var session = sessionStorage.getItem('list-search');
+    if (session !== null) {
+      this.formSearch.patchValue(JSON.parse(session));
+      this.formSearch.updateValueAndValidity;
+    }
+    this.onSearch();
   }
 
   ngAfterViewInit(): void {
-    this.paginator.page.subscribe(() => this.onSearch(this.paginator.pageIndex));
+    this.paginator.page.subscribe(() => this.onSearch(this.paginator.pageIndex, this.paginator.pageSize));
   }
 
   private getQuantityTotal() {
@@ -60,11 +63,17 @@ export class ListSearchComponent implements OnInit {
     this.quantityTotal = sum;
   }
 
-  public onSearch(page: number = 0) {
-    this.accordion.closeAll();
+  public onSearch(pageNumber: number = 0, size: number = 5) {
+    if (this.accordion !== undefined) {
+      this.accordion.closeAll();
+    } 
     this.dataSource.data = PRODUCT_DATA;
+    // Save Search Condition
+    sessionStorage.setItem('list-search', JSON.stringify(this.formSearch.getRawValue()));
+
     const code = this.formSearch.get("productCd")?.value;
     const name = this.formSearch.get("productName")?.value;
+
     if (!!code) {
       this.dataSource.data = this.dataSource.data.filter(pro =>pro.productCd.includes(code));
     }
@@ -72,9 +81,8 @@ export class ListSearchComponent implements OnInit {
       this.dataSource.data = this.dataSource.data.filter(pro => pro.productName.includes(name));
     }
     this.paginator.length = this.dataSource.data.length;
-    this.dataSource.data = this.dataSource.data.slice(this.paginator.pageSize * page, 
-                                               this.paginator.pageSize * page + this.paginator.pageSize);
-    this.paginator.pageIndex = page;
+    this.dataSource.data = this.dataSource.data.slice(size * pageNumber, size * pageNumber + size);
+    this.paginator.pageIndex = pageNumber;
     this.getQuantityTotal();
   }
 
@@ -89,12 +97,18 @@ export class ListSearchComponent implements OnInit {
     } else if (this.menuList[value.itemId]  === '更新') {
       console.log("更新");
     }else if (this.menuList[value.itemId]  === 'コピー新規') {
+      this.routerLink.navigate(['/prototype/register']);
       console.log("コピー新規");
     }
   }
 
+  public goHome() {
+    localStorage.clear();
+    this.routerLink.navigate(['/']);
+  }
+
   public calcFlex(ratio: number) {
-    return `0 0 calc(100% * ${ratio})`;
+    return `0 0 calc(100% * ${ratio} /30)`;
   }
 
 }

@@ -14,6 +14,12 @@ export const HOME_MENU: SidebarItem[] = [
         submenu: []
       },
       {
+        id         : 'list-register',
+        icon       : '',
+        path       : '/prototype/list-register',
+        submenu: []
+      },
+      {
         id         : 'register',
         icon       : '',
         path       : '/prototype/register',
