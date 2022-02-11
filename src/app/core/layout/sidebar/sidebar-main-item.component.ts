@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SidebarItem } from './data/sidebar-item.metadata';
 
 @Component({
@@ -13,14 +13,14 @@ import { SidebarItem } from './data/sidebar-item.metadata';
   `,
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarMainItemComponent implements OnInit {
+export class SidebarMainItemComponent {
 
-  @Input('mainIcon') mainIcon: string = 'home';
-  @Input('mainText') mainText: string = 'home';
-  @Input('subMenu') subMenu: SidebarItem[] = [];
+  @Input() mainIcon!: string;
+  @Input() mainText!: string;
+  @Input() subMenu: SidebarItem[] = [];
   // marginBottom: Object = {};
 
-  ngOnInit(): void {
-    // this.marginBottom = {  'margin': '28px; 0' };
-  }
+  // ngOnInit(): void {
+  //   this.marginBottom = {  'margin': '28px; 0' };
+  // }
 }

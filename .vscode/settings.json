@@ -3,8 +3,10 @@
         "devkit",
         "kairos",
         "ngneat",
+        "popperjs",
         "sidenav",
         "toastr",
         "TRANSLOCO"
     ],
+    "sonarlint.disableTelemetry": true,
 }

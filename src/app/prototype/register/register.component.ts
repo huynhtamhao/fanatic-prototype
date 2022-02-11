@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -15,7 +16,7 @@ export class RegisterComponent implements OnInit {
     storageLocation: new FormControl(null, [Validators.required, Validators.maxLength(6)]),
     inboundDeliveryStorageLocation: new FormControl(null, [Validators.maxLength(6)]),
   });
-  
+
   constructor() { }
 
   ngOnInit(): void {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ErrorUtilsService } from '../../service/error-utils.service';
 import { ErrorSummary } from './error-summary.metadata';
 
