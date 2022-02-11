@@ -1,15 +1,17 @@
+$button-min-width: 150px;
+
 .btn-normal,
 .btn-normal.mat-button {
+  min-width: $button-min-width;
   border: 2px solid rgb(191, 191, 191);
   background-color: white;
-  min-width: 150px;
 }
 
 .btn-main,
 .btn-main.mat-button {
+  min-width: $button-min-width;
   border: 2px solid #c6d9f1;
   background-color: $main-color;
-  min-width: 150px;
 }
 
 button:not(.mat-icon-button) {
