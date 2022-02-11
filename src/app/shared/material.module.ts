@@ -16,8 +16,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 const materialModules = [
@@ -39,6 +40,7 @@ const materialModules = [
   MatTableModule,
   MatPaginatorModule,
   MatMenuModule,
+  MatTabsModule,
 ];
 
 @NgModule({
