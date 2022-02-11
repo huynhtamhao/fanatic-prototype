@@ -8,7 +8,11 @@ import { CoreModule } from './core/core.module';
 import { KairosCommonComponentsModule } from '@shared/components/kairos-common-components.module';
 import { ToastrModule } from 'ngx-toastr';
 import { TranslocoRootModule } from './core/transloco/transloco-root.module';
+import { ConfigService } from './core/service/config.service';
 
+export function initialize(configService: ConfigService) {
+  return () => configService.loadConfig();
+}
 
 @NgModule({
   declarations: [
@@ -22,8 +26,17 @@ import { TranslocoRootModule } from './core/transloco/transloco-root.module';
     CoreModule,
     TranslocoRootModule,
     KairosCommonComponentsModule,
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(),
   ],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: 'API_HOST',
+      useFactory: (configService: ConfigService) => {
+        configService.getAPIHost();
+      },
+      deps: [ConfigService],
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

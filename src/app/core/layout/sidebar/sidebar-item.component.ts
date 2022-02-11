@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { SidebarItem } from './data/sidebar-item.metadata';
 
 @Component({
   selector: 'kairos-sidebar-item',
@@ -32,7 +33,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SidebarItemComponent {
 
-  @Input("menuItem") menuItem: any;
+  @Input() menuItem!: SidebarItem;
 
   constructor(
     public router: Router,
@@ -41,7 +42,7 @@ export class SidebarItemComponent {
 
   redirectTo(path: string) {
     if (path)
-      this.router.navigate([path]);
+      void this.router.navigate([path]);
     else
       this.toastrService.warning('この機能は開発中です。');
   }

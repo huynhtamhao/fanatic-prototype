@@ -1,8 +1,10 @@
+$headerBackgroundColor: #2b71b8;
+
 .header-system {
-  color: white;
+  color: whitesmoke;
   min-height: 38px;
   padding: 10px 0px;
-  background-color: #2b71b8;
+  background-color: $headerBackgroundColor;
 
   div {
     padding-left: 10px;
@@ -10,6 +12,12 @@
 
   div:last-of-type {
     padding-right: 10px;
+  }
+
+  button {
+    background-color: $headerBackgroundColor;
+    border-width: 0;
+    color: whitesmoke;
   }
 }
 

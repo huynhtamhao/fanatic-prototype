@@ -1,12 +1,12 @@
 <div class="header-system" fxLayout="row">
-  <div fxLayoutAlign="start center" fxFlex="5">
+  <div fxLayoutAlign="start center" fxFlex="">
     <button mat-icon-button (click)="toggleSidebar()"><mat-icon>menu</mat-icon></button>
   </div>
   <div class="system-name" fxLayoutAlign="start center" fxFlex="18">
     <a href="/">{{ 'header.systemName' | transloco }}</a>
   </div>
   <div fxLayoutAlign="start center" fxFlex="12">受注登録</div>
-  <div fxLayoutAlign="start center" fxFlex="18">業務日付：{{ dateTimeJP | date:'YYYY/MM/dd' }}</div>
+  <div fxLayoutAlign="start center" fxFlex="18">業務日付：{{ dateTimeJP | date: 'YYYY/MM/dd' }}</div>
   <div fxLayoutAlign="start center" fxFlex="12">時刻：{{ dateTimeJP | date: 'HH:mm:ss' }}</div>
   <div fxLayoutAlign="start center" fxFlex="18">株式会社ファナティック</div>
   <div fxLayoutAlign="start center" fxFlex="12">システム開発部</div>
