@@ -9,16 +9,16 @@
           <div fxLayout="column" [fxFlex]="setFlex(9)">
             <mat-form-field appearance="outline" class="input-text-outline">
               <input matInput type="text" formControlName="productCd">
-              <mat-error>required error</mat-error>
+              <mat-error>This field is required</mat-error>
             </mat-form-field>
           </div>
         </div>
         <div fxFlex></div>
         <div [fxFlex]="setFlex(14)">
-          <div fxLayout="column" [fxFlex]="setFlex(5)">シリアル番号</div>
+          <div fxLayout="column" [fxFlex]="setFlex(5)">数量</div>
           <div fxLayout="column" [fxFlex]="setFlex(9)">
             <mat-form-field appearance="outline" class="input-text-outline">
-              <input matInput type="text" formControlName="serialNo">
+              <input matInput type="text" formControlName="quantity">
             </mat-form-field>
           </div>
         </div>
@@ -30,7 +30,7 @@
           <div fxLayout="column" [fxFlex]="setFlex(9)">
             <mat-form-field appearance="outline" class="input-text-outline">
               <input matInput type="text" formControlName="storageLocation">
-              <mat-error>required error</mat-error>
+              <mat-error>This field is required</mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -40,7 +40,7 @@
           <div fxLayout="column" [fxFlex]="setFlex(9)">
             <mat-form-field appearance="outline" class="input-text-outline">
               <input matInput type="text" formControlName="invoiceNo">
-              <mat-error>required error</mat-error>
+              <mat-error>This field is required</mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -59,7 +59,7 @@
       <br>
       <div fxLayout="row">
         <div>
-          <button mat-button type="button" class="btn-main" [fxFlex]="setFlex(5)" id="btn-close">登録</button>
+          <button mat-button type="submit" class="btn-main" [fxFlex]="setFlex(5)" id="btn-close" (click)="onRegister()">登録</button>
         </div>
         <div fxFlex></div>
         <div fxLayoutAlign="end">
