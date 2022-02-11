@@ -33,10 +33,16 @@ export class ListRegisterComponent implements OnInit {
   public quantityTotal = 0;
   public dataSource = [];
 
-  public formSearch : FormGroup  = new FormGroup({
+  formSearch: FormGroup = this.formBuilder.group({
     productCd: new FormControl(''),
     productName: new FormControl(''),
+    factoryList: this.factoryList,
   });
+
+  // public formSearch : FormGroup  = new FormGroup({
+  //   productCd: new FormControl(''),
+  //   productName: new FormControl(''),
+  // });
 
   ngOnInit(): void {
     var i = 0 ;
@@ -63,6 +69,6 @@ export class ListRegisterComponent implements OnInit {
   }
 
   public calcFlex(ratio: number) {
-    return `0 0 calc(100% * ${ratio})`;
+    return `0 0 calc(100% * ${ratio} / 30)`;
   }
 }
