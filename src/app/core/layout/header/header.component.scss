@@ -1,11 +1,19 @@
+$headerBackgroundColor: #4d6fdb;
+
 .header-system {
-  color: white;
+  color: whitesmoke;
   min-height: 38px;
   padding: 10px 0px;
-  background-color: #4d6fdb;
+  background-color: $headerBackgroundColor;
 
   div {
     padding-left: 10px;
+  }
+
+  button {
+    background-color: $headerBackgroundColor;
+    border-width: 0;
+    color: whitesmoke;
   }
 }
 

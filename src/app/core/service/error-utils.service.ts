@@ -11,8 +11,6 @@ export class ErrorUtilsService {
   private errorSummarySource = new BehaviorSubject<ErrorSummary[]>([]);
   errorSummary = this.errorSummarySource.asObservable();
 
-  constructor() {}
-
   setErrorSummary(errorSummary: ErrorSummary[]): void {
     this.errorSummarySource.next(errorSummary);
   }
