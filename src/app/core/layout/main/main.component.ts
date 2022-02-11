@@ -9,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    console.log('will use in future');
+   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    console.log('will use in future');
+   }
 }

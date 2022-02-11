@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription, timer } from 'rxjs';
 import { Constants } from '../../constants/Constants';
 
@@ -7,15 +7,13 @@ import { Constants } from '../../constants/Constants';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   private subscription = new Subscription();
   private currentDate = new Date();
   public dateTimeJP = this.convertDateTimeZone(this.currentDate, Constants.localeJP, Constants.timezoneJP).getTime();
 
   @Output() toggleSidebarEvent = new EventEmitter<void>();
-
-  constructor() { }
 
   ngOnInit(): void {
     // time annotation

@@ -5,7 +5,6 @@ export interface User {
   mailAddress: string;
   inputPassword: string;
   passwordChangeRequest: number;
-  rolePermissions: any;
 }
 
 export interface InConfiguration {

@@ -4,12 +4,6 @@ import { RegisterComponent } from './register/register.component';
 import { ListSearchComponent } from './list-search/list-search.component';
 import { ListRegisterComponent } from './list-register/list-register.component';
 
-export const PROTOTYPE_PATH: any = {
-  RegisterComponent: { id: '登録画面', path: '/prototype/register' },
-  SearchListComponent: { id: '一覧表示画面', path: '/prototype/list-search' },
-  ListRegisterComponent: { id: '一覧登録画面', path: '/prototype/list-register' },
-}
-
 
 const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },

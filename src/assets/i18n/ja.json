@@ -1,0 +1,12 @@
+{
+  "header": {
+    "systemName": "カイロス"
+  },
+  "sidebar": {
+    "mainText": {
+      "admin": "管理者",
+      "home": "メニュー",
+      "master": "マスターメンテ"
+    }
+  }
+}
