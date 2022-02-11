@@ -1,4 +1,4 @@
-$headerBackgroundColor: #4d6fdb;
+$headerBackgroundColor: #2b71b8;
 
 .header-system {
   color: whitesmoke;
@@ -8,6 +8,10 @@ $headerBackgroundColor: #4d6fdb;
 
   div {
     padding-left: 10px;
+  }
+
+  div:last-of-type {
+    padding-right: 10px;
   }
 
   button {

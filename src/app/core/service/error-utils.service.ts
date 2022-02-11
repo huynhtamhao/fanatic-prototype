@@ -15,5 +15,9 @@ export class ErrorUtilsService {
     this.errorSummarySource.next(errorSummary);
   }
 
+  clearErrorSummary(): void {
+    this.errorSummarySource.next([]);
+  }
+
 }
 

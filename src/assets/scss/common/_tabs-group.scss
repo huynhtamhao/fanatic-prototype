@@ -1,0 +1,21 @@
+mat-tab-group.tabs-group-custom {
+
+  .mat-tab-header {
+    margin-bottom: 50px;
+  }
+
+  .mat-tab-body {
+    
+    .row-detail {
+      align-items: baseline;
+    }
+
+    .column-title {
+      min-width: 100px
+    }
+
+    .column-input {
+      min-width: 200px
+    }
+  }
+}
