@@ -7,6 +7,10 @@
   div {
     padding-left: 10px;
   }
+
+  div:last-of-type {
+    padding-right: 10px;
+  }
 }
 
 .system-name a {
