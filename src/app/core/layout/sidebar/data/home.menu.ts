@@ -19,12 +19,6 @@ export const HOME_MENU: SidebarItem[] = [
         path       : '/prototype/register',
         submenu: []
       },
-      {
-        id         : 'translate-test',
-        icon       : '',
-        path       : '/prototype/translate-test',
-        submenu: []
-      }
     ]
   },
   {
