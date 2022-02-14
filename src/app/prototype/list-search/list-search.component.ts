@@ -95,7 +95,7 @@ export class ListSearchComponent implements OnInit {
     if (this.menuList[value.itemId] === '参照') {
       console.log("参照");
     } else if (this.menuList[value.itemId]  === '更新') {
-      console.log("更新");
+      this.routerLink.navigate(['/prototype/', this.dataSource.data[i].productCd]);
     }else if (this.menuList[value.itemId]  === 'コピー新規') {
       this.routerLink.navigate(['/prototype/register']);
       console.log("コピー新規");
