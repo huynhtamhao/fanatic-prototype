@@ -41,7 +41,7 @@
           <ng-container matColumnDef="productCd">
             <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(2.5)">商品コード</mat-header-cell>
             <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(2.5)">
-              <a routerLink="['/']" id="lnk-productCd-{{i}}">{{row.productCd}}</a>
+              <a [routerLink]="['/prototype/', row.productCd]" id="lnk-productCd-{{i}}">{{row.productCd}}</a>
             </mat-cell>
             <mat-footer-cell *matFooterCellDef [fxFlex]="calcFlex(2.5)"></mat-footer-cell>
           </ng-container>
