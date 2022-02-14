@@ -36,7 +36,6 @@ const FACTORY_DATA: Factory[] = [
 export class ListRegisterComponent implements OnInit, AfterViewInit {
   @ViewChild(MatAccordion) accordion!: MatAccordion ;
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
-  // @ViewChild(MatTable, { static: true }) table!: MatTable<any>;
   @ViewChild(MatTable) table!: MatTable<any>;
 
   constructor(
@@ -46,7 +45,6 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
 
   public displayedColumns: string[] = ['factoryCd', 'factoryName', 'factoryIdentifier', 'storageLocation', 'trash'];
   public factoryList = this.formBuilder.array([]);
-  public dataList = this.formBuilder.array([]);
   public quantityTotal = 0;
   public dataSource = [];
 
@@ -61,7 +59,12 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.onSearch()
+    var session = sessionStorage.getItem('list-register');
+    if (session !== null) {
+      this.formSearch.patchValue(JSON.parse(session));
+      this.formSearch.updateValueAndValidity;
+    }
+    this.onSearch();
   }
 
   public onSearch(pageNumber: number = 0, size: number = 5) { 
@@ -69,6 +72,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       this.accordion.closeAll();
     }
     this.factoryList.clear();
+
     // Save Search Condition
     sessionStorage.setItem('list-register', JSON.stringify(this.formSearch.getRawValue()));
 
@@ -77,7 +81,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     var i = 0;
     const from = size * pageNumber;
     const to = size * pageNumber + size;
-    console.log('11111111111',this.factoryList.getRawValue());  
+
     FACTORY_DATA.forEach(pro => {
       let check = true;     
       if (!!code) {
@@ -90,22 +94,22 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
 
       if (check) {   
         if (from <= i && i < to) {      
-          this.factoryList.push(this.formBuilder.group(pro));
+          this.factoryList.push(this.formBuilder.group(pro));   
         }
         i++;     
       }
     });
-    console.log('22222222222',this.formSearch.getRawValue());  
-    this.formSearch.get('factoryList')?.updateValueAndValidity();
-    // this.table.renderRows();
     this.paginator.length = i;
     this.paginator.pageIndex = pageNumber;
+    if (this.table !== undefined) {
+      this.table.renderRows();
+    }
   }
 
   public onClear(): void {
     this.formSearch.patchValue({
-      productCd: "",
-      productName: "",
+      factoryCd: "",
+      factoryName: "",
     });
     this.accordion.openAll();
   }
