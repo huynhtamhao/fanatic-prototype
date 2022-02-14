@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
-import { ErrorUtilsService } from 'src/app/core/service/error-utils.service';
-import { ErrorSummary } from 'src/app/core/layout/error-summary/error-summary.metadata';
-import { Product } from '../list-search/list-search.component';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'kairos-update',
@@ -25,14 +22,23 @@ export class UpdateComponent implements OnInit {
   });
 
   constructor(
+    private productService: ProductService,
     private activeRoute: ActivatedRoute,
-    private errorUtilsService: ErrorUtilsService,
-    private toastrService: ToastrService,
     private location: Location,
   ) { }
 
   ngOnInit(): void {
-    this.getProductInfo();
+    const productCd = this.activeRoute.snapshot.paramMap.get('productCd');
+    if (productCd) {
+      const productInfo = this.productService.getProductInfo(productCd);
+      if (!!productInfo) {
+        this.form.controls['productCd'].setValue(productInfo.productCd);
+        this.form.controls['quantity'].setValue(productInfo.quantity);
+        this.form.controls['invoiceNo'].setValue(productInfo.invoiceNo);
+        this.form.controls['storageLocation'].setValue(productInfo.storageLocation);
+      }
+    }
+
   }
 
   onCancel() {
@@ -44,33 +50,19 @@ export class UpdateComponent implements OnInit {
       return;
     }
 
-    if (!this.showSubmitMessage()) {
+    if (!this.submit()) {
       return;
     };
   }
 
-  showSubmitMessage(): boolean {
-    // test toast
-    const index = Math.floor(Math.random() * 3);
-    if (index === 0) {
-      this.toastrService.success(messageSubmit[index]);
-      this.errorUtilsService.clearErrorSummary();
-      return true;
-    } else if (index === 1) {
-      // example data
-      this.errorUtilsService.setErrorSummary(errors);
-
-      this.toastrService.error(messageSubmit[index]);
-      return false;
-    } else {
-      // example data
-      this.errorUtilsService.setErrorSummary(errors);
-
-      this.toastrService.error(messageSubmit[index]);
+  submit(): boolean {
+    if (this.productService.checkErrorMessage('更新') === 2) {
       this.errorSystem = true;
       this.lockFormInput();
       return false;
     }
+
+    return true;
   }
 
   lockFormInput() {
@@ -81,39 +73,4 @@ export class UpdateComponent implements OnInit {
     this.form.controls['inboundDeliveryStorageLocation'].disable();
   }
 
-  getProductInfo() {
-    const productCd = this.activeRoute.snapshot.paramMap.get('productCd');
-    const productInfo = PRODUCT_DATA.find(p => p.productCd === productCd);
-    if (!!productInfo) {
-      this.form.controls['productCd'].setValue(productInfo.productCd);
-      this.form.controls['quantity'].setValue(productInfo.quantity);
-      this.form.controls['invoiceNo'].setValue(productInfo.invoiceNo);
-      this.form.controls['storageLocation'].setValue(productInfo.storageLocation);
-    }
-  }
-
 }
-
-export const messageSubmit = [
-  "更新が完了しました。",
-  "更新が失敗しました。",
-  "システムエラーが発生しました"
-]
-
-export const errors: ErrorSummary[] = [
-  { errorCode: 'Error 01', errorMessage: 'エラーが発生しました。' },
-  { errorCode: 'Error 02', errorMessage: 'エラーが発生しました。' },
-  { errorCode: 'Error 03', errorMessage: 'エラーが発生しました。' },
-  { errorCode: 'Error 04', errorMessage: 'エラーが発生しました。' },
-  { errorCode: 'Error 05', errorMessage: 'エラーが発生しました。' },
-]
-
-export const PRODUCT_DATA = [
-  {productCd: 'CD0001', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10001},
-  {productCd: 'CD0002', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10002},
-  {productCd: 'CD0003', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10003},
-  {productCd: 'CD0004', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10004},
-  {productCd: 'CD0005', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10005},
-  {productCd: 'CD0006', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10006},
-  {productCd: 'CD0007', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10007},
-];
