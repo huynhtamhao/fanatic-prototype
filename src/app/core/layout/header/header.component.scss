@@ -11,10 +11,13 @@ $headerBackgroundColor: #2b71b8;
   }
 
   div:last-of-type {
-    padding-right: 10px;
 
     mat-icon {
       cursor: pointer;
+    }
+
+    .user-id {
+      padding-inline: 10px;
     }
   }
 
