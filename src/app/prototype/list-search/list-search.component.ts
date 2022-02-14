@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
 import { MatPaginator } from '@angular/material/paginator';
@@ -27,7 +27,7 @@ const PRODUCT_DATA: Product[] = [
   styleUrls: ['./list-search.component.scss']
 })
 
-export class ListSearchComponent implements OnInit {
+export class ListSearchComponent implements OnInit, AfterViewInit{
   @ViewChild(MatAccordion) accordion!: MatAccordion ;
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
@@ -75,10 +75,10 @@ export class ListSearchComponent implements OnInit {
     const name = this.formSearch.get("productName")?.value;
 
     if (!!code) {
-      this.dataSource.data = this.dataSource.data.filter(pro =>pro.productCd.includes(code));
+      this.dataSource.data = this.dataSource.data.filter(pro =>pro.productCd.toLowerCase().includes(code.toLowerCase()));
     }
     if (!!name) {
-      this.dataSource.data = this.dataSource.data.filter(pro => pro.productName.includes(name));
+      this.dataSource.data = this.dataSource.data.filter(pro => pro.productName.toLowerCase().includes(name.toLowerCase()));
     }
     this.paginator.length = this.dataSource.data.length;
     this.dataSource.data = this.dataSource.data.slice(size * pageNumber, size * pageNumber + size);
