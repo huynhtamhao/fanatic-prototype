@@ -16,6 +16,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 @NgModule({
@@ -36,11 +38,13 @@ import { TranslocoModule } from '@ngneat/transloco';
     MatIconModule,
     MatExpansionModule,
     MatToolbarModule,
+    MatMenuModule,
+    MatBadgeModule,
     FlexLayoutModule,
     TranslocoModule,
   ],
-  exports: [ ],
-  providers: [ ]
+  exports: [],
+  providers: []
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {
   // Looks for the module in the parent injector to see if it's already been loaded (only want it loaded once)
