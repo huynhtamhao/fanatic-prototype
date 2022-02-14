@@ -4,9 +4,9 @@ import { SidebarItem } from './data/sidebar-item.metadata';
 @Component({
   selector: 'kairos-sidebar-main-item',
   template: `
-    <div *transloco="let t" class="icon-text">
+    <div class="icon-text">
       <mat-icon>{{ mainIcon }}</mat-icon>
-      <span><strong>{{ t(mainText) }}</strong></span>
+      <span><strong>{{ mainText | transloco }}</strong></span>
     </div>
     <kairos-sidebar-item *ngFor="let menu of subMenu" [menuItem]="menu"></kairos-sidebar-item>
     <!-- <div *ngIf="subMenu.length === 0" [ngStyle]="marginBottom"></div> -->
