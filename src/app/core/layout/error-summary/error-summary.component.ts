@@ -19,16 +19,6 @@ export class ErrorSummaryComponent implements OnInit {
     this.errorUtilsService.errorSummary.subscribe(errors => {
       this.errors = errors;
     });
-
-    // example data
-    this.errorUtilsService.setErrorSummary(errors);
   }
 }
 
-export const errors: ErrorSummary[] = [
-  { errorCode: 'Error 01', errorMessage: 'エラーが発生しました。' },
-  { errorCode: 'Error 02', errorMessage: 'エラーが発生しました。' },
-  { errorCode: 'Error 03', errorMessage: 'エラーが発生しました。' },
-  { errorCode: 'Error 04', errorMessage: 'エラーが発生しました。' },
-  { errorCode: 'Error 05', errorMessage: 'エラーが発生しました。' },
-]

@@ -1,6 +1,10 @@
 {
   "header": {
-    "systemName": "Kairos"
+    "systemName": "Kairos",
+    "userMenu": {
+      "changePassword": "Change Password",
+      "logout": "Logout"
+    }
   },
   "sidebar": {
     "mainText": {

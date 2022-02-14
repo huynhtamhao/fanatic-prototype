@@ -1,6 +1,4 @@
 <mat-card>
-  <!-- <mat-card-title>明細</mat-card-title>
-  <br> -->
   <mat-card-content>
     <form [formGroup]="form">
       <mat-tab-group id="tabs-detail" mat-align-tabs="left" class="tabs-group-custom">
@@ -23,6 +21,7 @@
               <div class="column-input" fxLayout="column" [fxFlex]="75">
                 <mat-form-field appearance="outline" class="input-text-outline">
                   <input matInput type="text" formControlName="quantity">
+                  <mat-error *ngIf="form.controls['invoiceNo'].hasError('required')">この項目は必須です</mat-error>
                   <mat-error *ngIf="form.controls['quantity'].hasError('maxlength')">６桁以下の文字列を入力して下さい</mat-error>
                 </mat-form-field>
               </div>
@@ -78,17 +77,16 @@
 
       <div fxLayout="row">
         <div fxLayoutAlign="start">
-          <button mat-button type="submit" class="btn-main" id="btn-submit" (click)="onRegister()"
-            [disabled]="errorSystem">登録</button>
+          <button mat-button type="submit" class="btn-main" id="btn-submit"
+            (click)="onUpdate()">更新</button>
         </div>
 
         <div fxFlex></div>
         <div fxLayoutAlign="end">
-          <button mat-button type="button" class="btn-normal" id="btn-close" (click)="onCancel()">閉じる</button>
+          <button mat-button type="button" class="btn-normal" id="btn-close"
+            (click)="onCancel()">閉じる</button>
         </div>
       </div>
     </form>
   </mat-card-content>
 </mat-card>
-<!-- TODO: delete later -->
-<br>
