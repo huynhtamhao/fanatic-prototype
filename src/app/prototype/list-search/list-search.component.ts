@@ -93,7 +93,7 @@ export class ListSearchComponent implements OnInit {
 
   public moveScreen(i: number, value: any = null) {
     if (this.menuList[value.itemId] === '参照') {
-      console.log("参照");
+      this.routerLink.navigate(['/prototype/inquiry-product/', this.dataSource.data[i].productCd]);
     } else if (this.menuList[value.itemId]  === '更新') {
       this.routerLink.navigate(['/prototype/product/', this.dataSource.data[i].productCd]);
     }else if (this.menuList[value.itemId]  === 'コピー新規') {

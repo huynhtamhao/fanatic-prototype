@@ -1,0 +1,69 @@
+<mat-card>
+  <mat-card-content>
+    <form>
+      <mat-tab-group id="tabs-detail" mat-align-tabs="left" class="tabs-group-custom">
+        <mat-tab label="明細１">
+          <div fxLayoutGap="10%" fxLayout="row wrap">
+            <div [fxFlex]="45" class="row-detail">
+              <div class="column-title" fxLayout="column" [fxFlex]="25">品目コード</div>
+              <div class="column-input" fxLayout="column" [fxFlex]="75">
+                {{ product.productCd }}
+              </div>
+            </div>
+
+            <div [fxFlex]="45" class="row-detail">
+              <div class="column-title" fxLayout="column" [fxFlex]="25">数量</div>
+              <div class="column-input" fxLayout="column" [fxFlex]="75">
+                {{ product.quantity }}
+              </div>
+            </div>
+          </div>
+
+          <div fxLayoutGap="10%" fxLayout="row wrap">
+            <div [fxFlex]="45" class="row-detail">
+              <div class="column-title" fxLayout="column" [fxFlex]="25">保管場所</div>
+              <div class="column-input" fxLayout="column" fxFlex>
+                {{ product.storageLocation }}
+              </div>
+            </div>
+
+            <div [fxFlex]="45" class="row-detail">
+              <div class="column-title" fxLayout="column" [fxFlex]="25">納品書番号</div>
+              <div class="column-input" fxLayout="column" fxFlex>
+                {{ product.invoiceNo }}
+              </div>
+            </div>
+          </div>
+
+          <div fxLayoutGap="10%" fxLayout="row wrap">
+            <div [fxFlex]="45" class="row-detail">
+              <div class="column-title" fxLayout="column" [fxFlex]="25">代替品入荷保管場所</div>
+              <div class="column-input" fxLayout="column" fxFlex>
+
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="明細２">
+          <div fxLayout="column">通信欄</div>
+          <div fxLayout="column">
+            <mat-form-field appearance="outline">
+              <textarea matInput rows="6" disabled></textarea>
+            </mat-form-field>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+      <br>
+      <div fxLayout="row">
+        <div fxLayoutAlign="start">
+          <button mat-button type="button" class="btn-main" id="btn-update" (click)="moveUpdate()">更新</button>
+        </div>
+
+        <div fxFlex></div>
+        <div fxLayoutAlign="end">
+          <button mat-button type="button" class="btn-normal" id="btn-close" (click)="onCancel()">閉じる</button>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
