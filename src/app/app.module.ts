@@ -9,6 +9,7 @@ import { KairosCommonComponentsModule } from '@shared/components/kairos-common-c
 import { ToastrModule } from 'ngx-toastr';
 import { TranslocoRootModule } from './core/transloco/transloco-root.module';
 import { ConfigService } from './core/service/config.service';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 export function initialize(configService: ConfigService) {
   return () => configService.loadConfig();
@@ -36,6 +37,7 @@ export function initialize(configService: ConfigService) {
       },
       deps: [ConfigService],
     },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent],
 })

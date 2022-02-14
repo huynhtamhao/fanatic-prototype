@@ -1,5 +1,5 @@
-$main-color : #d9e1f2;
-$button-primary-color: #b7dee8;
+$main-color : #cce8ff;
+$button-primary-color: #cce8ff;
 
 .form-card {
     margin: 15px auto;
@@ -85,4 +85,14 @@ $button-primary-color: #b7dee8;
     display: grid;
     width: 100%;
     word-break: break-word;
+  }
+
+.no-data {
+    color: black! important; 
+    font-size: 14px;
+    border-bottom: 1px solid #bdbdbd;
+  }
+
+[hidden] {
+    display: none !important;
   }

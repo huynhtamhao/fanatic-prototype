@@ -78,8 +78,14 @@
             </mat-cell>
             <mat-footer-cell *matFooterCellDef [fxFlex]="calcFlex(1)" fxLayoutAlign="end center"></mat-footer-cell>
           </ng-container>
+          <ng-container matColumnDef="noData">
+            <mat-footer-cell *matFooterCellDef [attr.colspan]="displayedColumns.length" class="no-data">
+              レコードが見つかりません。
+            </mat-footer-cell>
+          </ng-container>
           <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
           <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          <mat-footer-row *matFooterRowDef="['noData']" [hidden]="dataSource.data.length !== 0"></mat-footer-row>
           <mat-footer-row *matFooterRowDef="displayedColumns; sticky:true"></mat-footer-row>
         </mat-table>
       </div>

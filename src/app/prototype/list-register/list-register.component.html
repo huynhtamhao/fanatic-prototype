@@ -9,15 +9,15 @@
         </mat-expansion-panel-header>
         <div fxLayout="row wrap">
           <div fxLayout="row" [fxFlex]="calcFlex(13)">
-            <div class="label-header">商品コード：</div>
+            <div class="label-header">仕入先コード：</div>
             <mat-form-field fxFlex="50" appearance="outline" class="input-text-outline">
-              <input matInput type="text" id="txt-productCd" formControlName="productCd" />
+              <input matInput type="text" id="txt-factoryCd" formControlName="factoryCd" />
             </mat-form-field>
           </div>
           <div fxLayout="row" [fxFlex]="calcFlex(17)">
-            <div class="label-header">商品名：</div>
+            <div class="label-header">仕入先名：</div>
             <mat-form-field fxFlex="80" appearance="outline" class="input-text-outline">
-              <input matInput type="text" id="txt-productName" formControlName="productName" />
+              <input matInput type="text" id="txt-factoryName" formControlName="factoryName" />
             </mat-form-field>
           </div>
         </div>
@@ -35,7 +35,7 @@
 
     <br>
     <div>
-      <mat-table #table [dataSource]="factoryList.controls" class="table-custom mat-elevation-z2"
+      <mat-table [dataSource]="factoryList.controls" class="table-custom mat-elevation-z2"
         formArrayName="factoryList">
         <!-- factory id Column -->
         <ng-container matColumnDef="factoryCd">
@@ -48,7 +48,7 @@
         <ng-container matColumnDef="factoryName">
           <mat-header-cell *matHeaderCellDef>仕入先名</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;">
-            <label id="lbl-productName-{{i}}">{{row.value.factoryName}}</label>
+            <label id="lbl-factoryName-{{i}}">{{row.value.factoryName}}</label>
           </mat-cell>
         </ng-container>
         <!-- factory identifier Column -->
@@ -72,11 +72,30 @@
             <mat-checkbox formControlName="delete"></mat-checkbox>
           </mat-cell>
         </ng-container>
+        <ng-container matColumnDef="noData">
+          <mat-footer-cell *matFooterCellDef [attr.colspan]="displayedColumns.length" class="no-data remove-background">
+            レコードが見つかりません。
+          </mat-footer-cell>
+        </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-footer-row *matFooterRowDef="['noData']" [hidden]="factoryList.length !== 0"></mat-footer-row>
       </mat-table>
     </div>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
     <br>
   </form>
+  <div fxLayout="row wrap">
+    <div fxFlex="50">
+      <button mat-button type="button" id="btn-addRow" class="btn-main">行挿入</button>
+      <div fxFlex="40px"></div>
+      <button mat-button type="button" id="btn-update" class="btn-main">更新</button>
+      <div fxFlex="40px"></div>
+      <button mat-button type="button" id="btn-download" routerLink="/" class="btn-main">ダウンロード</button>
+    </div>
+    <div fxFlex="50" fxLayoutAlign="end">
+      <button mat-button type="button" id="btn-home" (click)="goHome()" class="btn-normal">ホーム</button>
+    </div>
+  </div>
+  <br>
 </mat-card>
