@@ -82,3 +82,13 @@ $button-primary-color: #cce8ff;
 .form-card {
   margin: 15px auto;
 }
+
+.no-data {
+  color: black! important; 
+  font-size: 14px;
+  border-bottom: 1px solid #bdbdbd;
+}
+
+[hidden] {
+  display: none !important;
+}

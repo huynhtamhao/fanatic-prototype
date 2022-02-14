@@ -48,7 +48,7 @@
         <ng-container matColumnDef="factoryName">
           <mat-header-cell *matHeaderCellDef>仕入先名</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;">
-            <label id="lbl-productName-{{i}}">{{row.value.factoryName}}</label>
+            <label id="lbl-factoryName-{{i}}">{{row.value.factoryName}}</label>
           </mat-cell>
         </ng-container>
         <!-- factory identifier Column -->
@@ -72,8 +72,14 @@
             <mat-checkbox formControlName="delete"></mat-checkbox>
           </mat-cell>
         </ng-container>
+        <ng-container matColumnDef="noData">
+          <mat-footer-cell *matFooterCellDef [attr.colspan]="displayedColumns.length" class="no-data remove-background">
+            レコードが見つかりません。
+          </mat-footer-cell>
+        </ng-container>
         <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <mat-footer-row *matFooterRowDef="['noData']" [hidden]="factoryList.length !== 0"></mat-footer-row>
       </mat-table>
     </div>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
