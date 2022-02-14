@@ -1,6 +1,10 @@
 {
   "header": {
-    "systemName": "カイロス"
+    "systemName": "カイロス",
+    "userMenu": {
+      "changePassword": "パスワード変更",
+      "logout": "ログアウト"
+    }
   },
   "sidebar": {
     "mainText": {
