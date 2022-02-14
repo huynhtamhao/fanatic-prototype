@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'list-search', component: ListSearchComponent},
   { path: 'list-register', component: ListRegisterComponent},
-  { path: ':productCd', component: UpdateComponent },
+  { path: 'product/:productCd', component: UpdateComponent },
 ];
 
 @NgModule({

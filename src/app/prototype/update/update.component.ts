@@ -23,12 +23,12 @@ export class UpdateComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private activeRoute: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
     private location: Location,
   ) { }
 
   ngOnInit(): void {
-    const productCd = this.activeRoute.snapshot.paramMap.get('productCd');
+    const productCd = this.activatedRoute.snapshot.paramMap.get('productCd');
     if (productCd) {
       const productInfo = this.productService.getProductInfo(productCd);
       if (!!productInfo) {
