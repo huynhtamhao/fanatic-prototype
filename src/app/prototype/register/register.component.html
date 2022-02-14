@@ -78,14 +78,13 @@
 
       <div fxLayout="row">
         <div fxLayoutAlign="start">
-          <button mat-button type="submit" class="btn-main" id="btn-submit"
-            (click)="onRegister()">登録</button>
+          <button mat-button type="submit" class="btn-main" id="btn-submit" (click)="onRegister()"
+            [disabled]="errorSystem">登録</button>
         </div>
 
         <div fxFlex></div>
         <div fxLayoutAlign="end">
-          <button mat-button type="button" class="btn-normal" id="btn-close"
-            (click)="onCancel()">閉じる</button>
+          <button mat-button type="button" class="btn-normal" id="btn-close" (click)="onCancel()">閉じる</button>
         </div>
       </div>
     </form>

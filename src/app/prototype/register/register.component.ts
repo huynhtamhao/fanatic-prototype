@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
+  public errorSystem = false;
+
   form: FormGroup = new FormGroup({
     productCd: new FormControl(null, [Validators.required, Validators.maxLength(12), Validators.minLength(6)]),
     quantity: new FormControl(null, [Validators.pattern('^([0-9]+\.?[0-9]*|\.[0-9]+)$'), Validators.maxLength(6)]),
@@ -50,31 +52,42 @@ export class RegisterComponent implements OnInit {
 
   showSubmitMessage(): boolean {
     // test toast
-    const index = Math.floor(Math.random() * 2);
+    const index = Math.floor(Math.random() * 3);
     if (index === 0) {
       this.toastrService.success(messageSubmit[index]);
       this.errorUtilsService.clearErrorSummary();
       return true;
-    } else {
+    } else if (index === 1) {
       // example data
       this.errorUtilsService.setErrorSummary(errors);
 
       this.toastrService.error(messageSubmit[index]);
       return false;
+    } else {
+      // example data
+      this.errorUtilsService.setErrorSummary(errors);
+
+      this.toastrService.error(messageSubmit[index]);
+      this.errorSystem = true;
+      this.lockFormInput();
+      return false;
     }
   }
-  /**
-   * Flex display
-   */
-  public setFlex(flex: number) {
-    return '0 0 calc(800px * ' + flex + '/30)';
+
+  lockFormInput() {
+    this.form.controls['productCd'].disable();
+    this.form.controls['quantity'].disable();
+    this.form.controls['invoiceNo'].disable();
+    this.form.controls['storageLocation'].disable();
+    this.form.controls['inboundDeliveryStorageLocation'].disable();
   }
 
 }
 
 export const messageSubmit = [
   "登録が完了しました。",
-  "登録が失敗しました。"
+  "登録が失敗しました。",
+  "システムエラーが発生しました"
 ]
 
 export const errors: ErrorSummary[] = [
