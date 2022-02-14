@@ -74,17 +74,16 @@
           </div>
         </mat-tab>
       </mat-tab-group>
-
+      <br>
       <div fxLayout="row">
         <div fxLayoutAlign="start">
-          <button mat-button type="submit" class="btn-main" id="btn-submit"
-            (click)="onUpdate()">更新</button>
+          <button mat-button type="submit" class="btn-main" id="btn-submit" (click)="onUpdate()"
+            [disabled]="errorSystem">更新</button>
         </div>
 
         <div fxFlex></div>
         <div fxLayoutAlign="end">
-          <button mat-button type="button" class="btn-normal" id="btn-close"
-            (click)="onCancel()">閉じる</button>
+          <button mat-button type="button" class="btn-normal" id="btn-close" (click)="onCancel()">閉じる</button>
         </div>
       </div>
     </form>
