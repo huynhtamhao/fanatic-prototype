@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ErrorSummary } from 'src/app/core/layout/error-summary/error-summary.metadata';
 import { ErrorUtilsService } from 'src/app/core/service/error-utils.service';
+import { Product } from '../models/product';
 
 
 @Injectable({
@@ -16,8 +17,8 @@ export class ProductService {
     private toastrService: ToastrService,
   ) { }
 
-  getProductInfo(productCd: string) {
-    return PRODUCT_DATA.find(p => p.productCd === productCd);
+  getProductInfo(productCd: string): Product {
+    return PRODUCT_DATA.find(p => p.productCd === productCd) as Product;
   }
 
   checkErrorMessage(process: string): number {
@@ -56,7 +57,7 @@ export const errors: ErrorSummary[] = [
   { errorCode: 'Error 05', errorMessage: 'エラーが発生しました。' },
 ]
 
-export const PRODUCT_DATA = [
+export const PRODUCT_DATA: Product[] = [
   {productCd: 'CD0001', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10001},
   {productCd: 'CD0002', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10002},
   {productCd: 'CD0003', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10003},

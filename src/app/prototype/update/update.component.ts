@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../services/product.service';
+import { Product } from '../models/product';
 
 @Component({
   selector: 'kairos-update',
@@ -12,6 +13,7 @@ import { ProductService } from '../services/product.service';
 export class UpdateComponent implements OnInit {
 
   public errorSystem = false;
+  public product = new Product();
 
   form: FormGroup = new FormGroup({
     productCd: new FormControl(null, [Validators.required, Validators.maxLength(12), Validators.minLength(6)]),
@@ -29,14 +31,12 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit(): void {
     const productCd = this.activatedRoute.snapshot.paramMap.get('productCd');
-    if (productCd) {
-      const productInfo = this.productService.getProductInfo(productCd);
-      if (!!productInfo) {
-        this.form.controls['productCd'].setValue(productInfo.productCd);
-        this.form.controls['quantity'].setValue(productInfo.quantity);
-        this.form.controls['invoiceNo'].setValue(productInfo.invoiceNo);
-        this.form.controls['storageLocation'].setValue(productInfo.storageLocation);
-      }
+    if (!!productCd) {
+      this.product = this.productService.getProductInfo(productCd);
+      this.form.controls['productCd'].setValue(this.product.productCd);
+      this.form.controls['quantity'].setValue(this.product.quantity);
+      this.form.controls['invoiceNo'].setValue(this.product.invoiceNo);
+      this.form.controls['storageLocation'].setValue(this.product.storageLocation);
     }
 
   }
