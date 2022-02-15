@@ -70,7 +70,6 @@ export class ListSearchComponent implements OnInit, AfterViewInit{
     this.dataSource.data = PRODUCT_DATA;
     // Save Search Condition
     sessionStorage.setItem('list-search', JSON.stringify(this.formSearch.getRawValue()));
-
     const code = this.formSearch.get("productCd")?.value;
     const name = this.formSearch.get("productName")?.value;
 
@@ -103,7 +102,7 @@ export class ListSearchComponent implements OnInit, AfterViewInit{
   }
 
   public goHome() {
-    localStorage.clear();
+    sessionStorage.clear();  
     this.routerLink.navigate(['/']);
   }
 
