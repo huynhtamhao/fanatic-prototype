@@ -40,36 +40,43 @@
         <!-- factory id Column -->
         <ng-container matColumnDef="factoryCd">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">仕入先CD</mat-header-cell>
-          <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)">
-            <a mat-list-item>{{row.value.factoryCd}}</a>
+          <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
+            <input id="txt-factoryCd-{{i}}" style="width: 100%; height: 67%;" formControlName="factoryCd" [attr.disabled]="row.value.inserted"/>
+            <!-- <label id="lbl-factorme-{{i}}">{{row.value.inserted}}</label> -->
+            <!-- <mat-form-field appearance="outline"> 
+              <input matInput id="txt-factoryCd" style="text-overflow: ellipsis;" formControlName="factoryCd"/>
+            </mat-form-field> -->
           </mat-cell>
         </ng-container>
         <!-- factory name Column -->
         <ng-container matColumnDef="factoryName">
           <mat-header-cell *matHeaderCellDef>仕入先名</mat-header-cell>
-          <mat-cell *matCellDef="let row; let i = index;">
-            <label id="lbl-factoryName-{{i}}">{{row.value.factoryName}}</label>
+          <mat-cell *matCellDef="let row; let i = index;" formGroupName="{{i}}">
+            <input id="txt-factoryName-{{i}}" style="width: 100%; height: 67%;" formControlName="factoryName"/>
+            <!-- <label id="lbl-factoryName-{{i}}">{{row.value.factoryName}}</label> -->
           </mat-cell>
         </ng-container>
         <!-- factory identifier Column -->
         <ng-container matColumnDef="factoryIdentifier">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">工場識別子</mat-header-cell>
-          <mat-cell *matCellDef="let row; let i = index;" fxLayoutAlign="center" [fxFlex]="calcFlex(3)">
-            <label id="lbl-description-{{i}}">{{row.value.factoryIdentifier}}</label>
+          <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
+            <input id="txt-factoryIdentifier-{{i}}" style="width: 100%; height: 67%;" formControlName="factoryIdentifier"/>
+            <!-- <label id="lbl-description-{{i}}">{{row.value.factoryIdentifier}}</label> -->
           </mat-cell>
         </ng-container>
         <!-- storage location Column -->
         <ng-container matColumnDef="storageLocation">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">保管場所</mat-header-cell>
-          <mat-cell *matCellDef="let row; let i = index;" fxLayoutAlign="center" [fxFlex]="calcFlex(3)">
-            <label id="lbl-quantity-{{i}}">{{row.value.storageLocation}}</label>
+          <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
+            <input id="txt-storageLocation-{{i}}" style="width: 100%; height: 67%;" formControlName="storageLocation"/>
+            <!-- <label id="lbl-quantity-{{i}}">{{row.value.storageLocation}}</label> -->
           </mat-cell>
         </ng-container>
         <!-- trash Column -->
-        <ng-container matColumnDef="trash">
-          <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(2)">削除</mat-header-cell>
-          <mat-cell *matCellDef="let row ; let i = index" fxLayoutAlign="center" [fxFlex]="calcFlex(2)" formGroupName="{{i}}">
-            <mat-checkbox formControlName="delete"></mat-checkbox>
+        <ng-container matColumnDef="delete">
+          <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(1)">削除</mat-header-cell>
+          <mat-cell *matCellDef="let row ; let i = index" fxLayoutAlign="center" [fxFlex]="calcFlex(1)" formGroupName="{{i}}">
+            <mat-checkbox id="chk-delete-{{i}}" formControlName="delete" style="padding-top: 3px;"></mat-checkbox>
           </mat-cell>
         </ng-container>
         <ng-container matColumnDef="noData">
@@ -81,20 +88,20 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         <mat-footer-row *matFooterRowDef="['noData']" [hidden]="factoryList.length !== 0"></mat-footer-row>
       </mat-table>
-    </div>
+    </div>  
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
     <br>
   </form>
   <div fxLayout="row wrap">
     <div fxFlex="50">
-      <button mat-button type="button" id="btn-addRow" class="btn-main">行挿入</button>
+      <button mat-button type="button" id="btn-addRow" class="btn-main" (click)="addRow()">行挿入</button>
       <div fxFlex="40px"></div>
-      <button mat-button type="button" id="btn-update" class="btn-main">更新</button>
+      <button mat-button type="button" id="btn-update" class="btn-main" (click)="update()" [disabled]="formSearch.get('factoryList')?.pristine" >更新</button>
       <div fxFlex="40px"></div>
-      <button mat-button type="button" id="btn-download" routerLink="/" class="btn-main">ダウンロード</button>
+      <button mat-button type="button" id="btn-download" class="btn-main" routerLink="/">ダウンロード</button>
     </div>
     <div fxFlex="50" fxLayoutAlign="end">
-      <button mat-button type="button" id="btn-home" (click)="goHome()" class="btn-normal">ホーム</button>
+      <button mat-button type="button" id="btn-home" class="btn-normal" (click)="goHome()">ホーム</button>
     </div>
   </div>
   <br>

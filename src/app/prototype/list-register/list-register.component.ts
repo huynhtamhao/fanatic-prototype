@@ -2,32 +2,9 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
-
-export interface Factory {
-  factoryCd: string;
-  factoryName: string;
-  factoryIdentifier: string;
-  storageLocation: string;
-  delete: number;
-}
-
-const FACTORY_DATA: Factory[] = [
-  {factoryCd: 'F00', factoryName: '東大阪PC', factoryIdentifier: 'W', storageLocation: 'WH1100', delete: 0},
-  {factoryCd: 'F91', factoryName: '東大阪パーツ販売', factoryIdentifier: 'W', storageLocation: 'WH1370', delete: 0},
-  {factoryCd: 'F01', factoryName: '東大阪01', factoryIdentifier: 'W', storageLocation: 'WH1101', delete: 0},
-  {factoryCd: 'F02', factoryName: '東大阪02', factoryIdentifier: 'W', storageLocation: 'WH1102', delete: 0},
-  {factoryCd: 'F03', factoryName: '東大阪03', factoryIdentifier: 'W', storageLocation: 'WH1103', delete: 0},
-  {factoryCd: 'F04', factoryName: '東大阪04', factoryIdentifier: 'W', storageLocation: 'WH1104', delete: 0},
-  {factoryCd: 'F05', factoryName: '東大阪05', factoryIdentifier: 'W', storageLocation: 'WH1105', delete: 0},
-  {factoryCd: 'F06', factoryName: '東大阪06', factoryIdentifier: 'W', storageLocation: 'WH1106', delete: 0},
-  {factoryCd: 'F07', factoryName: '東大阪07', factoryIdentifier: 'W', storageLocation: 'WH1107', delete: 0},
-  {factoryCd: 'F08', factoryName: '東大阪08', factoryIdentifier: 'W', storageLocation: 'WH1108', delete: 0},
-  {factoryCd: 'F09', factoryName: '東大阪09', factoryIdentifier: 'W', storageLocation: 'WH1109', delete: 0},
-  {factoryCd: 'F10', factoryName: '東大阪10', factoryIdentifier: 'W', storageLocation: 'WH1110', delete: 0},
-];
-
+import { DialogUtilsService } from '@shared/components/dialog-confirm/dialog-utils.service';
 @Component({
   selector: 'kairos-list-register',
   templateUrl: './list-register.component.html',
@@ -41,10 +18,12 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
   constructor(
     private formBuilder: FormBuilder,
     private routerLink: Router,
+    private dialog: DialogUtilsService,
   ) { }
 
-  public displayedColumns: string[] = ['factoryCd', 'factoryName', 'factoryIdentifier', 'storageLocation', 'trash'];
+  public displayedColumns: string[] = ['factoryCd', 'factoryName', 'factoryIdentifier', 'storageLocation', 'delete'];
   public factoryList = this.formBuilder.array([]);
+  public dataList = this.formBuilder.array([]);
   public quantityTotal = 0;
   public dataSource = [];
 
@@ -54,11 +33,19 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     factoryList: this.factoryList,
   });
 
-  ngAfterViewInit(): void {
-    this.paginator.page.subscribe(() => this.onSearch(this.paginator.pageIndex, this.paginator.pageSize));
-  }
-
   ngOnInit(): void {
+    var i = 0;
+    while(i !== 10) {
+      this.dataList.push(this.formBuilder.group({
+        factoryCd: "F0" + i,
+        factoryName: "東大阪0" + i,
+        factoryIdentifier: 'W',
+        storageLocation: 'WH110' + i,
+        delete: 0,
+        inserted: true,
+      }));
+      i++;
+    }
     var session = sessionStorage.getItem('list-register');
     if (session !== null) {
       this.formSearch.patchValue(JSON.parse(session));
@@ -67,7 +54,18 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     this.onSearch();
   }
 
+  ngAfterViewInit(): void {
+    this.paginator.page.subscribe(() => this.onSearch(this.paginator.pageIndex, this.paginator.pageSize));
+  }
+
   public onSearch(pageNumber: number = 0, size: number = 5) { 
+
+    if (this.formSearch.get('factoryList')?.dirty) {
+      //TODO: confirm save
+      // this.dialog.openDialogConfirmDelete
+
+    }
+
     if (this.accordion !== undefined) {
       this.accordion.closeAll();
     }
@@ -82,7 +80,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     const from = size * pageNumber;
     const to = size * pageNumber + size;
 
-    FACTORY_DATA.forEach(pro => {
+    this.dataList.getRawValue().forEach(pro => {
       let check = true;     
       if (!!code) {
         check = pro.factoryCd.toLowerCase().includes(code);
@@ -104,6 +102,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     if (this.table !== undefined) {
       this.table.renderRows();
     }
+    this.formSearch.markAsPristine();
   }
 
   public onClear(): void {
@@ -114,8 +113,42 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     this.accordion.openAll();
   }
 
+  public addRow(){
+    this.factoryList.push(this.formBuilder.group({
+      factoryCd: null,
+      factoryName: null,
+      factoryIdentifier: null,
+      storageLocation: null,
+      delete: 0,
+      inserted: null,
+    }));
+    this.table.renderRows();
+  }
+
+  public update(){
+    this.factoryList.getRawValue().forEach(fac =>{
+      let i = this.dataList.getRawValue().findIndex(x => x.factoryCd === fac.factoryCd);
+      if (i < 0) {
+        //add
+        fac.inserted = true;
+        this.dataList.push(this.formBuilder.group(fac));
+      } else if (fac.delete){
+        // delete
+        this.dataList.removeAt(i);
+      } else { 
+        // update    
+        this.dataList.setControl(i,this.formBuilder.group(fac));
+      }
+    });
+
+    // open dialog
+    this.dialog.openDialogSuccessUpdate(); 
+    // research
+    this.onSearch();
+  }
+
   public goHome() {
-    localStorage.clear();
+    sessionStorage.clear();
     this.routerLink.navigate(['/']);
   }
 
