@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable } from '@angular/material/table';
@@ -41,8 +41,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
         factoryName: "東大阪0" + i,
         factoryIdentifier: 'W',
         storageLocation: 'WH110' + i,
-        delete: 0,
-        inserted: true,
+        delete: null,
       }));
       i++;
     }
@@ -51,7 +50,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       this.formSearch.patchValue(JSON.parse(session));
       this.formSearch.updateValueAndValidity;
     }
-    this.onSearch();
+    this.search();
   }
 
   ngAfterViewInit(): void {
@@ -61,11 +60,19 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
   public onSearch(pageNumber: number = 0, size: number = 5) { 
 
     if (this.formSearch.get('factoryList')?.dirty) {
-      //TODO: confirm save
-      // this.dialog.openDialogConfirmDelete
+      // confirm move
+      const dialogRef = this.dialog.openDialogConfirmStayOnPage();
+      dialogRef.afterClosed().subscribe(res => {
+        if(!res) {
+          this.search(pageNumber,size);
+        } 
+      });
+    } else {
+      this.search(pageNumber,size);
+    }  
+  }
 
-    }
-
+  private search(pageNumber: number = 0, size: number = 5) {
     if (this.accordion !== undefined) {
       this.accordion.closeAll();
     }
@@ -80,19 +87,25 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     const from = size * pageNumber;
     const to = size * pageNumber + size;
 
-    this.dataList.getRawValue().forEach(pro => {
+    this.dataList.getRawValue().forEach(fac => {
       let check = true;     
       if (!!code) {
-        check = pro.factoryCd.toLowerCase().includes(code);
+        check = fac.factoryCd.toLowerCase().includes(code);
       }
 
       if (!!name && check) {
-        check = pro.factoryName.toLowerCase().includes(code);
+        check = fac.factoryName.toLowerCase().includes(code);
       }
 
       if (check) {   
         if (from <= i && i < to) {      
-          this.factoryList.push(this.formBuilder.group(pro));   
+          this.factoryList.push(this.formBuilder.group({
+            factoryCd: new FormControl({value: fac.factoryCd, disabled: true}, Validators.required),
+            factoryName: new FormControl(fac.factoryName, Validators.required),
+            factoryIdentifier: new FormControl(fac.factoryIdentifier, [Validators.required]),
+            storageLocation: new FormControl(fac.storageLocation, [Validators.required]),
+            delete: fac.delete,
+          }));   
         }
         i++;     
       }
@@ -115,22 +128,23 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
 
   public addRow(){
     this.factoryList.push(this.formBuilder.group({
-      factoryCd: null,
-      factoryName: null,
-      factoryIdentifier: null,
-      storageLocation: null,
-      delete: 0,
-      inserted: null,
+      factoryCd: new FormControl("", [Validators.required]),
+      factoryName: new FormControl("", [Validators.required]),
+      factoryIdentifier: new FormControl("", [Validators.required]),
+      storageLocation: new FormControl("", [Validators.required]),
+      delete: null,
     }));
     this.table.renderRows();
   }
 
   public update(){
+    if (this.formSearch.get("factoryList")?.invalid) {
+      return;
+    }
     this.factoryList.getRawValue().forEach(fac =>{
       let i = this.dataList.getRawValue().findIndex(x => x.factoryCd === fac.factoryCd);
       if (i < 0) {
         //add
-        fac.inserted = true;
         this.dataList.push(this.formBuilder.group(fac));
       } else if (fac.delete){
         // delete
@@ -144,7 +158,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     // open dialog
     this.dialog.openDialogSuccessUpdate(); 
     // research
-    this.onSearch();
+    this.search();
   }
 
   public goHome() {
