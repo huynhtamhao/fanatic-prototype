@@ -28,13 +28,13 @@ export const HOME_MENU: SidebarItem[] = [
       {
         id         : '修正画面',
         icon       : 'edit',
-        path       : '/prototype/edit',
+        path       : '/prototype/product/CD0001',
         submenu: []
       },
       {
         id         : '参照画面',
         icon       : 'remove_red_eye',
-        path       : '/prototype/view',
+        path       : '/prototype/inquiry-product/CD0001',
         submenu: []
       },
     ]
