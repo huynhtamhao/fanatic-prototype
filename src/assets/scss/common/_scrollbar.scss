@@ -26,6 +26,6 @@ mat-nav-list {
   --sidenav-padding-top: 8px;
   height: calc(100% - var(--sidenav-padding-top));
   overflow-y: auto;
-  min-width: $sidenav-min-width;
+  width: $sidenav-width;
 }
 /* custom scrollbar */
