@@ -3,26 +3,38 @@ import { SidebarItem } from "./sidebar-item.metadata";
 // prettier-ignore
 export const HOME_MENU: SidebarItem[] = [
   {
-    id         : 'prototype',
+    id         : 'プロトタイプ',
     icon       : 'public',
     path       : '',
     submenu: [
       {
-        id         : 'list-search',
-        icon       : '',
+        id         : '検索一覧画面',
+        icon       : 'view_list',
         path       : '/prototype/list-search',
         submenu: []
       },
       {
-        id         : 'list-register',
-        icon       : '',
+        id         : '登録一覧画面',
+        icon       : 'playlist_add',
         path       : '/prototype/list-register',
         submenu: []
       },
       {
-        id         : 'register',
-        icon       : '',
+        id         : '登録画面',
+        icon       : 'add',
         path       : '/prototype/register',
+        submenu: []
+      },
+      {
+        id         : '修正画面',
+        icon       : 'edit',
+        path       : '/prototype/product/CD0001',
+        submenu: []
+      },
+      {
+        id         : '参照画面',
+        icon       : 'remove_red_eye',
+        path       : '/prototype/inquiry-product/CD0001',
         submenu: []
       },
     ]
