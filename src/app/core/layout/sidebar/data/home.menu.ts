@@ -25,6 +25,18 @@ export const HOME_MENU: SidebarItem[] = [
         path       : '/prototype/register',
         submenu: []
       },
+      {
+        id         : 'update',
+        icon       : '',
+        path       : '/prototype/product/CD0001',
+        submenu: []
+      },
+      {
+        id         : 'inquiry',
+        icon       : '',
+        path       : '/prototype/inquiry-product/CD0001',
+        submenu: []
+      },
     ]
   },
   {
