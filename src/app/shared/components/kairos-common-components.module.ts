@@ -5,6 +5,7 @@ import { MaterialModule } from '@shared/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
+import { NewConfirmDialogComponent } from './new-confirm-dialog/new-confirm-dialog.component';
 
 
 
@@ -12,6 +13,7 @@ import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.componen
   declarations: [
     DialogConfirmComponent,
     MenuListComponent,
+    NewConfirmDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.componen
   exports : [
     DialogConfirmComponent,
     MenuListComponent,
+    NewConfirmDialogComponent,
   ]
 })
 export class KairosCommonComponentsModule { }
