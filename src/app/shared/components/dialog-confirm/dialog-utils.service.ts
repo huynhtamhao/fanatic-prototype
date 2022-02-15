@@ -72,6 +72,16 @@ export class DialogUtilsService {
     return this.dialogRef = this.openDefaultDialog(this.dialogData);
   }
 
+  public openDialogConfirmChangeData(): MatDialogRef<DialogConfirmComponent> {
+    this.dialogData = new DialogData();
+    this.dialogData.title = TITLE.CHANGE;
+    this.dialogData.messageType = this.messageType.CONFIRM;
+    this.dialogData.messageContent = 'データが変更されました。保存しますか？';
+    this.getDefaultButtonActions(this.dialogData);
+
+    return this.dialogRef = this.openDefaultDialog(this.dialogData);
+  }
+
   private openDefaultDialog(data: DialogData): MatDialogRef<DialogConfirmComponent> {
     return this.dialog.open(DialogConfirmComponent, {
       width: '350px',
@@ -115,6 +125,7 @@ export class DialogUtilsService {
 export const TITLE = {
   REGISTRY: '登録',
   UPDATE: '更新',
-  DELETE: '削除'
+  DELETE: '削除',
+  CHANGE: '変更'
 };
 
