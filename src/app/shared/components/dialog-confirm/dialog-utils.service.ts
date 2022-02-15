@@ -72,11 +72,11 @@ export class DialogUtilsService {
     return this.dialogRef = this.openDefaultDialog(this.dialogData);
   }
 
-  public openDialogConfirmChangeData(): MatDialogRef<DialogConfirmComponent> {
+  public openDialogConfirmStayOnPage(): MatDialogRef<DialogConfirmComponent> {
     this.dialogData = new DialogData();
-    this.dialogData.title = TITLE.CHANGE;
+    this.dialogData.title = TITLE.CONFIRM;
     this.dialogData.messageType = this.messageType.CONFIRM;
-    this.dialogData.messageContent = 'データが変更されました。保存しますか？';
+    this.dialogData.messageContent = 'データが編集されました。このページに留まりますか？';
     this.getDefaultButtonActions(this.dialogData);
 
     return this.dialogRef = this.openDefaultDialog(this.dialogData);
@@ -126,6 +126,6 @@ export const TITLE = {
   REGISTRY: '登録',
   UPDATE: '更新',
   DELETE: '削除',
-  CHANGE: '変更'
+  CONFIRM: '確認'
 };
 
