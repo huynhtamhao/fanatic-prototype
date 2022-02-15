@@ -23,6 +23,7 @@
               <div class="column-input" fxLayout="column" [fxFlex]="75">
                 <mat-form-field appearance="outline" class="input-text-outline">
                   <input matInput type="text" formControlName="quantity">
+                  <mat-error *ngIf="form.controls['quantity'].hasError('required')">この項目は必須です</mat-error>
                   <mat-error *ngIf="form.controls['quantity'].hasError('maxlength')">６桁以下の文字列を入力して下さい</mat-error>
                 </mat-form-field>
               </div>
@@ -75,7 +76,7 @@
           </div>
         </mat-tab>
       </mat-tab-group>
-
+      <br>
       <div fxLayout="row">
         <div fxLayoutAlign="start">
           <button mat-button type="submit" class="btn-main" id="btn-submit" (click)="onRegister()"
@@ -90,5 +91,3 @@
     </form>
   </mat-card-content>
 </mat-card>
-<!-- TODO: delete later -->
-<br>
