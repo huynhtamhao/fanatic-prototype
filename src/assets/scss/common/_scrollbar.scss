@@ -17,4 +17,15 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: #a8bbbf;
 }
+
+.mat-drawer-inner-container::-webkit-scrollbar {
+  display: none;
+}
+
+mat-nav-list {
+  --sidenav-padding-top: 8px;
+  height: calc(100% - var(--sidenav-padding-top));
+  overflow-y: auto;
+  min-width: $sidenav-min-width;
+}
 /* custom scrollbar */
