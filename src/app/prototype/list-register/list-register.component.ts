@@ -103,8 +103,9 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
             factoryCd: new FormControl({value: fac.factoryCd, disabled: true}, Validators.required),
             factoryName: new FormControl(fac.factoryName, Validators.required),
             factoryIdentifier: new FormControl(fac.factoryIdentifier, [Validators.required]),
-            storageLocation: new FormControl(fac.storageLocation, [Validators.required]),
+            storageLocation: fac.storageLocation,
             delete: fac.delete,
+            addRow: false,
           }));   
         }
         i++;     
@@ -118,7 +119,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     this.formSearch.markAsPristine();
   }
 
-  public onClear(): void {
+  public onClear(){
     this.formSearch.patchValue({
       factoryCd: "",
       factoryName: "",
@@ -133,7 +134,13 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       factoryIdentifier: new FormControl("", [Validators.required]),
       storageLocation: new FormControl("", [Validators.required]),
       delete: null,
+      addRow: true,
     }));
+    this.table.renderRows();
+  }
+
+  public removeRow(iRow: number){
+    this.factoryList.removeAt(iRow);
     this.table.renderRows();
   }
 

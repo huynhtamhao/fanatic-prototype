@@ -41,21 +41,24 @@
         <ng-container matColumnDef="factoryCd">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">仕入先CD</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-            <input id="txt-factoryCd-{{i}}" formControlName="factoryCd"/>
+            <input id="txt-factoryCd-{{i}}" formControlName="factoryCd"
+            [ngClass]="{'error-input':factoryList.controls[i]?.get('factoryCd')?.errors}"/>
           </mat-cell>
         </ng-container>
         <!-- factory name Column -->
         <ng-container matColumnDef="factoryName">
           <mat-header-cell *matHeaderCellDef>仕入先名</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" formGroupName="{{i}}">
-            <input id="txt-factoryName-{{i}}" formControlName="factoryName" [ngClass]="{'error-input': factoryList.controls[i]?.getError('factoryNameError')}"/>
+            <input id="txt-factoryName-{{i}}" formControlName="factoryName" 
+            [ngClass]="{'error-input':factoryList.controls[i]?.get('factoryName')?.errors}"/>
           </mat-cell>
         </ng-container>
         <!-- factory identifier Column -->
         <ng-container matColumnDef="factoryIdentifier">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">工場識別子</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-            <input id="txt-factoryIdentifier-{{i}}" formControlName="factoryIdentifier"/>
+            <input id="txt-factoryIdentifier-{{i}}" formControlName="factoryIdentifier"
+            [ngClass]="{'error-input':factoryList.controls[i]?.get('factoryIdentifier')?.errors}"/>
           </mat-cell>
         </ng-container>
         <!-- storage location Column -->
@@ -69,7 +72,12 @@
         <ng-container matColumnDef="delete">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(1)">削除</mat-header-cell>
           <mat-cell *matCellDef="let row ; let i = index" fxLayoutAlign="center" [fxFlex]="calcFlex(1)" formGroupName="{{i}}">
-            <mat-checkbox id="chk-delete-{{i}}" formControlName="delete" class="delete"></mat-checkbox>
+            <mat-checkbox id="chk-delete-{{i}}" formControlName="delete" class="checkbox-delete" *ngIf="!row.value.addRow; else addRow"></mat-checkbox>
+            <ng-template #addRow>
+              <button mat-button type="button" id="btn-add" (click)="removeRow(i)" class="button-delete" mat-icon-button color="accent">
+                <mat-icon>delete_forever</mat-icon>
+              </button>
+            </ng-template>
           </mat-cell>
         </ng-container>
         <ng-container matColumnDef="noData">
