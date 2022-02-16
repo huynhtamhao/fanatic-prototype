@@ -5,6 +5,7 @@ import { ListSearchComponent } from './list-search/list-search.component';
 import { ListRegisterComponent } from './list-register/list-register.component';
 import { UpdateComponent } from './update/update.component';
 import { InquiryComponent } from './inquiry/inquiry.component';
+import { ItemsDetailComponent } from './items-detail/items-detail.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'list-register', component: ListRegisterComponent},
   { path: 'product/:productCd', component: UpdateComponent },
   { path: 'inquiry-product/:productCd', component: InquiryComponent },
+  { path: 'items-detail', component: ItemsDetailComponent },
 ];
 
 @NgModule({
@@ -26,5 +28,6 @@ export class PrototypeRoutingModule {
     ListSearchComponent,
     UpdateComponent,
     InquiryComponent,
+    ItemsDetailComponent,
   ]
 }
