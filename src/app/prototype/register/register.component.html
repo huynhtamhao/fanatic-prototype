@@ -5,8 +5,8 @@
     <form [formGroup]="form">
       <mat-tab-group id="tabs-detail" mat-align-tabs="left" class="tabs-group-custom">
         <mat-tab label="明細１">
-          <div fxLayoutGap="10%" fxLayout="row" class="row-detail-large">
-            <div [fxFlex]="45" class="column-item-input">
+          <div fxLayoutAlign="space-between" fxLayout="row wrap" class="row-detail row-detail-large">
+            <div [fxFlex]="45" fxLayout="row" class="column-item-input">
               <div class="column-title" fxLayout="column" [fxFlex]="25">品目コード</div>
               <div class="column-input" fxLayout="column" [fxFlex]="75">
                 <mat-form-field appearance="outline" class="input-outline">
@@ -18,7 +18,7 @@
               </div>
             </div>
 
-            <div [fxFlex]="45" class="column-item-input">
+            <div [fxFlex]="45" fxLayout="row" class="column-item-input">
               <div class="column-title" fxLayout="column" [fxFlex]="25">数量</div>
               <div class="column-input" fxLayout="column" [fxFlex]="75">
                 <mat-form-field appearance="outline" class="input-outline">
@@ -30,10 +30,11 @@
             </div>
           </div>
 
-          <div fxLayoutGap="10%" fxLayout="row" class="row-detail-large">
-            <div [fxFlex]="45" class="column-item-input">
+          <div fxLayoutAlign="space-between" fxLayout="row wrap" class="row-detail row-detail-large">
+            <div [fxFlex]="45" fxLayout="row" class="column-item-input">
               <div class="column-title" fxLayout="column" [fxFlex]="25">保管場所</div>
-              <div class="column-input" fxLayout="column" fxFlex>
+              <div class="column-input" fxLayout="column" [fxFlex]="75">
+                <!-- <kairos-input-text formControlName="storageLocation" ngDefaultControl></kairos-input-text> -->
                 <mat-form-field appearance="outline" class="input-outline">
                   <input matInput type="text" formControlName="storageLocation">
                   <mat-error *ngIf="form.controls['storageLocation'].hasError('required')">この項目は必須です</mat-error>
@@ -42,9 +43,9 @@
               </div>
             </div>
 
-            <div [fxFlex]="45" class="column-item-input">
+            <div [fxFlex]="45" fxLayout="row" class="column-item-input">
               <div class="column-title" fxLayout="column" [fxFlex]="25">納品書番号</div>
-              <div class="column-input" fxLayout="column" fxFlex>
+              <div class="column-input" fxLayout="column" [fxFlex]="75">
                 <mat-form-field appearance="outline" class="input-outline">
                   <input matInput type="text" formControlName="invoiceNo">
                   <mat-error *ngIf="form.controls['invoiceNo'].hasError('required')">この項目は必須です</mat-error>
@@ -54,10 +55,10 @@
             </div>
           </div>
 
-          <div fxLayoutGap="10%" fxLayout="row" class="row-detail-large">
-            <div [fxFlex]="45" class="column-item-input">
+          <div fxLayoutAlign="space-between" fxLayout="row wrap" class="row-detail row-detail-large">
+            <div [fxFlex]="45" fxLayout="row" class="column-item-input">
               <div class="column-title" fxLayout="column" [fxFlex]="25">代替品入荷保管場所</div>
-              <div class="column-input" fxLayout="column" fxFlex>
+              <div class="column-input" fxLayout="column" [fxFlex]="75">
                 <mat-form-field appearance="outline" class="input-outline">
                   <input matInput type="text" formControlName="inboundDeliveryStorageLocation">
                   <mat-error *ngIf="form.controls['inboundDeliveryStorageLocation'].hasError('maxlength')">
