@@ -85,15 +85,15 @@ export class CommonToastrService {
   ) { }
 
   register(item?: string) {
-    return this.build(!!item ? '登録の' + item : '登録');
+    return this.build((!!item ? item + 'の' : '') + '登録');
   }
 
   update(item?: string) {
-    return this.build(!!item ? '変更の' + item : '変更');
+    return this.build((!!item ? item + 'の' : '') + '変更');
   }
 
   delete(item?: string) {
-    return this.build(!!item ? '削除の' + item : '削除');
+    return this.build((!!item ? item +'の' : '') + '削除');
   }
 
   private build(param: string) {
