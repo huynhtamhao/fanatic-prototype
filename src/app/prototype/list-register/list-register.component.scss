@@ -84,6 +84,7 @@ $button-primary-color: #cce8ff;
     display: grid;
     width: 100%;
     word-break: break-word;
+    // border: 1px solid #bdbdbd;
   }
 
 .no-data {
@@ -112,3 +113,12 @@ $button-primary-color: #cce8ff;
   height: 95%;
   line-height: 0px;
 }
+
+.error-tooltip {
+  background: #b71c1c !important;
+}
+
+.tooltip-red{
+  // margin-top:-80px;
+  background: #b71c1c;
+ }
