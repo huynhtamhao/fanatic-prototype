@@ -3,8 +3,8 @@ $button-primary-color: #cce8ff;
 
 .label-header {
     font-weight: bold;
-    font-size: 14px;
-    padding-top: 10px;
+    // font-size: 14px;
+    // padding-top: 10px;
   }
 
 .button-size-modal-bottom{
@@ -18,7 +18,7 @@ $button-primary-color: #cce8ff;
 
 .table-custom {
     input {
-      font-size: 9pt !important;
+      // font-size: 9pt !important;
       width: 100%; 
       height: 67%;
     }
@@ -27,7 +27,7 @@ $button-primary-color: #cce8ff;
     .mat-header-cell {
       padding-left: 0.5em;
       padding-right: 0.5em;
-      font-size: 9pt;
+      // font-size: 9pt;
       &:not(:last-child) {
         border-right: 1px solid #bdbdbd;
       }
@@ -38,7 +38,7 @@ $button-primary-color: #cce8ff;
     .mat-footer-cell {
       padding-left: 0.5em;
       padding-right: 0.5em;
-      font-size: 9pt;
+      // font-size: 9pt;
       &:not(:last-child) {
         border-right: 1px solid #bdbdbd;
       }
@@ -89,7 +89,7 @@ $button-primary-color: #cce8ff;
 
 .no-data {
     color: black! important; 
-    font-size: 14px;
+    // font-size: 14px;
     border-bottom: 1px solid #bdbdbd;
   }
 

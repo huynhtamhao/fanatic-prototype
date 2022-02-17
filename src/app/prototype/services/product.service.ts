@@ -10,8 +10,6 @@ import { Product } from '../models/product';
 })
 export class ProductService {
 
-  private stringMapParam = '{value}';
-
   constructor(
     private errorUtilsService: ErrorUtilsService,
     private toastrService: ToastrService,
@@ -21,33 +19,17 @@ export class ProductService {
     return PRODUCT_DATA.find(p => p.productCd === productCd) as Product;
   }
 
-  checkErrorMessage(process: string): number {
-    // test toast
-    const index = Math.floor(Math.random() * 3);
-    if (index === 0) {
-      this.toastrService.success(messageSubmit[index].split(this.stringMapParam).join(process));
-      this.errorUtilsService.clearErrorSummary();
-
-    } else if (index === 1) {
+  showErrorSummary(result: number) {
+    if (result !== 0) {
       this.errorUtilsService.setErrorSummary(errors);
-      this.toastrService.error(messageSubmit[index].split(this.stringMapParam).join(process));
-
+      if (result === 2) {
+        this.toastrService.error('システムエラーが発生しました。');
+      }
     } else {
-      this.errorUtilsService.setErrorSummary(errors);
-      this.toastrService.error(messageSubmit[index]);
-
+      this.errorUtilsService.clearErrorSummary();
     }
-
-    return index;
   }
-
 }
-
-export const messageSubmit = [
-  "{value}が完了しました。",
-  "{value}が失敗しました。",
-  "システムエラーが発生しました。"
-]
 
 export const errors: ErrorSummary[] = [
   { errorCode: 'Error 01', errorMessage: 'エラーが発生しました。' },
@@ -58,12 +40,12 @@ export const errors: ErrorSummary[] = [
 ]
 
 export const PRODUCT_DATA: Product[] = [
-  {productCd: 'CD0001', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10001},
-  {productCd: 'CD0002', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10002},
-  {productCd: 'CD0003', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10003},
-  {productCd: 'CD0004', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10004},
-  {productCd: 'CD0005', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10005},
-  {productCd: 'CD0006', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10006},
-  {productCd: 'CD0007', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10007},
+  { productCd: 'CD0001', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10001 },
+  { productCd: 'CD0002', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10002 },
+  { productCd: 'CD0003', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10003 },
+  { productCd: 'CD0004', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10004 },
+  { productCd: 'CD0005', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10005 },
+  { productCd: 'CD0006', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10006 },
+  { productCd: 'CD0007', invoiceNo: 'INVOICE1', storageLocation: 'VN0001', quantity: 10007 },
 ];
 

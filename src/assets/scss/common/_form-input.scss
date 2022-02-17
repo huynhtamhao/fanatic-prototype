@@ -1,12 +1,66 @@
-mat-form-field.input-text-outline {
+@mixin row-detail($borderTop, $padding) {
+  mat-form-field.input-outline {
+    .mat-form-field-infix {
+      border-top: $borderTop solid transparent;
+      padding: $padding 0;
+    }
+  }
 
-  .mat-form-field-infix {
-    border-top: .4em solid transparent;
-    padding: 0.5em 0;
+  .column-item-input {
+    align-items: baseline;
+  }
+
+  .column-item-other {
+    padding: $padding 0;
+  }
+
+  .column-title {
+    min-width: 100px;
+  }
+
+  .column-input {
+    min-width: 120px;
   }
 }
 
+.row-detail-large {
+  @include row-detail(0.4em, 0.5em);
+}
+
+.row-detail-small {
+  @include row-detail(0.3em, 0.35em);
+}
+
+/* style mat error */
+mat-form-field.input-outline {
+  .mat-form-field-subscript-wrapper {
+    font-size: 85%;
+  }
+}
+
+/* style disabled */
 mat-form-field.mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-outline {
   background-color: #c7c5c5;
   border-radius: 5px;
+}
+
+/* screen width */
+@media screen and (width < (572px + $sidenav-width)) {
+  .row-detail.row-detail-large {
+    .column-item-other,
+    .column-item-input {
+      max-width: 100% !important;
+      flex-basis: 100% !important;
+    }
+  }
+}
+
+@media screen and (width < (782px + $sidenav-width)) {
+  .row-detail.row-detail-small {
+    .column-item-other,
+    .column-item-input {
+      max-width: 45% !important;
+      flex-basis: 45% !important;
+    }
+  }
 }

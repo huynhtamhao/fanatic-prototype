@@ -37,6 +37,12 @@ export const HOME_MENU: SidebarItem[] = [
         path       : '/prototype/inquiry-product/CD0001',
         submenu: []
       },
+      {
+        id         : '入力画面',
+        icon       : 'input',
+        path       : '/prototype/items-detail',
+        submenu: []
+      },
     ]
   },
   {

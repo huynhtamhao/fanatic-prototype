@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ProductService } from '../services/product.service';
+import { CommonToastrService } from 'src/app/core/service/common-toastr.service';
 
 @Component({
   selector: 'kairos-register',
@@ -23,6 +24,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
+    private commonToastrService: CommonToastrService,
     private location: Location,
   ) { }
 
@@ -38,19 +40,21 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    if (!this.submit()) {
-      return;
-    };
+    this.submit();
   }
 
-  submit(): boolean {
-    if (this.productService.checkErrorMessage('登録') === 2) {
+  submit() {
+    const result = Math.floor(Math.random() * 3);
+    this.productService.showErrorSummary(result);
+
+    if (result === 2) {
       this.errorSystem = true;
       this.lockFormInput();
-      return false;
+    } else if (result === 1) {
+      this.commonToastrService.update().failure().show();
+    } else {
+      this.commonToastrService.update().success().show();
     }
-
-    return true;
   }
 
   lockFormInput() {

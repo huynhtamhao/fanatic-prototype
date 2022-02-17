@@ -1,4 +1,8 @@
 {
+  "commonToastr": {
+    "failure": "{{ item }}が失敗しました。",
+    "success": "{{ item }}が成功しました。"
+  },
   "header": {
     "systemName": "Kairos"
   },

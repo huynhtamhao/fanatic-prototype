@@ -8,16 +8,16 @@
           <mat-expansion-panel-header>
             <mat-panel-title>検索条件</mat-panel-title>
           </mat-expansion-panel-header>
-          <div fxLayout="row wrap">
-            <div fxLayout="row" [fxFlex]="calcFlex(13)">
+          <div fxLayout="row wrap" class="row-detail-large">
+            <div fxLayout="row" [fxFlex]="calcFlex(13)" class="column-item-input">
               <div class="label-header">商品コード：</div>
-              <mat-form-field fxFlex="50" appearance="outline" class="input-text-outline">
+              <mat-form-field fxFlex="50" appearance="outline" class="input-outline">
                 <input matInput type="text" id="txt-productCd" formControlName="productCd" />
               </mat-form-field>
             </div>
-            <div fxLayout="row" [fxFlex]="calcFlex(17)">
+            <div fxLayout="row" [fxFlex]="calcFlex(17)" class="column-item-input">
               <div class="label-header">商品名：</div>
-                <mat-form-field fxFlex="80" appearance="outline" class="input-text-outline">
+                <mat-form-field fxFlex="80" appearance="outline" class="input-outline">
                   <input matInput type="text" id="txt-productName" formControlName="productName" />
                 </mat-form-field>
             </div>
