@@ -8,18 +8,18 @@
 
   .column-item-input {
     align-items: baseline;
-
-    .column-title {
-      min-width: 100px;
-    }
-
-    .column-input {
-      min-width: 150px;
-    }
   }
 
   .column-item-other {
     padding: $padding 0;
+  }
+
+  .column-title {
+    min-width: 100px;
+  }
+
+  .column-input {
+    min-width: 120px;
   }
 }
 
@@ -31,12 +31,14 @@
   @include row-detail(0.3em, 0.35em);
 }
 
+/* style mat error */
 mat-form-field.input-outline {
   .mat-form-field-subscript-wrapper {
     font-size: 85%;
   }
 }
 
+/* style disabled */
 mat-form-field.mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-outline {
   background-color: #c7c5c5;
   border-radius: 5px;
