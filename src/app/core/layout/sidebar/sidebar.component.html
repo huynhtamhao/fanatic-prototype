@@ -1,10 +1,38 @@
-<ng-container>
+<div class="sidebar-menu">
+  <div class="system-setting">
+    <div class="system-name">
+      <a href="/">{{ 'header.systemName' | transloco }}</a>
+    </div>
+    <br>
+    <div class="user">
+      <div>
+        <mat-icon matBadge="1" matBadgeColor="warn" [matMenuTriggerFor]="menu">account_circle</mat-icon>
+      </div>
+      <div>
+        <p class="user-id">堀尾公彦</p>
+        <p>255</p>
+      </div>
+  
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>lock</mat-icon>{{ 'header.userMenu.changePassword' | transloco }}
+        </button>
+        <button mat-menu-item>
+          <mat-icon>logout</mat-icon>{{ 'header.userMenu.logout' | transloco }}
+        </button>
+      </mat-menu>
+    </div>
+  </div>
+
   <mat-nav-list>
-    <kairos-sidebar-main-item [mainIcon]="'home'" [mainText]="'sidebar.mainText.home'" [subMenu]="homeMenu"></kairos-sidebar-main-item>
-    <kairos-sidebar-main-item [mainIcon]="'build'" [mainText]="'sidebar.mainText.master'" [subMenu]="masterMenu"></kairos-sidebar-main-item>
-    <kairos-sidebar-main-item [mainIcon]="'person'" [mainText]="'sidebar.mainText.admin'" [subMenu]="adminMenu"></kairos-sidebar-main-item>
+    <kairos-sidebar-main-item [mainIcon]="'home'" [mainText]="'sidebar.mainText.home'" [subMenu]="homeMenu">
+    </kairos-sidebar-main-item>
+    <kairos-sidebar-main-item [mainIcon]="'build'" [mainText]="'sidebar.mainText.master'" [subMenu]="masterMenu">
+    </kairos-sidebar-main-item>
+    <kairos-sidebar-main-item [mainIcon]="'person'" [mainText]="'sidebar.mainText.admin'" [subMenu]="adminMenu">
+    </kairos-sidebar-main-item>
   </mat-nav-list>
-</ng-container>
+</div>
 
 <div class="date-time-box">
   <p>{{ dateTimeJP | date: 'YYYY/MM/dd' }}</p>
