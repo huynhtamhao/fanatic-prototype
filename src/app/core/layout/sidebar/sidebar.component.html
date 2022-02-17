@@ -5,3 +5,8 @@
     <kairos-sidebar-main-item [mainIcon]="'person'" [mainText]="'sidebar.mainText.admin'" [subMenu]="adminMenu"></kairos-sidebar-main-item>
   </mat-nav-list>
 </ng-container>
+
+<div class="date-time-box">
+  <p>{{ dateTimeJP | date: 'YYYY/MM/dd' }}</p>
+  <p>{{ dateTimeJP | date: 'HH:mm:ss' }}</p>
+</div>

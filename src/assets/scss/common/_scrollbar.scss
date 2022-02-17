@@ -24,7 +24,7 @@
 
 mat-nav-list {
   --sidenav-padding-top: 8px;
-  height: calc(100% - var(--sidenav-padding-top));
+  height: calc(100% - var(--sidenav-padding-top) - $date-time-box-height);
   overflow-y: auto;
   width: $sidenav-width;
 }
