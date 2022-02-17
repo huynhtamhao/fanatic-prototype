@@ -1,12 +1,10 @@
-import { formatNumber } from '@angular/common';
 import { AfterViewInit, Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, ValidationErrors } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { DialogUtilsService } from '@shared/components/dialog-confirm/dialog-utils.service';
-import { min } from 'rxjs';
 @Component({
   selector: 'kairos-list-register',
   templateUrl: './list-register.component.html',
@@ -39,9 +37,9 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     var i = 0;
     while(i < 10) {
-      this.dataList.push(this.formBuilder.group({//東大阪0
+      this.dataList.push(this.formBuilder.group({
         factoryCd: "F0" + i,
-        factoryName:  i,
+        factoryName:  "東大阪0" + i,
         factoryIdentifier: 'W',
         storageLocation: 'WH110' + i,
         delete: null,
@@ -106,14 +104,11 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
         if (from <= i && i < to) {      
           this.factoryList.push(this.formBuilder.group({
             factoryCd: new FormControl({value: fac.factoryCd, disabled: true}, [Validators.required, Validators.maxLength(3)]),
-            factoryName: new FormControl(fac.factoryName, [Validators.required, Validators.maxLength(120), Validators.min(1)]),
+            factoryName: new FormControl(fac.factoryName, [Validators.required, Validators.maxLength(120)]),
             factoryIdentifier: new FormControl(fac.factoryIdentifier, [Validators.required, Validators.maxLength(3)]),
             storageLocation: new FormControl(fac.storageLocation),
             delete: fac.delete,
             addRow: false,
-            factoryCdError: "",
-            factoryNameError: "",
-            factoryIdentifierError: "",
           }));   
         }
         i++;     
@@ -140,12 +135,9 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       factoryCd: new FormControl("", [Validators.required, Validators.maxLength(3)]),
       factoryName: new FormControl("", [Validators.required, Validators.maxLength(120)]),
       factoryIdentifier: new FormControl("", [Validators.required, Validators.maxLength(3)]),
-      storageLocation: new FormControl(""),
+      storageLocation: new FormControl("", [Validators.required]),
       delete: null,
       addRow: true,
-      factoryCdError: "",
-      factoryNameError: "",
-      factoryIdentifierError: "",
     }));
     this.table.renderRows();
   }
@@ -182,23 +174,6 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
   public goHome() {
     sessionStorage.clear();
     this.routerLink.navigate(['/']);
-  }
-
-  public getMessageError(row: number, key: string) {
-    if (this.factoryList.at(row).valid) {
-      return;
-    }
-    var controlErrors = this.factoryList.at(row).get(key)?.errors;
-    if (controlErrors != null) {   
-      const controlName = key + "Error";
-      // Object.keys(controlErrors).forEach( e => console.log('error: ' + e + ", data" +  controlErrors?.["min"].min));
-      
-      switch (Object.keys(controlErrors).pop()) {
-        case "required": this.factoryList.at(row).get(controlName)?.setValue("この項目は必須です") 
-                         break;
-        default: this.factoryList.at(row).get(controlName)?.setValue("桁以下を入力する") ;
-      }
-    }
   }
 
   public calcFlex(ratio: number) {

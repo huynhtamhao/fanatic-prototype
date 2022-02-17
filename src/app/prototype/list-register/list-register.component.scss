@@ -114,11 +114,7 @@ $button-primary-color: #cce8ff;
   line-height: 0px;
 }
 
-.error-tooltip {
-  background: #b71c1c !important;
+.input-tooltip {
+  width: 100%; 
+  padding-right: 2px;
 }
-
-.tooltip-red{
-  // margin-top:-80px;
-  background: #b71c1c;
- }

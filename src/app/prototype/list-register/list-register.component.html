@@ -40,38 +40,32 @@
         <ng-container matColumnDef="factoryCd">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">仕入先CD</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-            <input matInput id="txt-factoryCd-{{i}}" formControlName="factoryCd" maxlength="3"
-            [ngClass]="{'error-input':factoryList.controls[i]?.get('factoryCd')?.invalid}"/>
+            <kairos-input-tooltip-table id="factoryCd-{{i}}" [maxLength] = 3 [controlName]="row.get('factoryCd')" class="input-tooltip">
+            </kairos-input-tooltip-table>
           </mat-cell>
         </ng-container>
         <!-- factory name Column -->
         <ng-container matColumnDef="factoryName">
           <mat-header-cell *matHeaderCellDef>仕入先名</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" formGroupName="{{i}}">
-            <input id="txt-factoryName-{{i}}" formControlName="factoryName" maxlength="120" 
-            matTooltipClass="error-tooltip"
-            matTooltip = "{{row.get('factoryNameError').value}}"
-            matTooltipDisabled="{{row.get('factoryName')?.valid}}"
-            matTooltipPosition="left"
-            (change)="getMessageError(i,'factoryName')"        
-            [ngClass]="{'error-input':row.get('factoryName')?.invalid}"/>
-            <!-- <kairos-input-tooltip-table id="factoryName-{{i}}" maxlength=120 [controlName]="row.get('factoryName')" style="width: 99.2%">
-            </kairos-input-tooltip-table> -->
+            <kairos-input-tooltip-table id="factoryName-{{i}}" [maxLength] = "120" [controlName]="row.get('factoryName')" class="input-tooltip">
+            </kairos-input-tooltip-table>
           </mat-cell>
         </ng-container>
         <!-- factory identifier Column -->
         <ng-container matColumnDef="factoryIdentifier">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">工場識別子</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-            <input matInput id="txt-factoryIdentifier-{{i}}" formControlName="factoryIdentifier" maxlength="3"
-            [ngClass]="{'error-input':factoryList.controls[i]?.get('factoryIdentifier')?.invalid}"/>
+            <kairos-input-tooltip-table id="factoryIdentifier-{{i}}" [maxLength]=3 [controlName]="row.get('factoryIdentifier')" class="input-tooltip">
+            </kairos-input-tooltip-table>
           </mat-cell>
         </ng-container>
         <!-- storage location Column -->
         <ng-container matColumnDef="storageLocation">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">保管場所</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-            <input matInput id="txt-storageLocation-{{i}}" formControlName="storageLocation" maxlength="6"/>
+            <kairos-input-tooltip-table id="storageLocation-{{i}}" [maxLength]=6 [controlName]="row.get('storageLocation')" class="input-tooltip">
+            </kairos-input-tooltip-table>
           </mat-cell>
         </ng-container>
         <!-- trash Column -->
