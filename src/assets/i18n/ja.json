@@ -1,10 +1,10 @@
 {
+  "commonToastr": {
+    "failure": "{{ item }}が失敗しました。",
+    "success": "{{ item }}が成功しました。"
+  },
   "header": {
-    "systemName": "カイロス",
-    "userMenu": {
-      "changePassword": "パスワード変更",
-      "logout": "ログアウト"
-    }
+    "systemName": "カイロス"
   },
   "sidebar": {
     "mainText": {

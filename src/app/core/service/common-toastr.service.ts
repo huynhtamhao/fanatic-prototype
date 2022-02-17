@@ -3,11 +3,11 @@ import { TranslocoService } from '@ngneat/transloco';
 import { ToastrService } from 'ngx-toastr';
 
 class ToastrData {
-  messageId: string;
-  param?: string[];
+  messageKey: string;
+  param?: Record<string, unknown>;
 
   constructor() {
-    this.messageId = '';
+    this.messageKey = '';
   }
 }
 
@@ -26,12 +26,12 @@ class ToastrBuilder {
     this.toastrData = new ToastrData();
   }
 
-  setMessageId(messageId: string) {
-    this.toastrData.messageId = messageId;
+  setMessageKey(messageId: string) {
+    this.toastrData.messageKey = messageId;
     return this;
   }
 
-  setParam(...param: string[]) {
+  setParam(param: Record<string, unknown>) {
     this.toastrData.param = param;
     return this;
   }
@@ -39,79 +39,64 @@ class ToastrBuilder {
 
 class SuccessToastrBuilder extends ToastrBuilder implements ShowToastr {
   show(): void {
-    this.toastr.success(this.transloco.translate(this.toastrData.messageId, this.toastrData.param));
+    this.toastr.success(this.transloco.translate(this.toastrData.messageKey, this.toastrData.param));
   }
 }
 
 class FailureToastrBuilder extends ToastrBuilder implements ShowToastr {
   show(): void {
-    this.toastr.error(this.transloco.translate(this.toastrData.messageId, this.toastrData.param));
+    this.toastr.error(this.transloco.translate(this.toastrData.messageKey, this.toastrData.param));
   }
 }
 
 class CommonToastrBuilder {
 
-  public messageId!: string;
-  public messageIdParam!: string;
-
   constructor(
     private toastr: ToastrService,
     private transloco: TranslocoService,
+    private item: string,
   ) { }
 
-  success(item?: string) {
+  success() {
     const toastrBuilder = new SuccessToastrBuilder(this.toastr, this.transloco);
-    toastrBuilder.setMessageId(this.messageId);
-    if (!!item) {
-      toastrBuilder.setMessageId(this.messageIdParam);
-      toastrBuilder.setParam('Param A');
-    }
+    toastrBuilder.setMessageKey('commonToastr.success');
+    const param = { 'item': this.item }
+    toastrBuilder.setParam(param);
     return toastrBuilder;
   }
 
-  failure(item?: string) {
+  failure() {
     const toastrBuilder = new FailureToastrBuilder(this.toastr, this.transloco);
-    toastrBuilder.setMessageId(this.messageId);
-    if (!!item) {
-      toastrBuilder.setMessageId(this.messageIdParam);
-      toastrBuilder.setParam('Param B');
-    }
+    toastrBuilder.setMessageKey('commonToastr.failure');
+    const param = { 'item': this.item }
+    toastrBuilder.setParam(param);
     return toastrBuilder;
   }
 }
 
-/**
- *
- */
 @Injectable({
   providedIn: 'root'
 })
 export class CommonToastrService {
 
-  private toastr: CommonToastrBuilder;
-
   constructor(
     private toastrService: ToastrService,
     private translocoService: TranslocoService,
-  ) {
-    this.toastr = new CommonToastrBuilder(this.toastrService, this.translocoService);
+  ) { }
+
+  register(item?: string) {
+    return this.build(!!item ? '登録の' + item : '登録');
   }
 
-  register() {
-    this.toastr.messageId = 'AAA';
-    this.toastr.messageIdParam = 'BBB';
-    return this.toastr;
+  update(item?: string) {
+    return this.build(!!item ? '変更の' + item : '変更');
   }
 
-  update() {
-    this.toastr.messageId = 'AAA';
-    this.toastr.messageIdParam = 'BBB';
-    return this.toastr;
+  delete(item?: string) {
+    return this.build(!!item ? '削除の' + item : '削除');
   }
 
-  delete() {
-    this.toastr.messageId = 'AAA';
-    this.toastr.messageIdParam = 'BBB';
-    return this.toastr;
+  private build(param: string) {
+    return new CommonToastrBuilder(this.toastrService, this.translocoService, param);
   }
 }
