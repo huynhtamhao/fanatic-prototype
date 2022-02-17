@@ -27,7 +27,10 @@ export function initialize(configService: ConfigService) {
     CoreModule,
     TranslocoRootModule,
     KairosCommonComponentsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-top-center',
+    }),
   ],
   providers: [
     {
