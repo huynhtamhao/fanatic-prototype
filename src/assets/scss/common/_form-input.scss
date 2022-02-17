@@ -43,3 +43,24 @@ mat-form-field.mat-form-field-appearance-outline.mat-form-field-disabled .mat-fo
   background-color: #c7c5c5;
   border-radius: 5px;
 }
+
+/* screen width */
+@media screen and (width < (572px + $sidenav-width)) {
+  .row-detail.row-detail-large {
+    .column-item-other,
+    .column-item-input {
+      max-width: 100% !important;
+      flex-basis: 100% !important;
+    }
+  }
+}
+
+@media screen and (width < (782px + $sidenav-width)) {
+  .row-detail.row-detail-small {
+    .column-item-other,
+    .column-item-input {
+      max-width: 45% !important;
+      flex-basis: 45% !important;
+    }
+  }
+}
