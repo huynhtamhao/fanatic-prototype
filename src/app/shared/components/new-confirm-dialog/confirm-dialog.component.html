@@ -1,0 +1,30 @@
+<header>
+  <h2 mat-dialog-title>{{ data.title }}</h2>
+</header>
+
+<mat-dialog-content>
+  <div fxLayout="row">
+    <div fxLayoutAlign="baseline center" fxFlex="20">
+      <mat-icon class="material-icons">{{ data.icon }}</mat-icon>
+    </div>
+    <div fxLayoutAlign="baseline center" class="content-message content-multi-line" fxFlex="80">
+      {{ data.messageKey | transloco: data.param }}
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="end center">
+  <br />
+  <div fxLayout="row">
+    <div fxLayoutAlign="start" fxFlex="50">
+      <button class="btn-main" [mat-dialog-close]="true">
+        {{ data.leftButtonText }}
+      </button>
+    </div>
+    <div fxLayoutAlign="end" fxFlex="50">
+      <button class="btn-normal" [mat-dialog-close]="false" cdkFocusInitial>
+        {{ data.rightButtonText }}
+      </button>
+    </div>
+  </div>
+</mat-dialog-actions>
