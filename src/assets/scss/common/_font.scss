@@ -1,0 +1,10 @@
+@import "~@angular/material/theming";
+$font: Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+$custom-typography: mat-typography-config(
+  $font-family: $font,
+  $body-1: mat-typography-level(13px, 24px, 400),
+  $caption: mat-typography-level(13px, 24px, 400),
+  $button: mat-typography-level(13px, 24px, 400),
+);
+
+@include angular-material-typography($custom-typography);
