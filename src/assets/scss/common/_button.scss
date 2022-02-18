@@ -1,23 +1,30 @@
-$button-min-width: 150px;
+$button-min-width: 100px;
+$button-height: 40px;
+$button-padding: 5px;
+$button-primary-color: rgb(240, 240, 240);
+$button-border-color: rgb(191, 191, 191);
+
+@mixin create-button($border-color, $background-color: white) {
+  min-width: $button-min-width;
+  height: $button-height;
+  padding-inline: $button-padding;
+  border: 2px solid $border-color;
+  background-color: $background-color;
+}
 
 .btn-normal,
 .btn-normal.mat-button {
-  min-width: $button-min-width;
-  border: 2px solid rgb(191, 191, 191);
-  background-color: white;
+  @include create-button($button-border-color);
 }
 
 .btn-main,
 .btn-main.mat-button {
-  min-width: $button-min-width;
-  border: 2px solid #c6d9f1;
-  background-color: $main-color;
-  height: 40px;
+  @include create-button($button-border-color, $button-primary-color);
 }
 
 button:not(.mat-icon-button) {
-
-  &:disabled, [disabled] {
+  &:disabled,
+  [disabled] {
     border: 2px solid $disabled-color;
     background-color: $disabled-color;
   }
