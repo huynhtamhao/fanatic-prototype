@@ -12,6 +12,7 @@ $button-min-width: 150px;
   min-width: $button-min-width;
   border: 2px solid #c6d9f1;
   background-color: $main-color;
+  height: 40px;
 }
 
 button:not(.mat-icon-button) {

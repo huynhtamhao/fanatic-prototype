@@ -3,35 +3,37 @@
   <br>
   <form [formGroup]="formSearch">
     <mat-accordion multi>
-      <mat-expansion-panel [togglePosition]="'before'">
+      <mat-expansion-panel [togglePosition]="'before'" expanded=true>
         <mat-expansion-panel-header>
           <mat-panel-title>検索条件</mat-panel-title>
         </mat-expansion-panel-header>
-        <div fxLayout="row wrap" class="row-detail-large">
-          <div fxLayout="row" [fxFlex]="calcFlex(13)" class="column-item-input">
-            <div class="label-header">仕入先コード：</div>
-            <mat-form-field fxFlex="50" appearance="outline" class="input-outline">
-              <input matInput type="text" id="txt-factoryCd" formControlName="factoryCd" />
-            </mat-form-field>
+        <div fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="end">
+            <button mat-button type="button" id="btn-clear" (click)="onClear()" class="btn-normal">条件クリア</button>
           </div>
-          <div fxLayout="row" [fxFlex]="calcFlex(17)" class="column-item-input">
-            <div class="label-header">仕入先名：</div>
-            <mat-form-field fxFlex="80" appearance="outline" class="input-outline">
-              <input matInput type="text" id="txt-factoryName" formControlName="factoryName" />
-            </mat-form-field>
+        </div>
+        <p></p>
+        <div fxLayout="column">
+          <div fxLayout="row wrap" class="row-detail-large">
+            <div fxLayout="row" [fxFlex]="calcFlex(10)" class="column-item-input">
+              <div class="label-header">商品コード：</div>
+              <mat-form-field fxFlex="50" appearance="outline" class="input-outline">
+                <input matInput type="text" id="txt-productCd" formControlName="productCd" />
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" [fxFlex]="calcFlex(15)" class="column-item-input">
+              <div class="label-header">商品名：</div>
+                <mat-form-field fxFlex="80" appearance="outline" class="input-outline">
+                  <input matInput type="text" id="txt-productName" formControlName="productName" />
+                </mat-form-field>
+            </div>
+            <div fxLayout="row" [fxFlex]="calcFlex(5)" fxLayoutAlign="end">
+              <button mat-button type="button" id="btn-search" (click)="onSearch()" class="btn-main">検索</button>
+            </div>
           </div>
         </div>
       </mat-expansion-panel>
     </mat-accordion>
-    <br>
-    <div fxLayout="row wrap">
-      <div fxFlex="50" fxLayout="row">
-        <button mat-button type="button" id="btn-search" (click)="onSearch()" class="btn-main">検索</button>
-      </div>
-      <div fxFlex="50" fxLayout="row" fxLayoutAlign="end">
-        <button mat-button type="button" id="btn-clear" (click)="onClear()" class="btn-normal">条件クリア</button>
-      </div>
-    </div>
     <br>
     <div>
       <mat-table [dataSource]="factoryList.controls" class="table-custom mat-elevation-z2"

@@ -135,7 +135,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       factoryCd: new FormControl("", [Validators.required, Validators.maxLength(3)]),
       factoryName: new FormControl("", [Validators.required, Validators.maxLength(120)]),
       factoryIdentifier: new FormControl("", [Validators.required, Validators.maxLength(3)]),
-      storageLocation: new FormControl("", [Validators.required]),
+      storageLocation: new FormControl(""),
       delete: null,
       addRow: true,
     }));
