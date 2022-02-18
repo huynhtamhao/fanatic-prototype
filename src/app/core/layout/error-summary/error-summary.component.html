@@ -1,4 +1,4 @@
-<div class="error-summary" [ngClass]="{'error-box': errors.length > 0}">
+<div class="error-summary" [ngClass]="{'show-error-summary': errors.length > 0}">
   <ng-container *ngIf="errors.length > 0">
     <mat-icon class="material-icons icon-error">warning</mat-icon><b>{{errors.length}} Errors:</b>
   </ng-container>
