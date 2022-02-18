@@ -23,8 +23,7 @@ export const i18nSetting = {
 }
 
 export const defaultMatDialogConfig = {
-  minWidth: '250px',
-  maxWidth: '350px',
+  width: '350px',
   panelClass: ['mat-elevation-z8', 'mat-dialog-custom'],
   autoFocus: false,
   disableClose: true,
