@@ -1,10 +1,11 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { DialogUtilsService } from '@shared/components/dialog-confirm/dialog-utils.service';
+import { CommonToastrService } from 'src/app/core/service/common-toastr.service';
 @Component({
   selector: 'kairos-list-register',
   templateUrl: './list-register.component.html',
@@ -19,6 +20,8 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     private formBuilder: FormBuilder,
     private routerLink: Router,
     private dialog: DialogUtilsService,
+    private toastr: CommonToastrService,
+    @Inject(LOCALE_ID) public locale: string,
   ) { }
 
   public displayedColumns: string[] = ['factoryCd', 'factoryName', 'factoryIdentifier', 'storageLocation', 'delete'];
@@ -35,10 +38,10 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     var i = 0;
-    while(i !== 10) {
+    while(i < 10) {
       this.dataList.push(this.formBuilder.group({
         factoryCd: "F0" + i,
-        factoryName: "東大阪0" + i,
+        factoryName:  "東大阪0" + i,
         factoryIdentifier: 'W',
         storageLocation: 'WH110' + i,
         delete: null,
@@ -54,6 +57,8 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    console.log('ngAfterViewInit');
+    
     this.paginator.page.subscribe(() => this.onSearch(this.paginator.pageIndex, this.paginator.pageSize));
   }
 
@@ -100,11 +105,12 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       if (check) {   
         if (from <= i && i < to) {      
           this.factoryList.push(this.formBuilder.group({
-            factoryCd: new FormControl({value: fac.factoryCd, disabled: true}, Validators.required),
-            factoryName: new FormControl(fac.factoryName, Validators.required),
-            factoryIdentifier: new FormControl(fac.factoryIdentifier, [Validators.required]),
-            storageLocation: new FormControl(fac.storageLocation, [Validators.required]),
+            factoryCd: new FormControl({value: fac.factoryCd, disabled: true}, [Validators.required, Validators.maxLength(3)]),
+            factoryName: new FormControl(fac.factoryName, [Validators.required, Validators.maxLength(120)]),
+            factoryIdentifier: new FormControl(fac.factoryIdentifier, [Validators.required, Validators.maxLength(3)]),
+            storageLocation: new FormControl(fac.storageLocation),
             delete: fac.delete,
+            addRow: false,
           }));   
         }
         i++;     
@@ -118,7 +124,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     this.formSearch.markAsPristine();
   }
 
-  public onClear(): void {
+  public onClear(){
     this.formSearch.patchValue({
       factoryCd: "",
       factoryName: "",
@@ -128,12 +134,18 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
 
   public addRow(){
     this.factoryList.push(this.formBuilder.group({
-      factoryCd: new FormControl("", [Validators.required]),
-      factoryName: new FormControl("", [Validators.required]),
-      factoryIdentifier: new FormControl("", [Validators.required]),
-      storageLocation: new FormControl("", [Validators.required]),
+      factoryCd: new FormControl("", [Validators.required, Validators.maxLength(3)]),
+      factoryName: new FormControl("", [Validators.required, Validators.maxLength(120)]),
+      factoryIdentifier: new FormControl("", [Validators.required, Validators.maxLength(3)]),
+      storageLocation: new FormControl(""),
       delete: null,
+      addRow: true,
     }));
+    this.table.renderRows();
+  }
+
+  public removeRow(iRow: number){
+    this.factoryList.removeAt(iRow);
     this.table.renderRows();
   }
 
@@ -155,8 +167,9 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       }
     });
 
-    // open dialog
-    this.dialog.openDialogSuccessUpdate(); 
+    // open toast
+    this.toastr.update().success().show();
+    
     // research
     this.search();
   }
