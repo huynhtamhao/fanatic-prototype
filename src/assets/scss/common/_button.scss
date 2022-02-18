@@ -1,8 +1,10 @@
-$button-min-width: 150px;
+$button-min-width: 130px;
+$button-height: 40px;
 
 .btn-normal,
 .btn-normal.mat-button {
   min-width: $button-min-width;
+  height: $button-height;
   border: 2px solid rgb(191, 191, 191);
   background-color: white;
 }
@@ -10,7 +12,8 @@ $button-min-width: 150px;
 .btn-main,
 .btn-main.mat-button {
   min-width: $button-min-width;
-  border: 2px solid #c6d9f1;
+  height: $button-height;
+  border: 2px solid #a6c8f1;
   background-color: $main-color;
 }
 
