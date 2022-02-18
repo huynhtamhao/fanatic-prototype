@@ -1,16 +1,71 @@
 {
-  "commonToastr": {
-    "failure": "{{ item }}が失敗しました。",
-    "success": "{{ item }}が成功しました。"
+  "dialog": {
+    "confirm": {
+      "buttonText": {
+        "cancel": "Cancel",
+        "leftDefault": "Yes",
+        "ok": "OK",
+        "rightDefault": "No"
+      },
+      "delete": {
+        "message": "Do you want to delete?",
+        "messageItem": "Do you want to delete this {{ item }}?",
+        "title": "Confirm"
+      },
+      "register": {
+        "message": "Do you want to register?",
+        "messageItem": "Do you want to register this {{ item }}?",
+        "title": "Confirm"
+      },
+      "stayOnThisPage": {
+        "message": "The data has been edited. Do you want to stay on this page?"
+      },
+      "title": "Confirm",
+      "update": {
+        "message": "Do you want to update?",
+        "messageItem": "Do you want to update this {{ item }}?",
+        "title": "Confirm"
+      }
+    }
   },
   "header": {
-    "systemName": "Kairos"
+    "systemName": "Kairos",
+    "userMenu": {
+      "changePassword": "Change Password",
+      "logout": "Logout"
+    }
   },
   "sidebar": {
     "mainText": {
       "admin": "Administrator",
       "home": "Menu",
       "master": "Master"
+    }
+  },
+  "toastr": {
+    "delete": {
+      "message": {
+        "failure": "Delete failed.",
+        "failureItem": "Delete this {{ item }} failed.",
+        "success": "Has been successfully deleted.",
+        "successItem": "This {{ item }} has been successfully deleted."
+      }
+    },
+    "register": {
+      "message": {
+        "failure": "Register failed.",
+        "failureItem": "Register this {{ item }} failed.",
+        "success": "Has been successfully registered.",
+        "successItem": "This {{ item }} has been successfully registered."
+      }
+    },
+    "update": {
+      "message": {
+        "failure": "Update failed.",
+        "failureItem": "Update this {{ item }} failed.",
+        "success": "Has been successfully updated.",
+        "successItem": "This {{ item }} has been successfully updated."
+      }
     }
   }
 }

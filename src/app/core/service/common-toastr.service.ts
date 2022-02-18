@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 import { ToastrService } from 'ngx-toastr';
 
+type ActionToastr = 'register' | 'update' | 'delete';
+
 class ToastrData {
   messageKey: string;
   param?: Record<string, unknown>;
@@ -16,12 +18,11 @@ interface ShowToastr {
 }
 
 class ToastrBuilder {
-
   protected toastrData: ToastrData;
 
   constructor(
     protected toastr: ToastrService,
-    protected transloco: TranslocoService,
+    protected transloco: TranslocoService
   ) {
     this.toastrData = new ToastrData();
   }
@@ -50,53 +51,57 @@ class FailureToastrBuilder extends ToastrBuilder implements ShowToastr {
 }
 
 class CommonToastrBuilder {
-
   constructor(
     private toastr: ToastrService,
     private transloco: TranslocoService,
-    private item: string,
+    private action: ActionToastr,
+    private item?: string
   ) { }
 
   success() {
     const toastrBuilder = new SuccessToastrBuilder(this.toastr, this.transloco);
-    toastrBuilder.setMessageKey('commonToastr.success');
-    const param = { 'item': this.item }
+    // Setting Key & param
+    const messageKey = !!this.item ? 'successItem' : 'success';
+    toastrBuilder.setMessageKey('toastr.' + this.action + '.message.' + messageKey);
+    const param = { item: this.item };
     toastrBuilder.setParam(param);
     return toastrBuilder;
   }
 
   failure() {
     const toastrBuilder = new FailureToastrBuilder(this.toastr, this.transloco);
-    toastrBuilder.setMessageKey('commonToastr.failure');
-    const param = { 'item': this.item }
+    // Setting Key & param
+    const messageKey = !!this.item ? 'failureItem' : 'failure';
+    toastrBuilder.setMessageKey('toastr.' + this.action + '.message.' + messageKey);
+    const param = { item: this.item };
     toastrBuilder.setParam(param);
     return toastrBuilder;
   }
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CommonToastrService {
 
   constructor(
     private toastrService: ToastrService,
-    private translocoService: TranslocoService,
+    private translocoService: TranslocoService
   ) { }
 
   register(item?: string) {
-    return this.build((!!item ? item + 'の' : '') + '登録');
+    return this.build('register', item);
   }
 
   update(item?: string) {
-    return this.build((!!item ? item + 'の' : '') + '変更');
+    return this.build('update', item);
   }
 
   delete(item?: string) {
-    return this.build((!!item ? item +'の' : '') + '削除');
+    return this.build('delete', item);
   }
 
-  private build(param: string) {
-    return new CommonToastrBuilder(this.toastrService, this.translocoService, param);
+  private build(action: ActionToastr, item?: string) {
+    return new CommonToastrBuilder(this.toastrService, this.translocoService, action, item);
   }
 }
