@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { ProductService } from '../services/product.service';
 import { CommonToastrService } from 'src/app/core/service/common-toastr.service';
+import { HeaderUtilsService } from 'src/app/core/service/header-utils.service';
+import { Constants } from 'src/app/core/constants/Constants';
 
 @Component({
   selector: 'kairos-register',
@@ -26,7 +28,10 @@ export class RegisterComponent implements OnInit {
     private productService: ProductService,
     private commonToastrService: CommonToastrService,
     private location: Location,
-  ) { }
+    private headerUtils: HeaderUtilsService,
+  ) {
+    this.headerUtils.setTitle(Constants.SCREEN_NAME.ORDER_REGISTER);
+  }
 
   ngOnInit(): void {
   }

@@ -1,40 +1,29 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { Subscription, timer } from 'rxjs';
-import { Constants } from '../../constants/Constants';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { HeaderUtilsService } from '../../service/header-utils.service';
 
 @Component({
   selector: 'kairos-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
 
-  private subscription = new Subscription();
-  private currentDate = new Date();
-  public dateTimeJP = this.convertDateTimeZone(this.currentDate, Constants.localeJP, Constants.timezoneJP).getTime();
+  public title = '';
 
   @Output() toggleSidebarEvent = new EventEmitter<void>();
 
+  constructor(
+    private headerUtils: HeaderUtilsService,
+  ) { }
+
   ngOnInit(): void {
-    // time annotation
-    this.subscription = timer(0, 1000)
-      .subscribe(() => {
-        this.dateTimeJP = this.dateTimeJP + 1000;
-      });
-  }
-
-  convertDateTimeZone(date: Date, locale: string, timeZone: string) {
-    return new Date(date.toLocaleString(locale, { timeZone: timeZone }));
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
+    // title
+    this.headerUtils.title.subscribe(title => {
+      this.title = title;
+    });
   }
 
   toggleSidebar() {
     this.toggleSidebarEvent.emit();
   }
-
 }

@@ -6,7 +6,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { DialogUtilsService } from '@shared/components/dialog-confirm/dialog-utils.service';
+import { Constants } from 'src/app/core/constants/Constants';
 import { CommonToastrService } from 'src/app/core/service/common-toastr.service';
+import { HeaderUtilsService } from 'src/app/core/service/header-utils.service';
 @Component({
   selector: 'kairos-list-register',
   templateUrl: './list-register.component.html',
@@ -22,8 +24,11 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     private routerLink: Router,
     private dialog: DialogUtilsService,
     private toastr: CommonToastrService,
+    private headerUtils: HeaderUtilsService,
     @Inject(LOCALE_ID) public locale: string,
-  ) { }
+  ) {
+    this.headerUtils.setTitle(Constants.SCREEN_NAME.LIST_REGISTER);
+  }
 
   public displayedColumns: string[] = ['factoryCd', 'factoryName', 'factoryIdentifier', 'storageLocation', 'delete'];
   public factoryList = this.formBuilder.array([]);

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HeaderUtilsService } from 'src/app/core/service/header-utils.service';
+import { Constants } from 'src/app/core/constants/Constants';
 
 @Component({
   selector: 'kairos-items-detail',
@@ -27,7 +29,10 @@ export class ItemsDetailComponent {
 
   constructor(
     private location: Location,
-  ) { }
+    private headerUtils: HeaderUtilsService,
+  ) {
+    this.headerUtils.setTitle(Constants.SCREEN_NAME.ITEMS_REGISTER);
+  }
 
   onCancel() {
     this.location.back();

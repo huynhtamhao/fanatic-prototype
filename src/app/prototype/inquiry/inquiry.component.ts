@@ -3,6 +3,8 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../models/product';
 import { ProductService } from '../services/product.service';
+import { HeaderUtilsService } from 'src/app/core/service/header-utils.service';
+import { Constants } from 'src/app/core/constants/Constants';
 
 @Component({
   selector: 'kairos-inquiry',
@@ -18,7 +20,10 @@ export class InquiryComponent implements OnInit {
     private router: Router,
     private activeRoute: ActivatedRoute,
     private location: Location,
-  ) { }
+    private headerUtils: HeaderUtilsService,
+  ) {
+    this.headerUtils.setTitle(Constants.SCREEN_NAME.ORDER_VIEW);
+  }
 
   ngOnInit(): void {
     const productCd = this.activeRoute.snapshot.paramMap.get('productCd');
