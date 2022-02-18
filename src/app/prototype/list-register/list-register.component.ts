@@ -30,6 +30,8 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
   public dataList = this.formBuilder.array([]);
   public quantityTotal = 0;
   public dataSource = [];
+  public pageIndexPrevious = 0;
+  public pageSizePrevious = 5;
 
   formSearch: FormGroup = this.formBuilder.group({
     factoryCd: new FormControl(''),
@@ -58,7 +60,8 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit');
+    console.log('pageIndex', this.paginator.pageIndex);
+    console.log('pageSize', this.paginator.pageSize);
     
     this.paginator.page.subscribe(() => this.onSearch(this.paginator.pageIndex, this.paginator.pageSize));
   }
@@ -71,7 +74,10 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       dialogRef.afterClosed().subscribe(res => {
         if(!res) {
           this.search(pageNumber,size);
-        } 
+        } else {
+          this.paginator.pageIndex = this.pageIndexPrevious;
+          this.paginator.pageSize = this.pageSizePrevious;
+        }
       });
     } else {
       this.search(pageNumber,size);
@@ -86,6 +92,9 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
 
     // Save Search Condition
     sessionStorage.setItem('list-register', JSON.stringify(this.formSearch.getRawValue()));
+    // save info page
+    this.pageIndexPrevious = pageNumber;
+    this.pageSizePrevious = size;
 
     const code = this.formSearch.get("factoryCd")?.value.toLowerCase();
     const name = this.formSearch.get("factoryName")?.value.toLowerCase();
