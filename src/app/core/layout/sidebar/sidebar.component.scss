@@ -60,8 +60,8 @@ mat-nav-list {
   }
 }
 
-/* system name */
-.system-setting {
+/* system box */
+.system-box {
   padding: 40px 0px;
   display: flex;
   flex-direction: column;
@@ -76,32 +76,4 @@ mat-nav-list {
     font-weight: bold;
     cursor: pointer;
   }
-}
-
-/* user */
-.user {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  .material-icons {
-    border: 1px solid;
-    font-size: 32px;
-    width: fit-content;
-    height: fit-content;
-    cursor: pointer;
-  }
-
-  .user-id {
-    font-weight: bold;
-  }
-
-  P {
-    margin: 0;
-  }
-}
-
-.under-divider {
-  padding-left: 56px;
 }

@@ -1,18 +1,16 @@
-$headerBackgroundColor: #2b71b8;
-
 .header-system {
-  color: whitesmoke;
   min-height: 38px;
-  padding: 10px 0px;
-  background-color: $headerBackgroundColor;
+  padding: 30px 0px;
 
   div {
     padding-left: 10px;
   }
 
   div:last-of-type {
-
-    mat-icon {
+    .material-icons {
+      font-size: 32px;
+      width: fit-content;
+      height: fit-content;
       cursor: pointer;
     }
 
@@ -22,16 +20,11 @@ $headerBackgroundColor: #2b71b8;
   }
 
   button {
-    background-color: $headerBackgroundColor;
-    border-width: 0;
-    color: whitesmoke;
+    background-color: white;
+    border-width: 1px solid;
   }
 }
 
-.system-name a {
-  text-decoration: none;
-  color: inherit;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
+.under-divider {
+  padding-left: 56px;
 }

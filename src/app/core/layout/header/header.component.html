@@ -1,18 +1,14 @@
 <div class="header-system" fxLayout="row">
-  <div fxLayoutAlign="start center" fxFlex="">
+  <div fxLayoutAlign="start center">
     <button mat-icon-button (click)="toggleSidebar()">
       <mat-icon>menu</mat-icon>
     </button>
   </div>
-  <div class="system-name" fxLayoutAlign="start center" fxFlex="18">
-    <a href="/">{{ 'header.systemName' | transloco }}</a>
+  <div fxLayoutAlign="start center" fxFlex="20" class="mat-headline">
+    受注登録
   </div>
-  <div fxLayoutAlign="start center" fxFlex="12">受注登録</div>
-  <div fxLayoutAlign="start center" fxFlex="18">業務日付：{{ dateTimeJP | date: 'YYYY/MM/dd' }}</div>
-  <div fxLayoutAlign="start center" fxFlex="12">時刻：{{ dateTimeJP | date: 'HH:mm:ss' }}</div>
-  <div fxLayoutAlign="start center" fxFlex="18">株式会社ファナティック</div>
-  <div fxLayoutAlign="start center" fxFlex="12">システム開発部</div>
-  <div fxLayoutAlign="end center" fxFlex="12">
+  <div fxFlex></div>
+  <div fxLayoutAlign="end center" fxFlex="20">
     <mat-icon matBadge="1" matBadgeColor="warn" [matMenuTriggerFor]="menu">account_circle</mat-icon>
     <label class="user-id">255：堀尾公彦</label>
     <mat-menu #menu="matMenu">
@@ -22,6 +18,9 @@
       <button mat-menu-item>
         <mat-icon>logout</mat-icon>{{ 'header.userMenu.logout' | transloco }}
       </button>
+      <mat-divider></mat-divider>
+      <label mat-menu-item class="under-divider">株式会社ファナティック</label>
+      <label mat-menu-item class="under-divider">システム開発部</label>
     </mat-menu>
   </div>
 </div>

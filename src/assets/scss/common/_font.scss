@@ -9,3 +9,7 @@ $custom-typography: mat-typography-config(
 );
 
 @include angular-material-typography($custom-typography);
+
+.mat-headline, .mat-h1 {
+  margin-bottom: 0;
+}

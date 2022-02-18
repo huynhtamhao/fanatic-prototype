@@ -1,11 +1,13 @@
-<!-- <kairos-header (toggleSidebarEvent)="kairosSideBar.toggle()"></kairos-header> -->
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #kairosSideBar mode="side" opened>
     <kairos-sidebar></kairos-sidebar>
   </mat-sidenav>
-  <mat-sidenav-content style="padding:5px 10px 0px 10px;">
-    <kairos-error-summary></kairos-error-summary>
-    <br />
-    <router-outlet></router-outlet>
+  <mat-sidenav-content>
+    <kairos-header (toggleSidebarEvent)="kairosSideBar.toggle()"></kairos-header>
+    <div class="sidenav-content">
+      <kairos-error-summary></kairos-error-summary>
+      <br />
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
