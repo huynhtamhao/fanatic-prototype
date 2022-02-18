@@ -64,13 +64,13 @@ $button-primary-color: #cce8ff;
   .mat-footer-row {
     min-height: 28px;
     height: 32px;
-    border-bottom-style: none;
+    // border-bottom-style: none;
   }
 
   .mat-header-row {
     background-color: $main-color;
   }
-  position: relative;
+  // position: relative;
   overflow-x: auto;
   display: -ms-grid;
   display: grid;
@@ -85,7 +85,7 @@ $button-primary-color: #cce8ff;
 .no-data {
   color: black! important; 
   // font-size: 14px;
-  border-bottom: 1px solid #bdbdbd;
+  // border-bottom: 1px solid #bdbdbd;
 }
 
 .menu-list {
