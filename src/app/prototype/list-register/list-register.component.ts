@@ -1,3 +1,4 @@
+import { formatNumber } from '@angular/common';
 import { AfterViewInit, Component, Inject, LOCALE_ID, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
@@ -38,12 +39,12 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     var i = 0;
-    while(i < 10) {
+    while(i < 25) {
       this.dataList.push(this.formBuilder.group({
         factoryCd: "F0" + i,
         factoryName:  "東大阪0" + i,
         factoryIdentifier: 'W',
-        storageLocation: 'WH110' + i,
+        storageLocation: 'WH11' + formatNumber(i, this.locale,'2.0-0'),
         delete: null,
       }));
       i++;
@@ -129,7 +130,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       factoryCd: "",
       factoryName: "",
     });
-    this.accordion.openAll();
+    // this.accordion.openAll();
   }
 
   public addRow(){
