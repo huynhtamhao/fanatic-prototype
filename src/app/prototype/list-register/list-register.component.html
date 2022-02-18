@@ -1,8 +1,7 @@
-<mat-card>
-  <mat-card-title>一覧登録</mat-card-title>
+<mat-card-title>一覧登録</mat-card-title>
   <br>
   <form [formGroup]="formSearch">
-    <mat-accordion multi>
+    <mat-accordion multi class="expansion-panel">
       <mat-expansion-panel [togglePosition]="'before'" expanded=true>
         <mat-expansion-panel-header>
           <mat-panel-title>検索条件</mat-panel-title>
@@ -34,7 +33,7 @@
         </div>
       </mat-expansion-panel>
     </mat-accordion>
-    <br>
+    <p></p>
     <div>
       <mat-table [dataSource]="factoryList.controls" class="table-custom mat-elevation-z2"
         formArrayName="factoryList">
@@ -72,8 +71,8 @@
         </ng-container>
         <!-- trash Column -->
         <ng-container matColumnDef="delete">
-          <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(1)">削除</mat-header-cell>
-          <mat-cell *matCellDef="let row ; let i = index" fxLayoutAlign="center" [fxFlex]="calcFlex(1)" formGroupName="{{i}}">
+          <mat-header-cell *matHeaderCellDef fxFlex="45px">削除</mat-header-cell>
+          <mat-cell *matCellDef="let row ; let i = index" fxLayoutAlign="center" fxFlex="45px" formGroupName="{{i}}">
             <mat-checkbox id="chk-delete-{{i}}" formControlName="delete" class="checkbox-delete" *ngIf="!row.value.addRow; else addRow"></mat-checkbox>
             <ng-template #addRow>
               <button mat-button type="button" id="btn-add" (click)="removeRow(i)" class="button-delete" mat-icon-button color="accent">
@@ -108,5 +107,3 @@
       <button mat-button type="button" id="btn-home" class="btn-normal" (click)="goHome()">ホーム</button>
     </div>
   </div>
-  <br>
-</mat-card>

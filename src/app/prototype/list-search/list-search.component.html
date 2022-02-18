@@ -1,9 +1,7 @@
-<mat-card>
   <mat-card-title>一覧表示</mat-card-title>
   <mat-card-content>
-    <br>
     <form [formGroup]="formSearch">
-      <mat-accordion multi>
+      <mat-accordion multi class="expansion-panel">
         <mat-expansion-panel [togglePosition]="'before'" expanded=true>
           <mat-expansion-panel-header>
             <mat-panel-title>検索条件</mat-panel-title>
@@ -35,7 +33,7 @@
           </div>
         </mat-expansion-panel>
       </mat-accordion>
-      <br>
+      <p></p>
       <div>
         <mat-table [dataSource]="dataSource" class="table-custom mat-elevation-z2">
           <!-- product Cd Column -->
@@ -73,11 +71,11 @@
           </ng-container>
           <!-- processing Column -->
           <ng-container matColumnDef="processing">
-            <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(1)">操作</mat-header-cell>
-            <mat-cell *matCellDef="let row ; let i = index" fxLayoutAlign="center" [fxFlex]="calcFlex(1)">
+            <mat-header-cell *matHeaderCellDef fxFlex="45px">操作</mat-header-cell>
+            <mat-cell *matCellDef="let row ; let i = index" fxLayoutAlign="center" fxFlex="45px">
               <kairos-menu-list [items]="menuList" (itemSelect)="moveScreen(i, $event)" class="menu-list"></kairos-menu-list>
             </mat-cell>
-            <mat-footer-cell *matFooterCellDef [fxFlex]="calcFlex(1)" fxLayoutAlign="end center"></mat-footer-cell>
+            <mat-footer-cell *matFooterCellDef fxFlex="45px" fxLayoutAlign="end center"></mat-footer-cell>
           </ng-container>
           <ng-container matColumnDef="noData">
             <mat-footer-cell *matFooterCellDef [attr.colspan]="displayedColumns.length" class="no-data">
@@ -105,4 +103,3 @@
     </div>
     <br>
   </mat-card-content>
-</mat-card>
