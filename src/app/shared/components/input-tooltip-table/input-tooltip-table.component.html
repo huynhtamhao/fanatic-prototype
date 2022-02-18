@@ -1,0 +1,11 @@
+<input matInput
+       id="txt-{{id}}"
+       [formControl] = "controlName"
+       [maxlength] ="maxLength"
+       matTooltipClass="error-tooltip"
+       [matTooltip] = "errorMessage"
+       (change)="getErrorMessage()"
+       matTooltipDisabled="{{controlName.valid}}"
+       matTooltipPosition="left"
+       [ngClass]="{'error-input':controlName.invalid}"
+/>
