@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NewConfirmDialogComponent } from './new-confirm-dialog.component';
+import { InputTooltipTableComponent } from './input-tooltip-table.component';
 
-describe('NewConfirmDialogComponent', () => {
-  let component: NewConfirmDialogComponent;
-  let fixture: ComponentFixture<NewConfirmDialogComponent>;
+describe('InputTooltipTableComponent', () => {
+  let component: InputTooltipTableComponent;
+  let fixture: ComponentFixture<InputTooltipTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewConfirmDialogComponent ]
+      declarations: [ InputTooltipTableComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewConfirmDialogComponent);
+    fixture = TestBed.createComponent(InputTooltipTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

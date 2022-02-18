@@ -3,36 +3,37 @@
   <br>
   <form [formGroup]="formSearch">
     <mat-accordion multi>
-      <mat-expansion-panel [togglePosition]="'before'">
+      <mat-expansion-panel [togglePosition]="'before'" expanded=true>
         <mat-expansion-panel-header>
           <mat-panel-title>検索条件</mat-panel-title>
         </mat-expansion-panel-header>
-        <div fxLayout="row wrap" class="row-detail-large">
-          <div fxLayout="row" [fxFlex]="calcFlex(13)" class="column-item-input">
-            <div class="label-header">仕入先コード：</div>
+        <div fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="end">
+            <button mat-button type="button" id="btn-clear" (click)="onClear()" class="btn-normal">条件クリア</button>
+          </div>
+        </div>
+        <p></p>
+        <div fxLayout="column">
+          <div fxLayout="row wrap" class="row-detail-large">
+            <div fxLayout="row" [fxFlex]="calcFlex(10)" class="column-item-input">
+              <div class="label-header">仕入先コード：</div>
             <mat-form-field fxFlex="50" appearance="outline" class="input-outline">
               <input matInput type="text" id="txt-factoryCd" formControlName="factoryCd" />
             </mat-form-field>
-          </div>
-          <div fxLayout="row" [fxFlex]="calcFlex(17)" class="column-item-input">
-            <div class="label-header">仕入先名：</div>
-            <mat-form-field fxFlex="80" appearance="outline" class="input-outline">
-              <input matInput type="text" id="txt-factoryName" formControlName="factoryName" />
-            </mat-form-field>
+            </div>
+            <div fxLayout="row" [fxFlex]="calcFlex(15)" class="column-item-input">
+              <div class="label-header">仕入先名：</div>
+              <mat-form-field fxFlex="80" appearance="outline" class="input-outline">
+                <input matInput type="text" id="txt-factoryName" formControlName="factoryName" />
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" [fxFlex]="calcFlex(5)" fxLayoutAlign="end">
+              <button mat-button type="button" id="btn-search" (click)="onSearch()" class="btn-main">検索</button>
+            </div>
           </div>
         </div>
       </mat-expansion-panel>
     </mat-accordion>
-    <br>
-    <div fxLayout="row wrap">
-      <div fxFlex="50" fxLayout="row">
-        <button mat-button type="button" id="btn-search" (click)="onSearch()" class="btn-main">検索</button>
-      </div>
-      <div fxFlex="50" fxLayout="row" fxLayoutAlign="end">
-        <button mat-button type="button" id="btn-clear" (click)="onClear()" class="btn-normal">条件クリア</button>
-      </div>
-    </div>
-
     <br>
     <div>
       <mat-table [dataSource]="factoryList.controls" class="table-custom mat-elevation-z2"
@@ -41,35 +42,44 @@
         <ng-container matColumnDef="factoryCd">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">仕入先CD</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-            <input id="txt-factoryCd-{{i}}" formControlName="factoryCd"/>
+            <kairos-input-tooltip-table id="factoryCd-{{i}}" [maxLength] = 3 [controlName]="row.get('factoryCd')" class="input-tooltip">
+            </kairos-input-tooltip-table>
           </mat-cell>
         </ng-container>
         <!-- factory name Column -->
         <ng-container matColumnDef="factoryName">
           <mat-header-cell *matHeaderCellDef>仕入先名</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" formGroupName="{{i}}">
-            <input id="txt-factoryName-{{i}}" formControlName="factoryName" [ngClass]="{'error-input': factoryList.controls[i]?.getError('factoryNameError')}"/>
+            <kairos-input-tooltip-table id="factoryName-{{i}}" [maxLength] = "120" [controlName]="row.get('factoryName')" class="input-tooltip">
+            </kairos-input-tooltip-table>
           </mat-cell>
         </ng-container>
         <!-- factory identifier Column -->
         <ng-container matColumnDef="factoryIdentifier">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">工場識別子</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-            <input id="txt-factoryIdentifier-{{i}}" formControlName="factoryIdentifier"/>
+            <kairos-input-tooltip-table id="factoryIdentifier-{{i}}" [maxLength]=3 [controlName]="row.get('factoryIdentifier')" class="input-tooltip">
+            </kairos-input-tooltip-table>
           </mat-cell>
         </ng-container>
         <!-- storage location Column -->
         <ng-container matColumnDef="storageLocation">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">保管場所</mat-header-cell>
           <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-            <input id="txt-storageLocation-{{i}}" formControlName="storageLocation"/>
+            <kairos-input-tooltip-table id="storageLocation-{{i}}" [maxLength]=6 [controlName]="row.get('storageLocation')" class="input-tooltip">
+            </kairos-input-tooltip-table>
           </mat-cell>
         </ng-container>
         <!-- trash Column -->
         <ng-container matColumnDef="delete">
           <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(1)">削除</mat-header-cell>
           <mat-cell *matCellDef="let row ; let i = index" fxLayoutAlign="center" [fxFlex]="calcFlex(1)" formGroupName="{{i}}">
-            <mat-checkbox id="chk-delete-{{i}}" formControlName="delete" class="delete"></mat-checkbox>
+            <mat-checkbox id="chk-delete-{{i}}" formControlName="delete" class="checkbox-delete" *ngIf="!row.value.addRow; else addRow"></mat-checkbox>
+            <ng-template #addRow>
+              <button mat-button type="button" id="btn-add" (click)="removeRow(i)" class="button-delete" mat-icon-button color="accent">
+                <mat-icon>delete_forever</mat-icon>
+              </button>
+            </ng-template>
           </mat-cell>
         </ng-container>
         <ng-container matColumnDef="noData">
@@ -81,10 +91,10 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         <mat-footer-row *matFooterRowDef="['noData']" [hidden]="factoryList.length !== 0"></mat-footer-row>
       </mat-table>
-    </div>  
-    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
-    <br>
+    </div>
+    <mat-paginator [pageSizeOptions]="[5, 15, 25, 100]" showFirstLastButtons></mat-paginator>
   </form>
+  <br>
   <div fxLayout="row wrap">
     <div fxFlex="50">
       <button mat-button type="button" id="btn-addRow" class="btn-main" (click)="addRow()">行挿入</button>

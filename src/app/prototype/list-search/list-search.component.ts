@@ -19,6 +19,15 @@ const PRODUCT_DATA: Product[] = [
   {productCd: 'CD0005', productName: 'productName 005', description: 'description of product 005', quantity: 10005},
   {productCd: 'CD0006', productName: 'productName 006', description: 'description of product 006', quantity: 10006},
   {productCd: 'CD0007', productName: 'productName 007', description: 'description of product 007', quantity: 10007},
+  {productCd: 'CD0008', productName: 'productName 008', description: 'description of product 008', quantity: 10008},
+  {productCd: 'CD0009', productName: 'productName 009', description: 'description of product 009', quantity: 10009},
+  {productCd: 'CD0010', productName: 'productName 010', description: 'description of product 010', quantity: 10010},
+  {productCd: 'CD0011', productName: 'productName 011', description: 'description of product 011', quantity: 10011},
+  {productCd: 'CD0012', productName: 'productName 012', description: 'description of product 012', quantity: 10012},
+  {productCd: 'CD0013', productName: 'productName 013', description: 'description of product 013', quantity: 10013},
+  {productCd: 'CD0014', productName: 'productName 014', description: 'description of product 014', quantity: 10014},
+  {productCd: 'CD0015', productName: 'productName 015', description: 'description of product 015', quantity: 10015},
+  {productCd: 'CD0016', productName: 'productName 016', description: 'description of product 016', quantity: 10016},
 ];
 
 @Component({
@@ -87,7 +96,7 @@ export class ListSearchComponent implements OnInit, AfterViewInit{
 
   public onClear(): void {
     this.formSearch.reset("");
-    this.accordion.openAll();
+    // this.accordion.openAll();
   }
 
   public moveScreen(i: number, value: any = null) {

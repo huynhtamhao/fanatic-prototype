@@ -8,15 +8,15 @@ $main-color : #cce8ff;
 $button-primary-color: #cce8ff;
 
 .table-custom {
-  // input {
-  //   font-size: 9pt !important;
-  // }
+  input {
+    font-size: 9pt !important;
+  }
 
   .mat-cell,
   .mat-header-cell {
     padding-left: 0.5em;
     padding-right: 0.5em;
-    // font-size: 9pt;
+    font-size: 9pt;
     &:not(:last-child) {
       border-right: 1px solid #bdbdbd;
     }
@@ -27,7 +27,7 @@ $button-primary-color: #cce8ff;
   .mat-footer-cell {
     padding-left: 0.5em;
     padding-right: 0.5em;
-    // font-size: 9pt;
+    font-size: 9pt;
     &:not(:last-child) {
       border-right: 1px solid #bdbdbd;
     }
@@ -53,14 +53,17 @@ $button-primary-color: #cce8ff;
 
   .mat-header-row {
     min-height: 32px;
+    height: 34px;
   }
 
   .mat-row {
     min-height: 28px;
+    height: 32px;
   }
 
   .mat-footer-row {
     min-height: 28px;
+    height: 32px;
     border-bottom-style: none;
   }
 
@@ -83,6 +86,10 @@ $button-primary-color: #cce8ff;
   color: black! important; 
   // font-size: 14px;
   border-bottom: 1px solid #bdbdbd;
+}
+
+.menu-list {
+  padding-bottom: 2px;
 }
 
 [hidden] {

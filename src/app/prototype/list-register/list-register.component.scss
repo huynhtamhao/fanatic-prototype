@@ -18,7 +18,7 @@ $button-primary-color: #cce8ff;
 
 .table-custom {
     input {
-      // font-size: 9pt !important;
+      font-size: 9pt !important;
       width: 100%; 
       height: 67%;
     }
@@ -27,7 +27,7 @@ $button-primary-color: #cce8ff;
     .mat-header-cell {
       padding-left: 0.5em;
       padding-right: 0.5em;
-      // font-size: 9pt;
+      font-size: 9pt;
       &:not(:last-child) {
         border-right: 1px solid #bdbdbd;
       }
@@ -38,7 +38,7 @@ $button-primary-color: #cce8ff;
     .mat-footer-cell {
       padding-left: 0.5em;
       padding-right: 0.5em;
-      // font-size: 9pt;
+      font-size: 9pt;
       &:not(:last-child) {
         border-right: 1px solid #bdbdbd;
       }
@@ -64,15 +64,18 @@ $button-primary-color: #cce8ff;
   
     .mat-header-row {
       min-height: 32px;
+      height: 34px;
     }
   
     .mat-row {
       min-height: 28px;
+      height: 32px;
     }
   
     .mat-footer-row {
       min-height: 28px;
       border-bottom-style: none;
+      height: 32px;
     }
   
     .mat-header-row {
@@ -84,6 +87,7 @@ $button-primary-color: #cce8ff;
     display: grid;
     width: 100%;
     word-break: break-word;
+    // border: 1px solid #bdbdbd;
   }
 
 .no-data {
@@ -92,7 +96,7 @@ $button-primary-color: #cce8ff;
     border-bottom: 1px solid #bdbdbd;
   }
 
-.delete {
+.checkbox-delete {
   padding-top: 3px;
 }
 
@@ -107,3 +111,13 @@ $button-primary-color: #cce8ff;
     border-radius:2px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 2px rgba(255, 0, 0, 0.6);
   }
+
+.button-delete {
+  height: 95%;
+  line-height: 0px;
+}
+
+.input-tooltip {
+  width: 100%; 
+  padding-right: 2px;
+}
