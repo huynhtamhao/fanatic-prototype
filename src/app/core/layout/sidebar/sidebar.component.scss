@@ -1,3 +1,5 @@
+@import "common/variables";
+
 mat-icon {
   margin-right: 15px;
 }
@@ -5,8 +7,11 @@ mat-icon {
 .sidebar-menu {
   top: 0;
   bottom: 0;
-  height: 100%;
-  margin-right: 55px;
+  // height: 100%;
+  // margin-right: 55px;
+  height: calc(100% - $date-time-box-height);
+  overflow-y: auto;
+  width: $sidenav-width;
 }
 
 .main-container {
@@ -29,8 +34,71 @@ mat-icon {
 }
 
 .mat-elevation-z0 {
-  ::ng-deep .mat-expansion-panel-body{
+  ::ng-deep .mat-expansion-panel-body {
     padding: 0 24px;
   }
 }
 
+/* date time box */
+.date-time-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  width: $sidenav-width;
+  height: $date-time-box-height;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  P {
+    margin: 0;
+  }
+}
+
+/* system name */
+.system-setting {
+  padding: 40px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: $sidenav-width - $scrollbar-width;
+
+  .system-name a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+/* user */
+.user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 40px;
+
+  .material-icons {
+    border: 1px solid;
+    font-size: 32px;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+  }
+
+  .user-id {
+    font-weight: bold;
+  }
+
+  P {
+    margin: 0;
+  }
+}
+
+.under-divider {
+  padding-left: 56px;
+}

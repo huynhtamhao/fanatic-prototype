@@ -18,6 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { TranslocoModule } from '@ngneat/transloco';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatDividerModule } from '@angular/material/divider';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatToolbarModule,
     MatMenuModule,
     MatBadgeModule,
+    MatDividerModule,
     FlexLayoutModule,
     TranslocoModule,
   ],

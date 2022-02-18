@@ -1,6 +1,6 @@
 /* custom scrollbar */
 ::-webkit-scrollbar {
-  width: 20px;
+  width: $scrollbar-width;
 }
 
 ::-webkit-scrollbar-track {
@@ -22,10 +22,10 @@
   display: none;
 }
 
-mat-nav-list {
-  --sidenav-padding-top: 8px;
-  height: calc(100% - var(--sidenav-padding-top));
-  overflow-y: auto;
-  width: $sidenav-width;
-}
+// mat-nav-list {
+//   --sidenav-padding-top: 8px;
+//   height: calc(100% - var(--sidenav-padding-top) - $date-time-box-height);
+//   overflow-y: auto;
+//   width: $sidenav-width;
+// }
 /* custom scrollbar */
