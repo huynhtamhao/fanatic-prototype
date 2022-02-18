@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { DialogUtilsService } from '@shared/components/dialog-confirm/dialog-utils.service';
+import { CommonToastrService } from 'src/app/core/service/common-toastr.service';
 @Component({
   selector: 'kairos-list-register',
   templateUrl: './list-register.component.html',
@@ -19,6 +20,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     private formBuilder: FormBuilder,
     private routerLink: Router,
     private dialog: DialogUtilsService,
+    private toastr: CommonToastrService,
     @Inject(LOCALE_ID) public locale: string,
   ) { }
 
@@ -165,8 +167,9 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       }
     });
 
-    // open dialog
-    this.dialog.openDialogSuccessUpdate(); 
+    // open toast
+    this.toastr.update().success().show();
+    
     // research
     this.search();
   }
