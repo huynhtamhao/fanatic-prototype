@@ -1,4 +1,4 @@
-<mat-card-title>一覧登録</mat-card-title>
+<!-- <mat-card-title>一覧登録</mat-card-title> -->
 <form [formGroup]="formSearch">
   <mat-accordion multi class="expansion-panel">
     <mat-expansion-panel [togglePosition]="'before'" expanded=true>
@@ -97,7 +97,6 @@
   </div>
   <mat-paginator [pageSizeOptions]="[5, 15, 25, 100]" showFirstLastButtons></mat-paginator>
 </form>
-<br>
 <div fxLayout="row wrap">
   <div fxFlex="50">
     <button mat-button type="button" id="btn-addRow" class="btn-main" (click)="addRow()">行挿入</button>

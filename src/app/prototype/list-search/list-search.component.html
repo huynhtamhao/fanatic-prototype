@@ -1,107 +1,103 @@
-<mat-card-title>一覧表示</mat-card-title>
-<mat-card-content>
-  <form [formGroup]="formSearch">
-    <mat-accordion multi class="expansion-panel">
-      <mat-expansion-panel [togglePosition]="'before'" expanded=true>
-        <mat-expansion-panel-header>
-          <mat-panel-title>検索条件</mat-panel-title>
-        </mat-expansion-panel-header>
-        <div fxLayout="column">
-          <div fxLayout="row" fxLayoutAlign="end">
-            <button mat-button type="button" id="btn-clear" (click)="onClear()" class="btn-normal">条件クリア</button>
+<!-- <mat-card-title>一覧表示</mat-card-title> -->
+<form [formGroup]="formSearch">
+  <mat-accordion multi class="expansion-panel">
+    <mat-expansion-panel [togglePosition]="'before'" expanded=true>
+      <mat-expansion-panel-header>
+        <mat-panel-title>検索条件</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div fxLayout="column">
+        <div fxLayout="row" fxLayoutAlign="end">
+          <button mat-button type="button" id="btn-clear" (click)="onClear()" class="btn-normal">条件クリア</button>
+        </div>
+      </div>
+      <p></p>
+      <div fxLayout="column">
+        <div fxLayout="row wrap" class="row-detail-large">
+          <div fxLayout="row" [fxFlex]="calcFlex(10)" class="column-item-input">
+            <div class="label-header">商品コード：</div>
+            <mat-form-field fxFlex="50" appearance="outline" class="input-outline">
+              <input matInput type="text" id="txt-productCd" formControlName="productCd" />
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" [fxFlex]="calcFlex(15)" class="column-item-input">
+            <div class="label-header">商品名：</div>
+            <mat-form-field fxFlex="80" appearance="outline" class="input-outline">
+              <input matInput type="text" id="txt-productName" formControlName="productName" />
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" [fxFlex]="calcFlex(5)" fxLayoutAlign="end">
+            <button mat-button type="button" id="btn-search" (click)="onSearch()" class="btn-main">検索</button>
           </div>
         </div>
-        <p></p>
-        <div fxLayout="column">
-          <div fxLayout="row wrap" class="row-detail-large">
-            <div fxLayout="row" [fxFlex]="calcFlex(10)" class="column-item-input">
-              <div class="label-header">商品コード：</div>
-              <mat-form-field fxFlex="50" appearance="outline" class="input-outline">
-                <input matInput type="text" id="txt-productCd" formControlName="productCd" />
-              </mat-form-field>
-            </div>
-            <div fxLayout="row" [fxFlex]="calcFlex(15)" class="column-item-input">
-              <div class="label-header">商品名：</div>
-              <mat-form-field fxFlex="80" appearance="outline" class="input-outline">
-                <input matInput type="text" id="txt-productName" formControlName="productName" />
-              </mat-form-field>
-            </div>
-            <div fxLayout="row" [fxFlex]="calcFlex(5)" fxLayoutAlign="end">
-              <button mat-button type="button" id="btn-search" (click)="onSearch()" class="btn-main">検索</button>
-            </div>
-          </div>
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
-    <p></p>
-    <div>
-      <mat-table [dataSource]="dataSource" class="table-custom mat-elevation-z2">
-        <!-- product Cd Column -->
-        <ng-container matColumnDef="productCd">
-          <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(2.5)">商品コード</mat-header-cell>
-          <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(2.5)">
-            <a [routerLink]="['/prototype/inquiry-product/', row.productCd]"
-              id="lnk-productCd-{{i}}">{{row.productCd}}</a>
-          </mat-cell>
-          <mat-footer-cell *matFooterCellDef [fxFlex]="calcFlex(2.5)"></mat-footer-cell>
-        </ng-container>
-        <!-- product Name Column -->
-        <ng-container matColumnDef="productName">
-          <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(7)">商品名</mat-header-cell>
-          <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(7)">
-            <label id="lbl-productName-{{i}}">{{row.productName}}</label>
-          </mat-cell>
-          <mat-footer-cell *matFooterCellDef [fxFlex]="calcFlex(7)"></mat-footer-cell>
-        </ng-container>
-        <!-- description Column -->
-        <ng-container matColumnDef="description">
-          <mat-header-cell *matHeaderCellDef>説明</mat-header-cell>
-          <mat-cell *matCellDef="let row; let i = index;">
-            <label id="lbl-description-{{i}}">{{row.description}}</label>
-          </mat-cell>
-          <mat-footer-cell *matFooterCellDef class="mat-footer" fxLayoutAlign="end center">合計</mat-footer-cell>
-        </ng-container>
-        <!-- quantity Column -->
-        <ng-container matColumnDef="quantity">
-          <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(2)">数量</mat-header-cell>
-          <mat-cell *matCellDef="let row; let i = index;" fxLayoutAlign="end center" [fxFlex]="calcFlex(2)">
-            <label id="lbl-quantity-{{i}}">{{row.quantity | number}}</label>
-          </mat-cell>
-          <mat-footer-cell *matFooterCellDef [fxFlex]="calcFlex(2)" fxLayoutAlign="end center">{{quantityTotal |
-            number}}</mat-footer-cell>
-        </ng-container>
-        <!-- processing Column -->
-        <ng-container matColumnDef="processing">
-          <mat-header-cell *matHeaderCellDef fxFlex="45px">操作</mat-header-cell>
-          <mat-cell *matCellDef="let row ; let i = index" fxLayoutAlign="center" fxFlex="45px">
-            <kairos-menu-list [items]="menuList" (itemSelect)="moveScreen(i, $event)" class="menu-list">
-            </kairos-menu-list>
-          </mat-cell>
-          <mat-footer-cell *matFooterCellDef fxFlex="45px" fxLayoutAlign="end center"></mat-footer-cell>
-        </ng-container>
-        <ng-container matColumnDef="noData">
-          <mat-footer-cell *matFooterCellDef [attr.colspan]="displayedColumns.length" class="no-data">
-            レコードが見つかりません。
-          </mat-footer-cell>
-        </ng-container>
-        <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-        <mat-footer-row *matFooterRowDef="['noData']" [hidden]="dataSource.data.length !== 0"></mat-footer-row>
-        <mat-footer-row *matFooterRowDef="displayedColumns; sticky:true"></mat-footer-row>
-      </mat-table>
-    </div>
-    <mat-paginator [pageSizeOptions]="[5, 15, 25, 100]" showFirstLastButtons></mat-paginator>
-  </form>
-  <br>
-  <div fxLayout="row wrap">
-    <div fxFlex="50">
-      <button mat-button type="button" id="btn-create" routerLink="/prototype/register" class="btn-main">新規作成</button>
-      <div fxFlex="40px"></div>
-      <button mat-button type="button" id="btn-download" routerLink="/" class="btn-main">ダウンロード</button>
-    </div>
-    <div fxFlex="50" fxLayoutAlign="end">
-      <button mat-button type="button" id="btn-home" (click)="goHome()" class="btn-normal">ホーム</button>
-    </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <p></p>
+  <div>
+    <mat-table [dataSource]="dataSource" class="table-custom mat-elevation-z2">
+      <!-- product Cd Column -->
+      <ng-container matColumnDef="productCd">
+        <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(2.5)">商品コード</mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(2.5)">
+          <a [routerLink]="['/prototype/inquiry-product/', row.productCd]"
+            id="lnk-productCd-{{i}}">{{row.productCd}}</a>
+        </mat-cell>
+        <mat-footer-cell *matFooterCellDef [fxFlex]="calcFlex(2.5)"></mat-footer-cell>
+      </ng-container>
+      <!-- product Name Column -->
+      <ng-container matColumnDef="productName">
+        <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(7)">商品名</mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(7)">
+          <label id="lbl-productName-{{i}}">{{row.productName}}</label>
+        </mat-cell>
+        <mat-footer-cell *matFooterCellDef [fxFlex]="calcFlex(7)"></mat-footer-cell>
+      </ng-container>
+      <!-- description Column -->
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>説明</mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index;">
+          <label id="lbl-description-{{i}}">{{row.description}}</label>
+        </mat-cell>
+        <mat-footer-cell *matFooterCellDef class="mat-footer" fxLayoutAlign="end center">合計</mat-footer-cell>
+      </ng-container>
+      <!-- quantity Column -->
+      <ng-container matColumnDef="quantity">
+        <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(2)">数量</mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index;" fxLayoutAlign="end center" [fxFlex]="calcFlex(2)">
+          <label id="lbl-quantity-{{i}}">{{row.quantity | number}}</label>
+        </mat-cell>
+        <mat-footer-cell *matFooterCellDef [fxFlex]="calcFlex(2)" fxLayoutAlign="end center">{{quantityTotal |
+          number}}</mat-footer-cell>
+      </ng-container>
+      <!-- processing Column -->
+      <ng-container matColumnDef="processing">
+        <mat-header-cell *matHeaderCellDef fxFlex="45px">操作</mat-header-cell>
+        <mat-cell *matCellDef="let row ; let i = index" fxLayoutAlign="center" fxFlex="45px">
+          <kairos-menu-list [items]="menuList" (itemSelect)="moveScreen(i, $event)" class="menu-list">
+          </kairos-menu-list>
+        </mat-cell>
+        <mat-footer-cell *matFooterCellDef fxFlex="45px" fxLayoutAlign="end center"></mat-footer-cell>
+      </ng-container>
+      <ng-container matColumnDef="noData">
+        <mat-footer-cell *matFooterCellDef [attr.colspan]="displayedColumns.length" class="no-data">
+          レコードが見つかりません。
+        </mat-footer-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-footer-row *matFooterRowDef="['noData']" [hidden]="dataSource.data.length !== 0"></mat-footer-row>
+      <mat-footer-row *matFooterRowDef="displayedColumns; sticky:true"></mat-footer-row>
+    </mat-table>
   </div>
-  <br>
-</mat-card-content>
+  <mat-paginator [pageSizeOptions]="[5, 15, 25, 100]" showFirstLastButtons></mat-paginator>
+</form>
+<div fxLayout="row wrap">
+  <div fxFlex="50">
+    <button mat-button type="button" id="btn-create" routerLink="/prototype/register" class="btn-main">新規作成</button>
+    <div fxFlex="40px"></div>
+    <button mat-button type="button" id="btn-download" routerLink="/" class="btn-main">ダウンロード</button>
+  </div>
+  <div fxFlex="50" fxLayoutAlign="end">
+    <button mat-button type="button" id="btn-home" (click)="goHome()" class="btn-normal">ホーム</button>
+  </div>
+</div>
