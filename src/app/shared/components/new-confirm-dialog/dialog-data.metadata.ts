@@ -4,8 +4,8 @@ export const i18nSetting = {
   // Button
   leftDefaultButtonText: 'dialog.confirm.buttonText.leftDefault',
   rightDefaultButtonText: 'dialog.confirm.buttonText.rightDefault',
-  okButtonText: 'dialog.confirm.buttonText.leftDefault',
-  cancelButtonText: 'dialog.confirm.buttonText.rightDefault',
+  okButtonText: 'dialog.confirm.buttonText.ok',
+  cancelButtonText: 'dialog.confirm.buttonText.cancel',
   // Register
   registerTitle: 'dialog.confirm.register.title',
   registerMessage: 'dialog.confirm.register.message',
@@ -23,8 +23,7 @@ export const i18nSetting = {
 }
 
 export const defaultMatDialogConfig = {
-  minWidth: '250px',
-  maxWidth: '350px',
+  width: '350px',
   panelClass: ['mat-elevation-z8', 'mat-dialog-custom'],
   autoFocus: false,
   disableClose: true,

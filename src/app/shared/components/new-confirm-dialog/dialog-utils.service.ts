@@ -62,56 +62,48 @@ class ConfirmDialogBuilder {
 })
 export class DialogUtilsService {
 
-  private dialogBuilder!: ConfirmDialogBuilder;
   constructor(
     private dialog: MatDialog,
     @Optional() public dialogRef: MatDialogRef<ConfirmDialogComponent>
-  ) {
-    this.dialogBuilder = new ConfirmDialogBuilder(this);
-  }
+  ) { }
 
   public new() {
-    return this.dialogBuilder;
+    return new ConfirmDialogBuilder(this);
   }
 
   public register(item?: string): ConfirmDialogBuilder {
-    !!item ?
-      this.build(i18nSetting.registerTitle, i18nSetting.registerMessageItem, item) :
-      this.build(i18nSetting.registerTitle, i18nSetting.registerMessage)
-    return this.dialogBuilder;
+    return this.build(i18nSetting.registerTitle, !!item ? i18nSetting.registerMessageItem : i18nSetting.registerMessage, item);
   }
 
   public update(item?: string) {
-    !!item ?
-      this.build(i18nSetting.updateTitle, i18nSetting.updateMessageItem, item) :
-      this.build(i18nSetting.updateTitle, i18nSetting.updateMessage)
-    return this.dialogBuilder;
+    return this.build(i18nSetting.updateTitle, !!item ? i18nSetting.updateMessageItem : i18nSetting.updateMessage, item);
+
   }
 
   public delete(item?: string) {
-    !!item ?
-      this.build(i18nSetting.deleteTitle, i18nSetting.deleteMessageItem, item) :
-      this.build(i18nSetting.deleteTitle, i18nSetting.deleteMessage)
-    return this.dialogBuilder;
+    return this.build(i18nSetting.deleteTitle, !!item ? i18nSetting.deleteMessageItem : i18nSetting.deleteMessage , item);
   }
 
   public stayOnThisPage() {
-    this.dialogBuilder.setTitle(i18nSetting.stayOnThisPageMessage);
-    return this.dialogBuilder;
+    const dialogBuilder = new ConfirmDialogBuilder(this);
+    dialogBuilder.setMessageKey(i18nSetting.stayOnThisPageMessage);
+    return dialogBuilder;
   }
 
   open(config: MatDialogConfig<DialogData>) {
     return this.dialog.open(ConfirmDialogComponent, config);
   }
 
-  private build(title: string, message: string, item?: string): void {
-    this.dialogBuilder.setTitle(title);
-    this.dialogBuilder.setMessageKey(message);
+  private build(title: string, message: string, item?: string): ConfirmDialogBuilder {
+    const dialogBuilder = new ConfirmDialogBuilder(this);
+    dialogBuilder.setTitle(title);
+    dialogBuilder.setMessageKey(message);
     if (!!item) {
       const param = {
         'item': item
       }
-      this.dialogBuilder.setMessageParam(param);
+      dialogBuilder.setMessageParam(param);
     }
+    return dialogBuilder;
   }
 }
