@@ -16,6 +16,7 @@ export class DashboardComponent {
 
   showSuccess() {
     this.commonToastr.register().success().show();
+    this.commonToastr.register('商品名').success().show();
   }
 
   showError() {
@@ -25,8 +26,13 @@ export class DashboardComponent {
   showDialog() {
     const dialogRef = this.confirmDialog.register().openDialog();
     dialogRef.afterClosed().subscribe(result => {
-      // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-      this.commonToastr.register().success().show();
+      if(result) {
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        this.commonToastr.register().success().show();
+      }
     });
+  }
+  showDialogParam() {
+    this.confirmDialog.register('商品名').openDialog();
   }
 }

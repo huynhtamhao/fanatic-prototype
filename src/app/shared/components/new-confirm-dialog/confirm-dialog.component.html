@@ -1,5 +1,5 @@
 <header>
-  <h2 mat-dialog-title>{{ data.title }}</h2>
+  <h2 mat-dialog-title>{{ data.title | transloco }}</h2>
 </header>
 
 <mat-dialog-content>
@@ -17,13 +17,13 @@
   <br />
   <div fxLayout="row">
     <div fxLayoutAlign="start" fxFlex="50">
-      <button class="btn-main" [mat-dialog-close]="true">
-        {{ data.leftButtonText }}
+      <button class="btn-main" mat-dialog-close="true">
+        {{ data.leftButtonText | transloco }}
       </button>
     </div>
     <div fxLayoutAlign="end" fxFlex="50">
-      <button class="btn-normal" [mat-dialog-close]="false" cdkFocusInitial>
-        {{ data.rightButtonText }}
+      <button class="btn-normal" mat-dialog-close cdkFocusInitial>
+        {{ data.rightButtonText | transloco }}
       </button>
     </div>
   </div>
