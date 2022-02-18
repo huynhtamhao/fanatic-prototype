@@ -1,16 +1,71 @@
 {
-  "commonToastr": {
-    "failure": "{{ item }}が失敗しました。",
-    "success": "{{ item }}が成功しました。"
+  "dialog": {
+    "confirm": {
+      "buttonText": {
+        "cancel": "キャンセル",
+        "leftDefault": "はいい",
+        "ok": "ＯＫ",
+        "rightDefault": "いいえ"
+      },
+      "delete": {
+        "message": "削除してよろしいですか？",
+        "messageItem": "この{{ item }}を削除しますか？",
+        "title": "削除の確認"
+      },
+      "register": {
+        "message": "登録してよろしいですか？",
+        "messageItem": "この{{ item }}を登録しますか？",
+        "title": "登録の確認"
+      },
+      "stayOnThisPage": {
+        "message": "データが編集されました。このページに留まりますか？"
+      },
+      "title": "確認",
+      "update": {
+        "message": "変更してよろしいですか？",
+        "messageItem": "この{{ item }}を変更しますか？",
+        "title": "変更の確認"
+      }
+    }
   },
   "header": {
-    "systemName": "カイロス"
+    "systemName": "カイロス",
+    "userMenu": {
+      "changePassword": "パスワード変更",
+      "logout": "ログアウト"
+    }
   },
   "sidebar": {
     "mainText": {
       "admin": "管理者",
       "home": "メニュー",
       "master": "マスターメンテ"
+    }
+  },
+  "toastr": {
+    "delete": {
+      "message": {
+        "failure": "削除が失敗しました.",
+        "failureItem": "{{ item }}の削除が失敗しました.",
+        "success": "削除が成功しました。",
+        "successItem": "{{ item }}の削除が成功しました。"
+      }
+    },
+    "register": {
+      "message": {
+        "failure": "登録が失敗しました。",
+        "failureItem": "{{ item }}の登録が失敗しました。",
+        "success": "登録が成功しました。",
+        "successItem": "{{ item }}の登録が成功しました。"
+      }
+    },
+    "update": {
+      "message": {
+        "failure": "変更が失敗しました。",
+        "failureItem": "{{ item }}の変更が失敗しました。",
+        "success": "変更が成功しました。",
+        "successItem": "{{ item }}の変更が成功しました。"
+      }
     }
   }
 }
