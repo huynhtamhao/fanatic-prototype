@@ -1,6 +1,7 @@
 @import "./common/variables";
 
 .error-summary {
+  display: none;
   height: 85px;
   color: red;
   background-color: $main-color;
@@ -24,4 +25,8 @@
     color: red;
     margin-top: -3px;
   }
+}
+
+.show-error-summary {
+  display: block;
 }
