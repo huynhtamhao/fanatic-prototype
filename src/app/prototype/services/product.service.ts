@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ErrorSummary } from 'src/app/core/layout/error-summary/error-summary.metadata';
 import { ErrorUtilsService } from 'src/app/core/service/error-utils.service';
@@ -13,7 +14,15 @@ export class ProductService {
   constructor(
     private errorUtilsService: ErrorUtilsService,
     private toastrService: ToastrService,
-  ) { }
+    private router: Router,
+  ) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart)
+      {
+        this.errorUtilsService.clearErrorSummary();
+      }
+    });
+  }
 
   getProductInfo(productCd: string): Product {
     return PRODUCT_DATA.find(p => p.productCd === productCd) as Product;
