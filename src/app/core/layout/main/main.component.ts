@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router,NavigationEnd, NavigationStart } from '@angular/router';
-import { ErrorUtilsService } from '../../service/error-utils.service';
-import { HeaderUtilsService } from '../../service/header-utils.service';
+import { Component } from '@angular/core';
+import { Router, NavigationStart } from '@angular/router';
+import { LayoutService } from '../../service/layout.service';
 
 
 @Component({
@@ -10,22 +9,16 @@ import { HeaderUtilsService } from '../../service/header-utils.service';
   styleUrls: ['./main.component.scss'],
 
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
 
   constructor(
     private router: Router,
-    private errorService: ErrorUtilsService,
-    private headerService: HeaderUtilsService,
+    private layoutService: LayoutService
   ) {
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationStart) {
-        this.errorService.clearErrorSummary();
-        this.headerService.clearTitle();
+        this.layoutService.clearAll();
       }
     });
   }
-
-  ngOnInit(): void {
-    console.log('will use in future');
-   }
 }
