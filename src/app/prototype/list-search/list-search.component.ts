@@ -3,10 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatAccordion } from '@angular/material/expansion';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { NavigationStart, Router } from '@angular/router';
-import { Constants } from 'src/app/core/constants/Constants';
-import { ErrorUtilsService } from 'src/app/core/service/error-utils.service';
-import { HeaderUtilsService } from 'src/app/core/service/header-utils.service';
+import { Router } from '@angular/router';
 export interface Product {
   productCd: string;
   productName: string;
@@ -45,17 +42,7 @@ export class ListSearchComponent implements OnInit, AfterViewInit{
 
   constructor(
     private routerLink: Router,
-    private errorUtilsService: ErrorUtilsService,
-    private headerUtils: HeaderUtilsService,
-  ) {
-    this.headerUtils.setTitle(Constants.SCREEN_NAME.LIST_SEARCH);
-    this.routerLink.events.subscribe(event => {
-      if (event instanceof NavigationStart)
-      {
-        this.errorUtilsService.clearErrorSummary();
-      }
-    });
-  }
+  ) { }
   public displayedColumns: string[] = ['productCd', 'productName', 'description', 'quantity', 'processing'];
   public quantityTotal = 0;
   public dataSource = new MatTableDataSource<Product>();
