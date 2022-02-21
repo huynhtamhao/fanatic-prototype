@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogData } from './dialog-data.metadata';
 
 @Component({
-  selector: 'kairos-new-confirm-dialog',
+  selector: 'kairos-confirm-dialog',
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.scss']
 })

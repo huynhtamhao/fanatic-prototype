@@ -1,0 +1,20 @@
+<div class="background">
+  <div class="login-page">
+    <div class="form">
+      <h2 class="title">ログイン</h2>
+      <hr />
+      <form [formGroup]="form" method="post" (submit)="onLogin()">
+        <p style="color: red;" *ngIf="loginError">ログインが失敗しました。再度ログインし直してください。</p>
+        <input type="text" id="username" formControlName="username" placeholder="ユーザ名" />
+        <input type="password" id="password" formControlName="password" placeholder="パスワード" />
+        <br><br>
+        <button type="submit">ログイン</button>
+        <p class="message">
+          <a href="#/personal/forgot-password">パスワードをお忘れですか？</a>
+        </p>
+        <input type="hidden" name="redirect" value="${#httpServletRequest.getParameter('redirect')}" />
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+      </form>
+    </div>
+  </div>
+</div>

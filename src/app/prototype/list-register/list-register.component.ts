@@ -5,7 +5,7 @@ import { MatAccordion } from '@angular/material/expansion';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { DialogUtilsService } from '@shared/components/new-confirm-dialog/dialog-utils.service';
+import { DialogUtilsService } from '@shared/components/confirm-dialog/dialog-utils.service';
 import { CommonToastrService } from 'src/app/core/service/common-toastr.service';
 @Component({
   selector: 'kairos-list-register',

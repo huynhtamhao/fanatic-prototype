@@ -10,6 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { TranslocoRootModule } from './core/transloco/transloco-root.module';
 import { ConfigService } from './core/service/config.service';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 export function initialize(configService: ConfigService) {
   return () => configService.loadConfig();
@@ -27,6 +28,7 @@ export function initialize(configService: ConfigService) {
     CoreModule,
     TranslocoRootModule,
     KairosCommonComponentsModule,
+    AuthenticationModule,
     ToastrModule.forRoot({
       timeOut: 10000,
       positionClass: 'toast-top-center',
