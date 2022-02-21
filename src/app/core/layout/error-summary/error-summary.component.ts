@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ErrorUtilsService } from '../../service/error-utils.service';
+import { LayoutService } from '../../service/layout.service';
 import { ErrorSummary } from './error-summary.metadata';
 
 @Component({
@@ -12,11 +12,11 @@ export class ErrorSummaryComponent implements OnInit {
   public errors: ErrorSummary[] = [];
 
   constructor(
-    private errorUtilsService: ErrorUtilsService,
+    private layoutService: LayoutService,
   ) { }
 
   ngOnInit(): void {
-    this.errorUtilsService.errorSummary.subscribe(errors => {
+    this.layoutService.errorSummary.subscribe(errors => {
       this.errors = errors;
     });
   }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { HeaderUtilsService } from '../../service/header-utils.service';
+import { LayoutService } from '../../service/layout.service';
 
 @Component({
   selector: 'kairos-header',
@@ -13,12 +13,11 @@ export class HeaderComponent implements OnInit {
   @Output() toggleSidebarEvent = new EventEmitter<void>();
 
   constructor(
-    private headerUtils: HeaderUtilsService,
+    private layoutService: LayoutService,
   ) { }
 
   ngOnInit(): void {
-    // title
-    this.headerUtils.title.subscribe(title => {
+    this.layoutService.headerTitle.subscribe(title => {
       this.title = title;
     });
   }
