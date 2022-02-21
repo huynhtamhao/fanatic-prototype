@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router,NavigationEnd, NavigationStart, ActivatedRoute } from '@angular/router';
+import { Router,NavigationEnd, ActivatedRoute } from '@angular/router';
 import { filter, map, mergeMap } from 'rxjs';
 import { LayoutService } from '../../service/layout.service';
 
@@ -30,7 +30,6 @@ export class MainComponent {
     ).subscribe(data => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       this.layoutService.setHeaderTitle(data['title']);
-    }
-    )
+    });
   }
 }

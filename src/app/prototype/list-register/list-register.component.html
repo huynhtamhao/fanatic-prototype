@@ -57,18 +57,21 @@
       <ng-container matColumnDef="factoryIdentifier">
         <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">工場識別子</mat-header-cell>
         <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-          <kairos-input-tooltip-table id="factoryIdentifier-{{i}}" [maxLength]=3
-            [controlName]="row.get('factoryIdentifier')" class="input-tooltip">
-          </kairos-input-tooltip-table>
+          <input matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+           <mat-datepicker #picker></mat-datepicker>
         </mat-cell>
       </ng-container>
       <!-- storage location Column -->
       <ng-container matColumnDef="storageLocation">
         <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">保管場所</mat-header-cell>
         <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-          <kairos-input-tooltip-table id="storageLocation-{{i}}" [maxLength]=6
-            [controlName]="row.get('storageLocation')" class="input-tooltip">
-          </kairos-input-tooltip-table>
+          <mat-select>
+            <mat-option>None</mat-option>
+            <mat-option value="option1">Option 1</mat-option>
+            <mat-option value="option2">Option 2</mat-option>
+            <mat-option value="option3">Option 3</mat-option>
+          </mat-select>
         </mat-cell>
       </ng-container>
       <!-- trash Column -->
