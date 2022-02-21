@@ -3,7 +3,7 @@
     "confirm": {
       "buttonText": {
         "cancel": "キャンセル",
-        "leftDefault": "はいい",
+        "leftDefault": "はい",
         "ok": "ＯＫ",
         "rightDefault": "いいえ"
       },
