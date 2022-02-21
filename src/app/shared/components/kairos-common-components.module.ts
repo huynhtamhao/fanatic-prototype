@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
-import { ConfirmDialogComponent } from './new-confirm-dialog/confirm-dialog.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { TranslocoModule } from '@ngneat/transloco';
 import { InputTooltipTableComponent } from './input-tooltip-table/input-tooltip-table.component';
 import { SharedModule } from '@shared/shared.module';
@@ -13,7 +12,6 @@ import { SharedModule } from '@shared/shared.module';
 
 @NgModule({
   declarations: [
-    DialogConfirmComponent,
     MenuListComponent,
     ConfirmDialogComponent,
     InputTooltipTableComponent,
@@ -26,7 +24,6 @@ import { SharedModule } from '@shared/shared.module';
     TranslocoModule,
   ],
   exports : [
-    DialogConfirmComponent,
     MenuListComponent,
     ConfirmDialogComponent,
     InputTooltipTableComponent,
