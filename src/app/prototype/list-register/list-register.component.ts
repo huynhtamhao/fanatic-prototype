@@ -5,7 +5,7 @@ import { MatAccordion } from '@angular/material/expansion';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable } from '@angular/material/table';
 import { NavigationStart, Router } from '@angular/router';
-import { DialogUtilsService } from '@shared/components/dialog-confirm/dialog-utils.service';
+import { DialogUtilsService } from '@shared/components/new-confirm-dialog/dialog-utils.service';
 import { Constants } from 'src/app/core/constants/Constants';
 import { CommonToastrService } from 'src/app/core/service/common-toastr.service';
 import { ErrorUtilsService } from 'src/app/core/service/error-utils.service';
@@ -53,7 +53,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
   });
 
   ngOnInit(): void {
-    var i = 0;
+    let i = 0;
     while(i < 25) {
       this.dataList.push(this.formBuilder.group({
         factoryCd: "F0" + i,
@@ -64,7 +64,8 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       }));
       i++;
     }
-    var session = sessionStorage.getItem('list-register');
+
+    let session = sessionStorage.getItem('list-register');
     if (session !== null) {
       this.formSearch.patchValue(JSON.parse(session));
       this.formSearch.updateValueAndValidity;
@@ -72,10 +73,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     this.search();
   }
 
-  ngAfterViewInit(): void {
-    console.log('pageIndex', this.paginator.pageIndex);
-    console.log('pageSize', this.paginator.pageSize);
-    
+  ngAfterViewInit(): void { 
     this.paginator.page.subscribe(() => this.onSearch(this.paginator.pageIndex, this.paginator.pageSize));
   }
 
@@ -83,7 +81,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
 
     if (this.formSearch.get('factoryList')?.dirty) {
       // confirm move
-      const dialogRef = this.dialog.openDialogConfirmStayOnPage();
+      const dialogRef = this.dialog.stayOnThisPage().openDialog();
       dialogRef.afterClosed().subscribe(res => {
         if(!res) {
           this.search(pageNumber,size);
@@ -111,7 +109,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
 
     const code = this.formSearch.get("factoryCd")?.value.toLowerCase();
     const name = this.formSearch.get("factoryName")?.value.toLowerCase();
-    var i = 0;
+    let i = 0;
     const from = size * pageNumber;
     const to = size * pageNumber + size;
 
