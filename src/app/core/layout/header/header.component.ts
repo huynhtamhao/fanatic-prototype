@@ -9,6 +9,7 @@ import { LayoutService } from '../../service/layout.service';
 export class HeaderComponent implements OnInit {
 
   public title = '';
+  public hidden = false;
 
   @Output() toggleSidebarEvent = new EventEmitter<void>();
 
@@ -20,6 +21,10 @@ export class HeaderComponent implements OnInit {
     this.layoutService.headerTitle.subscribe(title => {
       this.title = title;
     });
+  }
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
   }
 
   toggleSidebar() {
