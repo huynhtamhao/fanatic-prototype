@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router, NavigationStart } from '@angular/router';
+import { LayoutService } from '../../service/layout.service';
 
 
 @Component({
@@ -7,13 +9,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss'],
 
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
 
-  constructor() {
-    console.log('will use in future');
-   }
-
-  ngOnInit(): void {
-    console.log('will use in future');
-   }
+  constructor(
+    private router: Router,
+    private layoutService: LayoutService
+  ) {
+    this.router.events.subscribe((e) => {
+      if (e instanceof NavigationStart) {
+        this.layoutService.clearAll();
+      }
+    });
+  }
 }
