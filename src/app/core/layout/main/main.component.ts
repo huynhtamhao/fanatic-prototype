@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router, NavigationStart } from '@angular/router';
+import { Router,NavigationEnd, NavigationStart, ActivatedRoute } from '@angular/router';
+import { filter, map, mergeMap } from 'rxjs';
 import { LayoutService } from '../../service/layout.service';
 
 
@@ -13,12 +14,23 @@ export class MainComponent {
 
   constructor(
     private router: Router,
+    private activatedRoute:ActivatedRoute,
     private layoutService: LayoutService
   ) {
-    this.router.events.subscribe((e) => {
-      if (e instanceof NavigationStart) {
-        this.layoutService.clearAll();
-      }
-    });
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map(() => this.layoutService.clearAll()),
+      map(() => this.activatedRoute),
+      map(route => {
+        while (route.firstChild) route = route.firstChild
+        return route
+      }),
+      filter(route => route.outlet === 'primary'),
+      mergeMap(route => route.data),
+    ).subscribe(data => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      this.layoutService.setHeaderTitle(data['title']);
+    }
+    )
   }
 }

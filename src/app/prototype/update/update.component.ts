@@ -5,8 +5,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProductService } from '../services/product.service';
 import { Product } from '../models/product';
 import { CommonToastrService } from 'src/app/core/service/common-toastr.service';
-import { HeaderUtilsService } from 'src/app/core/service/header-utils.service';
-import { Constants } from 'src/app/core/constants/Constants';
 
 @Component({
   selector: 'kairos-update',
@@ -31,10 +29,7 @@ export class UpdateComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private commonToastrService: CommonToastrService,
     private location: Location,
-    private headerUtils: HeaderUtilsService,
-  ) {
-    this.headerUtils.setTitle(Constants.SCREEN_NAME.ORDER_UPDATE);
-  }
+  ) { }
 
   ngOnInit(): void {
     const productCd = this.activatedRoute.snapshot.paramMap.get('productCd');
