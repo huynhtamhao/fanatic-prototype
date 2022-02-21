@@ -9,7 +9,8 @@
   </div>
   <div fxFlex></div>
   <div fxLayoutAlign="end center" fxFlex="20">
-    <mat-icon matBadge="1" matBadgeColor="warn" [matMenuTriggerFor]="menu">account_circle</mat-icon>
+    <mat-icon matBadge="1" matBadgeColor="warn" [matBadgeHidden]="hidden" [matMenuTriggerFor]="menu"
+      matBadgeSize="small" (click)="toggleBadgeVisibility()" class="user-icon">account_circle</mat-icon>
     <label class="user-id">255：堀尾公彦</label>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>

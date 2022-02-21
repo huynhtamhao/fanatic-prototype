@@ -4,6 +4,10 @@
       border-top: $borderTop solid transparent;
       padding: $padding 0;
     }
+
+    mat-select .mat-select-arrow-wrapper {
+      transform: translateY(0%);
+    }
   }
 
   .column-item-input {
