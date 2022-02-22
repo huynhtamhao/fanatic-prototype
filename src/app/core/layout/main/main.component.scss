@@ -10,6 +10,10 @@
   }
 }
 
-.sidenav-content {
-  padding-inline: 40px;
+mat-sidenav-content {
+  overflow-y: scroll;
+
+  .sidenav-content {
+    padding: 0px 30px 0px 40px;
+  }
 }
