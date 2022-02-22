@@ -9,8 +9,5 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ForgotPasswordComponent {
 
   public isSuccess = false;
-
-  form: FormGroup = new FormGroup({
-    mailAddress: new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(256)])
-  });
+  mailAddress = new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(256)])
 }
