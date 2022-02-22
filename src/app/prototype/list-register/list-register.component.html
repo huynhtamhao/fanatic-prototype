@@ -98,12 +98,16 @@
       <mat-footer-row *matFooterRowDef="['noData']" [hidden]="factoryList.length !== 0"></mat-footer-row>
     </mat-table>
   </div>
-  <mat-paginator [pageSizeOptions]="[5, 15, 25, 100]" showFirstLastButtons></mat-paginator>
+
+  <div fxLayoutAlign="space-between center" class="paginator-row">
+    <button mat-icon-button type="button" (click)="addRow()">
+      <mat-icon title="行挿入">add_circle_outline</mat-icon>
+    </button>
+    <mat-paginator class="paginator" [pageSizeOptions]="[10, 20, 30, 100]" showFirstLastButtons></mat-paginator>
+  </div>
 </form>
 <div fxLayout="row wrap">
   <div fxFlex="50">
-    <button mat-button type="button" id="btn-addRow" class="btn-main" (click)="addRow()">行挿入</button>
-    <div fxFlex="40px"></div>
     <button mat-button type="button" id="btn-update" class="btn-main" (click)="update()"
       [disabled]="formSearch.get('factoryList')?.pristine || formSearch.get('factoryList')?.invalid">更新</button>
     <div fxFlex="40px"></div>
