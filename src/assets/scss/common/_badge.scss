@@ -1,10 +1,11 @@
 .user-icon {
+  padding-right: 5px;
   font-size: 32px;
 
   &.mat-badge-small.mat-badge-above .mat-badge-content {
     top: -5px;
   }
   &.mat-badge-small.mat-badge-overlap.mat-badge-after .mat-badge-content {
-    right: -5px;
+    right: 0px;
   }
 }
