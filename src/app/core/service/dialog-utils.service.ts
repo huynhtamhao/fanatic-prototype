@@ -1,7 +1,7 @@
 import { Injectable, Optional } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from './confirm-dialog.component';
-import { DialogData, i18nSetting, defaultMatDialogConfig } from './dialog-data.metadata';
+import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/confirm-dialog.component';
+import { DialogData, i18nSetting, defaultMatDialogConfig } from '../../shared/components/confirm-dialog/dialog-data.metadata';
 
 class ConfirmDialogBuilder {
   private dialogData: DialogData;

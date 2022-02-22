@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DialogUtilsService } from '@shared/components/confirm-dialog/dialog-utils.service';
+import { DialogUtilsService } from 'src/app/core/service/dialog-utils.service';
 import { CommonToastrService } from 'src/app/core/service/common-toastr.service';
 
 @Component({
