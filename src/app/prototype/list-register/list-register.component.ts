@@ -5,7 +5,7 @@ import { MatAccordion } from '@angular/material/expansion';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { DialogUtilsService } from 'src/app/core/service/dialog-utils.service';
+import { DialogService } from 'src/app/core/service/dialog.service';
 import { CommonToastrService } from 'src/app/core/service/common-toastr.service';
 @Component({
   selector: 'kairos-list-register',
@@ -20,7 +20,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
   constructor(
     private formBuilder: FormBuilder,
     private routerLink: Router,
-    private dialog: DialogUtilsService,
+    private dialog: DialogService,
     private toastr: CommonToastrService,
     @Inject(LOCALE_ID) public locale: string,
   ) { }
@@ -60,15 +60,15 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     this.search();
   }
 
-  ngAfterViewInit(): void { 
+  ngAfterViewInit(): void {
     this.paginator.page.subscribe(() => this.onSearch(this.paginator.pageIndex, this.paginator.pageSize));
   }
 
-  public onSearch(pageNumber: number = 0, size: number = 5) { 
+  public onSearch(pageNumber: number = 0, size: number = 5) {
 
     if (this.formSearch.get('factoryList')?.dirty) {
       // confirm move
-      const dialogRef = this.dialog.stayOnThisPage().openDialog();
+      const dialogRef = this.dialog.confirm().stayOnThisPage().openDialog();
       dialogRef.afterClosed().subscribe(res => {
         if(!res) {
           this.search(pageNumber,size);
@@ -79,7 +79,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       });
     } else {
       this.search(pageNumber,size);
-    }  
+    }
   }
 
   private search(pageNumber: number = 0, size: number = 5) {
@@ -101,7 +101,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     const to = size * pageNumber + size;
 
     this.dataList.getRawValue().forEach(fac => {
-      let check = true;     
+      let check = true;
       if (!!code) {
         check = fac.factoryCd.toLowerCase().includes(code);
       }
@@ -110,8 +110,8 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
         check = fac.factoryName.toLowerCase().includes(code);
       }
 
-      if (check) {   
-        if (from <= i && i < to) {      
+      if (check) {
+        if (from <= i && i < to) {
           this.factoryList.push(this.formBuilder.group({
             factoryCd: new FormControl({value: fac.factoryCd, disabled: true}, [Validators.required, Validators.maxLength(3)]),
             factoryName: new FormControl(fac.factoryName, [Validators.required, Validators.maxLength(120)]),
@@ -119,9 +119,9 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
             storageLocation: new FormControl(fac.storageLocation),
             delete: fac.delete,
             addRow: false,
-          }));   
+          }));
         }
-        i++;     
+        i++;
       }
     });
     this.paginator.length = i;
@@ -169,15 +169,15 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       } else if (fac.delete){
         // delete
         this.dataList.removeAt(i);
-      } else { 
-        // update    
+      } else {
+        // update
         this.dataList.setControl(i,this.formBuilder.group(fac));
       }
     });
 
     // open toast
     this.toastr.update().success().show();
-    
+
     // research
     this.search();
   }
