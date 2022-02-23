@@ -1,10 +1,10 @@
 .paginator-row {
-  background-color: white;
+  background-color: $normal-color;
   padding-left: 0px;
   padding-right: 8px;
 
   .material-icons {
-    color: rgba($color: #2699fb, $alpha: 0.7);
+    color: rgba($color: $primary-color, $alpha: 0.8);
     font-size: 28px;
     width: fit-content;
     height: fit-content;
