@@ -1,5 +1,5 @@
 
-export const i18nSetting = {
+export const defaultDialogSetting = {
   defaultTitle: 'dialog.confirm.title',
   // Button
   leftDefaultButtonText: 'dialog.confirm.buttonText.leftDefault',
@@ -38,9 +38,9 @@ export class DialogData {
   rightButtonText: string; // Cancel Button
 
   constructor() {
-    this.title = i18nSetting.defaultTitle;
-    this.leftButtonText = i18nSetting.leftDefaultButtonText;
-    this.rightButtonText = i18nSetting.rightDefaultButtonText;
+    this.title = defaultDialogSetting.defaultTitle;
+    this.leftButtonText = defaultDialogSetting.leftDefaultButtonText;
+    this.rightButtonText = defaultDialogSetting.rightDefaultButtonText;
     this.icon = 'contact_support'; // Material Icon
   }
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DialogUtilsService } from 'src/app/core/service/dialog-utils.service';
+import { DialogService } from 'src/app/core/service/dialog.service';
 import { CommonToastrService } from 'src/app/core/service/common-toastr.service';
 
 @Component({
@@ -11,7 +11,7 @@ export class DashboardComponent {
 
   constructor(
     private commonToastr: CommonToastrService,
-    private confirmDialog: DialogUtilsService,
+    private dialogService: DialogService,
   ) { }
 
   showSuccess() {
@@ -24,7 +24,7 @@ export class DashboardComponent {
   }
 
   showDialog() {
-    const dialogRef = this.confirmDialog.register().openDialog();
+    const dialogRef = this.dialogService.confirm().register().openDialog();
     dialogRef.afterClosed().subscribe(result => {
       if(result) {
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
@@ -33,6 +33,6 @@ export class DashboardComponent {
     });
   }
   showDialogParam() {
-    this.confirmDialog.register('商品名').openDialog();
+    this.dialogService.confirm().register('商品名').openDialog();
   }
 }
