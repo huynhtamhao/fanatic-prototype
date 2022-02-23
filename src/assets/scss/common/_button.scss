@@ -1,26 +1,33 @@
 $button-min-width: 100px;
 $button-height: 30px;
 $button-padding: 5px;
-$button-primary-color: rgb(240, 240, 240);
-$button-border-color: rgb(191, 191, 191);
+$button-border-color: #bfbfbf;
+$button-primary-border-color: #c6d9f1;
+$button-main-color: #f0f0f0;
 
-@mixin create-button($border-color, $background-color: white) {
+@mixin create-button($background-color: $normal-color, $border-color: $button-border-color, $color: #000) {
   min-width: $button-min-width;
   height: $button-height;
   line-height: 0;
   padding-inline: $button-padding;
   border: 2px solid $border-color;
   background-color: $background-color;
+  color: $color;
 }
 
 .btn-normal,
 .btn-normal.mat-button {
-  @include create-button($button-border-color);
+  @include create-button();
 }
 
 .btn-main,
 .btn-main.mat-button {
-  @include create-button($button-border-color, $button-primary-color);
+  @include create-button($button-main-color);
+}
+
+.btn-primary,
+.btn-primary.mat-button {
+  @include create-button($primary-color, $button-primary-border-color, #fff);
 }
 
 button:not(.mat-icon-button) {
