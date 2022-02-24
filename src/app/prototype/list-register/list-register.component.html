@@ -39,38 +39,38 @@
       <ng-container matColumnDef="factoryCd">
         <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">仕入先CD</mat-header-cell>
         <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-          <kairos-input-tooltip-table id="factoryCd-{{i}}" [maxLength]=3 [controlName]="row.get('factoryCd')"
-            class="input-tooltip">
-          </kairos-input-tooltip-table>
+          <input matInput type="text" id="factoryCd-{{i}}" maxLength="3" formControlName="factoryCd" errorTooltip
+            [ngClass]="{'error-input': row.get('factoryCd').errors}" />
         </mat-cell>
       </ng-container>
       <!-- factory name Column -->
       <ng-container matColumnDef="factoryName">
         <mat-header-cell *matHeaderCellDef>仕入先名</mat-header-cell>
         <mat-cell *matCellDef="let row; let i = index;" formGroupName="{{i}}">
-          <kairos-input-tooltip-table id="factoryName-{{i}}" [maxLength]="120" [controlName]="row.get('factoryName')"
-            class="input-tooltip">
-          </kairos-input-tooltip-table>
+          <input matInput type="text" id="factoryName-{{i}}" maxLength="120" formControlName="factoryName" errorTooltip
+            [ngClass]="{'error-input': row.get('factoryName').errors}" />
         </mat-cell>
       </ng-container>
       <!-- factory identifier Column -->
       <ng-container matColumnDef="factoryIdentifier">
         <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">工場識別子</mat-header-cell>
         <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-          <input matInput [matDatepicker]="picker">
+          <input matInput id="factoryIdentifier-{{i}}" [matDatepicker]="picker" formControlName="factoryIdentifier"
+            errorTooltip [ngClass]="{'error-input': row.get('factoryIdentifier').errors}">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-           <mat-datepicker #picker></mat-datepicker>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-cell>
       </ng-container>
       <!-- storage location Column -->
       <ng-container matColumnDef="storageLocation">
         <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">保管場所</mat-header-cell>
         <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-          <mat-select>
+          <mat-select id="storageLocation-{{i}}" formControlName="storageLocation" errorTooltip
+            [ngClass]="{'error-input': row.get('storageLocation').errors}">
             <mat-option>None</mat-option>
-            <mat-option value="option1">Option 1</mat-option>
-            <mat-option value="option2">Option 2</mat-option>
-            <mat-option value="option3">Option 3</mat-option>
+            <mat-option value="WH1100">WH1100</mat-option>
+            <mat-option value="WH1200">WH1200</mat-option>
+            <mat-option value="WH1201">WH1201</mat-option>
           </mat-select>
         </mat-cell>
       </ng-container>

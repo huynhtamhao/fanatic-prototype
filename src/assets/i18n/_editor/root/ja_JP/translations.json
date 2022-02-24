@@ -67,5 +67,12 @@
         "successItem": "{{ item }}の変更が成功しました。"
       }
     }
+  },
+  "tooltip": {
+    "error": {
+      "required": "この項目は必須です",
+      "minlength": "{{ minlength }}桁以上の入力",
+      "maxlength": "{{ maxlength }}桁以下の入力"
+    }
   }
 }
