@@ -67,5 +67,12 @@
         "successItem": "This {{ item }} has been successfully updated."
       }
     }
+  },
+  "tooltip": {
+    "error": {
+      "required": "This field is required.",
+      "minlength": "Please enter at least {{ minlength }} characters.",
+      "maxlength": "Please enter at most {{ maxlength }} characters."
+    }
   }
 }

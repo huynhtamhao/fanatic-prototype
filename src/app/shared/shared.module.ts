@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { TranslocoModule } from '@ngneat/transloco';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DirectivesModule } from './directives/directives.module';
 
 
 
@@ -19,6 +20,7 @@ const sharedModule = [
   RouterModule,
   NgbModule,
   TranslocoModule,
+  DirectivesModule,
 ]
 
 
