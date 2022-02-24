@@ -51,12 +51,12 @@
             [ngClass]="{'error-input': row.get('factoryName').errors}" />
         </mat-cell>
       </ng-container>
-      <!-- factory identifier Column -->
-      <ng-container matColumnDef="factoryIdentifier">
-        <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">工場識別子</mat-header-cell>
+      <!-- factory deliveryDate Column -->
+      <ng-container matColumnDef="deliveryDate">
+        <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">送付日</mat-header-cell>
         <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-          <input matInput id="factoryIdentifier-{{i}}" [matDatepicker]="picker" formControlName="factoryIdentifier"
-            errorTooltip [ngClass]="{'error-input': row.get('factoryIdentifier').errors}">
+          <input matInput id="deliveryDate-{{i}}" [matDatepicker]="picker" formControlName="deliveryDate"
+            errorTooltip [ngClass]="{'error-input': row.get('deliveryDate').errors}">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-cell>
