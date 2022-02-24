@@ -25,7 +25,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     @Inject(LOCALE_ID) public locale: string,
   ) { }
 
-  public displayedColumns: string[] = ['factoryCd', 'factoryName', 'factoryIdentifier', 'storageLocation', 'delete'];
+  public displayedColumns: string[] = ['factoryCd', 'factoryName', 'deliveryDate', 'storageLocation', 'delete'];
   public factoryList = this.formBuilder.array([]);
   public dataList = this.formBuilder.array([]);
   public quantityTotal = 0;
@@ -45,7 +45,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       this.dataList.push(this.formBuilder.group({
         factoryCd: "F0" + i,
         factoryName:  "東大阪0" + i,
-        factoryIdentifier: new Date(),
+        deliveryDate: new Date(),
         storageLocation: 'WH1100',
         delete: null,
       }));
@@ -115,7 +115,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
           this.factoryList.push(this.formBuilder.group({
             factoryCd: new FormControl({value: fac.factoryCd, disabled: true}, [Validators.required, Validators.minLength(3)]),
             factoryName: new FormControl(fac.factoryName, [Validators.required, Validators.maxLength(120)]),
-            factoryIdentifier: new FormControl(fac.factoryIdentifier, [Validators.required]),
+            deliveryDate: new FormControl(fac.deliveryDate, [Validators.required]),
             storageLocation: new FormControl(fac.storageLocation, [Validators.required]),
             delete: fac.delete,
             addRow: false,
@@ -144,7 +144,7 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
     this.factoryList.push(this.formBuilder.group({
       factoryCd: new FormControl("", [Validators.required, Validators.minLength(3)]),
       factoryName: new FormControl("", [Validators.required, Validators.maxLength(120)]),
-      factoryIdentifier: new FormControl("", [Validators.required]),
+      deliveryDate: new FormControl("", [Validators.required]),
       storageLocation: new FormControl("", [Validators.required]),
       delete: null,
       addRow: true,
