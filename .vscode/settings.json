@@ -6,7 +6,9 @@
         "popperjs",
         "sidenav",
         "toastr",
-        "TRANSLOCO"
+        "TRANSLOCO",
+        "minlength",
+        "maxlength",
     ],
     "sonarlint.disableTelemetry": true,
 }
