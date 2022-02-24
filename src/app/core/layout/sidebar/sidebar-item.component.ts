@@ -8,11 +8,9 @@ import { SidebarItem } from './data/sidebar-item.metadata';
   template: `
     <mat-accordion>
       <ng-container *ngIf="menuItem.submenu.length > 0; else elseTemplate">
-        <mat-expansion-panel class="mat-elevation-z0">
+        <mat-expansion-panel class="expansion-panel-child mat-elevation-z0">
           <mat-expansion-panel-header>
-            <mat-panel-title>
-              <mat-icon>{{ menuItem.icon }}</mat-icon> {{ menuItem.id }}
-            </mat-panel-title>
+            <mat-panel-title>{{ menuItem.id }}</mat-panel-title>
           </mat-expansion-panel-header>
           <kairos-sidebar-item *ngFor="let menu of menuItem.submenu" [menuItem]="menu"></kairos-sidebar-item>
         </mat-expansion-panel>
@@ -22,9 +20,7 @@ import { SidebarItem } from './data/sidebar-item.metadata';
       <ng-template #elseTemplate>
         <!-- <mat-action-list *ngIf="menuItem.path">  [routerLink]="menuItem.path"-->
         <mat-action-list>
-          <button mat-list-item (click) ="redirectTo(menuItem.path)">
-            <mat-icon>{{ menuItem.icon }}</mat-icon> {{ menuItem.id }}
-          </button>
+          <button mat-list-item (click) ="redirectTo(menuItem.path)">{{ menuItem.id }}</button>
         </mat-action-list>
       </ng-template>
     </mat-accordion>

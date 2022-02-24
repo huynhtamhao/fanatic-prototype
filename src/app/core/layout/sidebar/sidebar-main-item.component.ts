@@ -6,9 +6,11 @@ import { SidebarItem } from './data/sidebar-item.metadata';
   template: `
     <div class="icon-text">
       <mat-icon>{{ mainIcon }}</mat-icon>
-      <span><strong>{{ mainText | transloco }}</strong></span>
+      <span>{{ mainText | transloco }}</span>
     </div>
-    <kairos-sidebar-item *ngFor="let menu of subMenu" [menuItem]="menu"></kairos-sidebar-item>
+    <div class="expansion-panel-menu">
+      <kairos-sidebar-item *ngFor="let menu of subMenu" [menuItem]="menu"></kairos-sidebar-item>
+    </div>
     <!-- <div *ngIf="subMenu.length === 0" [ngStyle]="marginBottom"></div> -->
   `,
   styleUrls: ['./sidebar.component.scss']
