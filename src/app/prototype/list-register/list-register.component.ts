@@ -45,8 +45,8 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       this.dataList.push(this.formBuilder.group({
         factoryCd: "F0" + i,
         factoryName:  "東大阪0" + i,
-        factoryIdentifier: 'W',
-        storageLocation: 'WH11' + formatNumber(i, this.locale,'2.0-0'),
+        factoryIdentifier: new Date(),
+        storageLocation: 'WH1100',
         delete: null,
       }));
       i++;
@@ -113,10 +113,10 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
       if (check) {
         if (from <= i && i < to) {
           this.factoryList.push(this.formBuilder.group({
-            factoryCd: new FormControl({value: fac.factoryCd, disabled: true}, [Validators.required, Validators.maxLength(3)]),
+            factoryCd: new FormControl({value: fac.factoryCd, disabled: true}, [Validators.required, Validators.minLength(3)]),
             factoryName: new FormControl(fac.factoryName, [Validators.required, Validators.maxLength(120)]),
-            factoryIdentifier: new FormControl(fac.factoryIdentifier, [Validators.required, Validators.maxLength(3)]),
-            storageLocation: new FormControl(fac.storageLocation),
+            factoryIdentifier: new FormControl(fac.factoryIdentifier, [Validators.required]),
+            storageLocation: new FormControl(fac.storageLocation, [Validators.required]),
             delete: fac.delete,
             addRow: false,
           }));
@@ -142,10 +142,10 @@ export class ListRegisterComponent implements OnInit, AfterViewInit {
 
   public addRow(){
     this.factoryList.push(this.formBuilder.group({
-      factoryCd: new FormControl("", [Validators.required, Validators.maxLength(3)]),
+      factoryCd: new FormControl("", [Validators.required, Validators.minLength(3)]),
       factoryName: new FormControl("", [Validators.required, Validators.maxLength(120)]),
-      factoryIdentifier: new FormControl("", [Validators.required, Validators.maxLength(3)]),
-      storageLocation: new FormControl(""),
+      factoryIdentifier: new FormControl("", [Validators.required]),
+      storageLocation: new FormControl("", [Validators.required]),
       delete: null,
       addRow: true,
     }));
