@@ -82,10 +82,6 @@
 }
 
 
-
-
-
-
-
-
-
+:is(input, mat-select) {
+  background-color: white;
+}
