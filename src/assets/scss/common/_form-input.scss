@@ -1,3 +1,5 @@
+@import 'common/variables';
+
 @mixin row-detail($borderTop, $padding) {
   mat-form-field.input-outline {
     .mat-form-field-infix {
