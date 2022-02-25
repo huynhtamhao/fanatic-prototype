@@ -10,15 +10,19 @@ export class LayoutService {
 
   public headerTitle: Observable<string>;
   public errorSummary: Observable<ErrorSummary[]>;
+  public isLoading: Observable<boolean>;
 
   private headerTitleSubject: BehaviorSubject<string>;
   private errorSummarySubject: BehaviorSubject<ErrorSummary[]>;
+  private isLoadingSubject: BehaviorSubject<boolean>;
 
   constructor() {
     this.headerTitleSubject = new BehaviorSubject<string>('');
     this.headerTitle = this.headerTitleSubject.asObservable();
     this.errorSummarySubject = new BehaviorSubject<ErrorSummary[]>([]);
     this.errorSummary = this.errorSummarySubject.asObservable();
+    this.isLoadingSubject = new BehaviorSubject<boolean>(false);
+    this.isLoading = this.isLoadingSubject.asObservable();
   }
 
   clearAll() {
@@ -58,6 +62,14 @@ export class LayoutService {
 
   public setErrorSummary(errors: ErrorSummary[]) {
     this.errorSummarySubject.next(errors);
+  }
+
+  public progress() {
+    this.isLoadingSubject.next(true);
+  }
+
+  public stopProgress() {
+    this.isLoadingSubject.next(false);
   }
 
 }

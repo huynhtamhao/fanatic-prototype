@@ -19,7 +19,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDividerModule } from '@angular/material/divider';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -42,6 +42,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MatMenuModule,
     MatBadgeModule,
     MatDividerModule,
+    MatProgressSpinnerModule,
     FlexLayoutModule,
     TranslocoModule,
   ],
