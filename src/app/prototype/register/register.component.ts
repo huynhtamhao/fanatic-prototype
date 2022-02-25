@@ -39,22 +39,27 @@ export class RegisterComponent implements OnInit {
     if (this.form.invalid) {
       return;
     }
-
+    this.productService.progress();
     this.submit();
   }
 
   submit() {
     const result = Math.floor(Math.random() * 3);
-    this.productService.showErrorSummary(result);
 
-    if (result === 2) {
-      this.errorSystem = true;
-      this.lockFormInput();
-    } else if (result === 1) {
-      this.commonToastrService.update().failure().show();
-    } else {
-      this.commonToastrService.update().success().show();
-    }
+    setTimeout(() => {
+      this.productService.showErrorSummary(result);
+
+      if (result === 2) {
+        this.errorSystem = true;
+        this.lockFormInput();
+      } else if (result === 1) {
+        this.commonToastrService.update().failure().show();
+      } else {
+        this.commonToastrService.update().success().show();
+      }
+
+      this.productService.stopProgress();
+    }, 1000);
   }
 
   lockFormInput() {

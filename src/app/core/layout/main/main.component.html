@@ -1,3 +1,6 @@
+<div class="progress-loading" *ngIf="isLoading">
+  <mat-spinner diameter="70"></mat-spinner>
+</div>
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #kairosSideBar mode="side" opened>
     <kairos-sidebar></kairos-sidebar>

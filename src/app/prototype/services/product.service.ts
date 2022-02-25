@@ -29,6 +29,14 @@ export class ProductService {
       this.layoutService.clearErrorSummary();
     }
   }
+
+  progress() {
+    this.layoutService.progress();
+  }
+
+  stopProgress() {
+    this.layoutService.stopProgress();
+  }
 }
 
 export const errors: ErrorSummary[] = [

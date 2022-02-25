@@ -12,11 +12,17 @@ import { LayoutService } from '../../service/layout.service';
 })
 export class MainComponent {
 
+  public isLoading = false;
+
   constructor(
     private router: Router,
     private activatedRoute:ActivatedRoute,
     private layoutService: LayoutService
   ) {
+    this.layoutService.isLoading.subscribe(isLoading => {
+      this.isLoading = isLoading;
+    });
+
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map(() => this.layoutService.clearAll()),
