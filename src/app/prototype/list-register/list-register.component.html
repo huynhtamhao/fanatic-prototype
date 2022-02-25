@@ -94,7 +94,7 @@
         </mat-footer-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" class="row-highlight"></mat-row>
       <mat-footer-row *matFooterRowDef="['noData']" [hidden]="factoryList.length !== 0"></mat-footer-row>
     </mat-table>
   </div>

@@ -1,0 +1,30 @@
+@import 'common/variables-color';
+
+.mat-footer {
+  background-color: $main-color;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.error-input {
+  outline: none;
+  border: 0.8px solid red !important;
+  padding: 1.9px;
+  border-radius: 2px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 2px rgba(255, 0, 0, 0.6);
+}
+
+.checkbox-delete {
+  padding-top: 3px;
+}
+
+.button-delete {
+  height: 95%;
+  line-height: 0px;
+}
+
+.row-highlight:hover {
+  background-color: #f0f0f0;
+}

@@ -1,11 +1,5 @@
-.label-header {
-  font-weight: bold;
-  // font-size: 14px;
-  // padding-top: 10px;
-}
-
-$main-color : #cce8ff;
-$button-primary-color: #cce8ff;
+@import "list/search";
+@import "list/table";
 
 .table-custom {
   input {
@@ -63,8 +57,8 @@ $button-primary-color: #cce8ff;
 
   .mat-footer-row {
     min-height: 28px;
-    height: 32px;
     // border-bottom-style: none;
+    height: 32px;
   }
 
   .mat-header-row {
@@ -78,12 +72,10 @@ $button-primary-color: #cce8ff;
   word-break: break-word;
 }
 
-.mat-footer {
-  background-color: $main-color;
-}
+
 
 .no-data {
-  color: black! important; 
+  color: black !important;
   // font-size: 14px;
   // border-bottom: 1px solid #bdbdbd;
 }
@@ -92,10 +84,3 @@ $button-primary-color: #cce8ff;
   padding-bottom: 2px;
 }
 
-[hidden] {
-  display: none !important;
-}
-
-.mat-row:hover {
-  background-color: #e5e5e5;
-}
