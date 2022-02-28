@@ -62,18 +62,24 @@ mat-nav-list {
 
 /* system box */
 .system-box {
-  padding: 40px 0px;
+  padding: 30px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: $sidenav-width - $scrollbar-width;
 
-  .system-name a {
-    text-decoration: none;
-    color: inherit;
-    font-size: 32px;
-    font-weight: bold;
-    cursor: pointer;
+  // .system-name a {
+  //   text-decoration: none;
+  //   color: inherit;
+  //   font-size: 32px;
+  //   font-weight: bold;
+  //   cursor: pointer;
+  // }
+
+  .system-logo {
+    display: block;
+    max-width: 40%;
+    margin: auto;
   }
 }
