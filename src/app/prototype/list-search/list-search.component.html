@@ -73,7 +73,7 @@
       <ng-container matColumnDef="processing">
         <mat-header-cell *matHeaderCellDef fxFlex="45px">操作</mat-header-cell>
         <mat-cell *matCellDef="let row ; let i = index" fxLayoutAlign="center" fxFlex="45px">
-          <kairos-menu-list [items]="menuList" (itemSelect)="moveScreen(i, $event)" class="menu-list">
+          <kairos-menu-list [items]="menuList" (itemSelect)="moveScreen(i, $event)">
           </kairos-menu-list>
         </mat-cell>
         <mat-footer-cell *matFooterCellDef fxFlex="45px" fxLayoutAlign="end center"></mat-footer-cell>
@@ -89,7 +89,7 @@
       <mat-footer-row *matFooterRowDef="displayedColumns; sticky:true"></mat-footer-row>
     </mat-table>
   </div>
-  <mat-paginator [pageSizeOptions]="[5, 15, 25, 100]" showFirstLastButtons></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[10, 20, 30, 100]" showFirstLastButtons></mat-paginator>
 </form>
 <div fxLayout="row wrap">
   <div fxFlex="50">

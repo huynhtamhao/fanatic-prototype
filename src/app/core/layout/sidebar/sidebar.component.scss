@@ -62,18 +62,51 @@ mat-nav-list {
 
 /* system box */
 .system-box {
-  padding: 40px 0px;
+  padding: 30px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: $sidenav-width - $scrollbar-width;
 
-  .system-name a {
-    text-decoration: none;
-    color: inherit;
-    font-size: 32px;
-    font-weight: bold;
-    cursor: pointer;
+  // .system-name a {
+  //   text-decoration: none;
+  //   color: inherit;
+  //   font-size: 32px;
+  //   font-weight: bold;
+  //   cursor: pointer;
+  // }
+
+  .system-logo {
+    display: block;
+    width: 40%;
+    margin: auto;
   }
 }
+
+/* fix remove mat icon */
+// .expansion-panel-menu {
+//   padding-left: 23px;
+//   padding-bottom: 8px;
+
+//   .mat-expansion-panel-body {
+//     padding-bottom: 0px;
+//     padding-right: 0px;
+//   }
+// }
+
+// .mat-expansion-panel.expansion-panel-child {
+//   .mat-expansion-panel-header {
+//     padding-top: 8px;
+//     padding-left: 16px;
+//     height: 32px;
+//   }
+
+//   .mat-list-base .mat-list-item {
+//     height: 32px;
+//   }
+
+//   .mat-list-base .mat-list-item .mat-list-item-content {
+//     padding-right: 0px;
+//   }
+// }
