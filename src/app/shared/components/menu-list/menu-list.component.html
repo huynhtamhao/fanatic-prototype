@@ -1,10 +1,12 @@
-<button mat-icon-button [matMenuTriggerFor]="menu" class="menu-item">
-  <mat-icon>more_vert</mat-icon>
-</button>
-<mat-menu #menu="matMenu" >
-  <ng-container *ngFor="let item of items; let i = index">
-    <button mat-menu-item (click)="onClick(i, item)">
-      <span>{{item}}</span>
-    </button>
-  </ng-container> 
-</mat-menu>
+<div class="menu-list">
+  <button mat-icon-button [matMenuTriggerFor]="menu" class="menu-list__button">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" >
+    <ng-container *ngFor="let item of items; let i = index">
+      <button mat-menu-item class="menu-list__item" (click)="onClick(i, item)">
+        <span>{{item}}</span>
+      </button>
+    </ng-container>
+  </mat-menu>
+</div>
