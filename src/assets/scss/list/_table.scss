@@ -1,7 +1,85 @@
 @import 'common/variables-color';
 
+.table-custom {
+  input {
+    font-size: 9pt !important;
+  }
+
+  .mat-cell,
+  .mat-header-cell {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    font-size: 9pt;
+    &:not(:last-child) {
+      border-right: 1px solid #bdbdbd;
+    }
+
+    align-self: stretch;
+  }
+
+  .mat-footer-cell {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    font-size: 9pt;
+    &:not(:last-child) {
+      border-right: 1px solid #bdbdbd;
+    }
+    align-self: stretch;
+  }
+
+  .mat-header-cell {
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    color: #000000;
+  }
+
+  .mat-footer-cell:first-child {
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .mat-footer-cell:first-child {
+    color: #000000;
+  }
+
+  .mat-header-row {
+    min-height: 32px;
+    height: 34px;
+  }
+
+  .mat-row {
+    min-height: 28px;
+    height: 32px;
+  }
+
+  .mat-footer-row {
+    min-height: 28px;
+    // border-bottom-style: none;
+    height: 32px;
+  }
+
+  .mat-header-row {
+    background-color: $main-color;
+  }
+  // position: relative;
+  overflow-x: auto;
+  display: -ms-grid;
+  display: grid;
+  width: 100%;
+  word-break: break-word;
+  // border: 1px solid #bdbdbd;
+}
+
 .mat-footer {
   background-color: $main-color;
+}
+
+.no-data {
+  color: black !important;
+  // font-size: 14px;
+  // border-bottom: 1px solid #bdbdbd;
 }
 
 [hidden] {
@@ -27,4 +105,8 @@
 
 .row-highlight:hover {
   background-color: #f0f0f0;
+}
+
+:where(input, mat-select) {
+  background-color: white;
 }
