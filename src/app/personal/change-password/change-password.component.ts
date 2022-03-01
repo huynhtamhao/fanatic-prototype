@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   templateUrl: './change-password.component.html',
   styleUrls: ['./change-password.component.scss']
 })
-export class ChangePasswordComponent implements OnInit {
+export class ChangePasswordComponent {
 
   public isSuccess = false;
 
@@ -16,12 +16,7 @@ export class ChangePasswordComponent implements OnInit {
     confirmNewPassword: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(64)]),
   });
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  onChangePassword() {
+  onChangePassword(): void {
 
     if (this.form.invalid) {
       return;

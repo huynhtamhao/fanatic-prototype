@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Directive, HostListener, Self, Optional, Input } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { MatTooltip } from '@angular/material/tooltip';
@@ -23,7 +24,7 @@ export const ERROR_NAME = {
 }
 
 @Directive({
-  selector: '[errorTooltip]',
+  selector: '[kairosErrorTooltip]',
   providers: [MatTooltip]
 })
 export class ErrorTooltipDirective {
@@ -31,7 +32,7 @@ export class ErrorTooltipDirective {
   private errorMessage = '';
 
   tooltip: MatTooltip;
-  @Input() errorTooltip = '';
+  @Input() kairosErrorTooltip = '';
 
   constructor(
     @Optional() @Self() public ngControl: NgControl,
@@ -45,8 +46,8 @@ export class ErrorTooltipDirective {
 
   private getErrorMessage(): string {
     if (this.ngControl.errors) {
-      if (!!this.errorTooltip) { // TODO: future
-        return this.errorTooltip;
+      if (!!this.kairosErrorTooltip) { // TODO: future
+        return this.kairosErrorTooltip;
       }
 
       const keyError = Object.keys(this.ngControl.errors)[0];

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -20,7 +20,7 @@ export class LoginComponent {
     private router: Router,
   ) { }
 
-  onLogin() {
+  onLogin(): void {
     this.router.navigate(['/']);
   }
 

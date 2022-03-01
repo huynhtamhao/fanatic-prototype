@@ -39,7 +39,7 @@
       <ng-container matColumnDef="factoryCd">
         <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">仕入先CD</mat-header-cell>
         <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-          <input matInput type="text" id="factoryCd-{{i}}" maxLength="3" formControlName="factoryCd" errorTooltip
+          <input matInput type="text" id="factoryCd-{{i}}" maxLength="3" formControlName="factoryCd" kairosErrorTooltip
             [ngClass]="{'error-input': row.get('factoryCd').errors}" />
         </mat-cell>
       </ng-container>
@@ -47,8 +47,8 @@
       <ng-container matColumnDef="factoryName">
         <mat-header-cell *matHeaderCellDef>仕入先名</mat-header-cell>
         <mat-cell *matCellDef="let row; let i = index;" formGroupName="{{i}}">
-          <input matInput type="text" id="factoryName-{{i}}" maxLength="120" formControlName="factoryName" errorTooltip
-            [ngClass]="{'error-input': row.get('factoryName').errors}" />
+          <input matInput type="text" id="factoryName-{{i}}" maxLength="120" formControlName="factoryName"
+            kairosErrorTooltip [ngClass]="{'error-input': row.get('factoryName').errors}" />
         </mat-cell>
       </ng-container>
       <!-- factory deliveryDate Column -->
@@ -56,7 +56,7 @@
         <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">送付日</mat-header-cell>
         <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
           <input matInput id="deliveryDate-{{i}}" [matDatepicker]="picker" formControlName="deliveryDate"
-            errorTooltip [ngClass]="{'error-input': row.get('deliveryDate').errors}">
+            kairosErrorTooltip [ngClass]="{'error-input': row.get('deliveryDate').errors}">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
         </mat-cell>
@@ -65,7 +65,7 @@
       <ng-container matColumnDef="storageLocation">
         <mat-header-cell *matHeaderCellDef [fxFlex]="calcFlex(3)">保管場所</mat-header-cell>
         <mat-cell *matCellDef="let row; let i = index;" [fxFlex]="calcFlex(3)" formGroupName="{{i}}">
-          <mat-select id="storageLocation-{{i}}" formControlName="storageLocation" errorTooltip
+          <mat-select id="storageLocation-{{i}}" formControlName="storageLocation" kairosErrorTooltip
             [ngClass]="{'error-input': row.get('storageLocation').errors}">
             <mat-option>None</mat-option>
             <mat-option value="WH1100">WH1100</mat-option>
