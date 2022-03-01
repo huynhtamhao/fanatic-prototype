@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'kairos-forgot-password',
@@ -9,5 +9,5 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ForgotPasswordComponent {
 
   public isSuccess = false;
-  mailAddress = new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(256)])
+  mailAddress = new FormControl(null, [Validators.required, Validators.email, Validators.maxLength(256)]);
 }

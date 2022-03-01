@@ -1,20 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Directive, HostListener, Self, Optional, Input } from '@angular/core';
 import { NgControl } from '@angular/forms';
 import { MatTooltip } from '@angular/material/tooltip';
 import { TranslocoService } from '@ngneat/transloco';
 
-export const messageTranslate = (transloco: TranslocoService, keyError: string, items?: Record<string, unknown>): string => {
-  let params: Record<string, unknown> = {};
-  if (!!items) {
-    if (Object.keys(items).length > 0) {
-      params = items;
-    } else {
-      params[keyError] = items;
-    }
-  }
-
-  return transloco.translate('tooltip.error.' + keyError, params);
-}
+export const urlErrorTooltip = 'tooltip.error.';
 
 export const ERROR_NAME = {
   REQUIRED: 'required',
@@ -23,7 +13,7 @@ export const ERROR_NAME = {
 }
 
 @Directive({
-  selector: '[errorTooltip]',
+  selector: '[kairosErrorTooltip]',
   providers: [MatTooltip]
 })
 export class ErrorTooltipDirective {
@@ -31,7 +21,7 @@ export class ErrorTooltipDirective {
   private errorMessage = '';
 
   tooltip: MatTooltip;
-  @Input() errorTooltip = '';
+  @Input() kairosErrorTooltip = '';
 
   constructor(
     @Optional() @Self() public ngControl: NgControl,
@@ -45,18 +35,18 @@ export class ErrorTooltipDirective {
 
   private getErrorMessage(): string {
     if (this.ngControl.errors) {
-      if (!!this.errorTooltip) { // TODO: future
-        return this.errorTooltip;
+      if (!!this.kairosErrorTooltip) { // TODO: future
+        return this.kairosErrorTooltip;
       }
 
       const keyError = Object.keys(this.ngControl.errors)[0];
       switch (keyError) {
         case ERROR_NAME.REQUIRED:
-          this.errorMessage = messageTranslate(this.transloco, keyError);
+          this.errorMessage = new ErrorTooltip(this.transloco, keyError).messageTranslate();
           break;
         case ERROR_NAME.MIN_LENGTH:
         case ERROR_NAME.MAX_LENGTH:
-          this.errorMessage = messageTranslate(this.transloco, keyError, this.ngControl.errors[keyError].requiredLength);
+          this.errorMessage = new ErrorTooltip(this.transloco, keyError).setParam(this.ngControl.errors[keyError].requiredLength).messageTranslate();
           break;
         default:
           this.errorMessage = '';
@@ -77,4 +67,28 @@ export class ErrorTooltipDirective {
     this.tooltip.hide();
   }
 
+}
+
+export class ErrorTooltip {
+
+  private params: Record<string, unknown> = {};
+
+  constructor(
+    private transloco: TranslocoService,
+    private keyError: string,
+  ) { }
+
+  setParam(value: unknown) {
+    this.params[this.keyError] = value;
+    return this;
+  }
+
+  setParams(params: Record<string, unknown>) {
+    this.params = params;
+    return this;
+  }
+
+  messageTranslate(): string {
+    return this.transloco.translate(urlErrorTooltip + this.keyError, this.params);
+  }
 }
