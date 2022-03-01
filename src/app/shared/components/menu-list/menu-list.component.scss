@@ -1,11 +1,26 @@
-.menu-item {
-  height: auto;
-  padding-top: 3px;
-  line-height: 0px;
-}
+.menu-list {
 
-.mat-menu-item {
-  height: 30px;
-  font-size: 10px;
-  line-height: 0px;
+  &__button {
+    height: auto;
+    padding-top: 3px;
+    line-height: 0px;
+  }
+
+  &__item {
+    height: 30px;
+    font-size: 10px;
+    line-height: 0px;
+  }
+
 }
+// .menu-item {
+//   height: auto;
+//   padding-top: 3px;
+//   line-height: 0px;
+// }
+
+// .mat-menu-item {
+//   height: 30px;
+//   font-size: 10px;
+//   line-height: 0px;
+// }
