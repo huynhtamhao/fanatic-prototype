@@ -2,10 +2,10 @@
 $font: Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 $custom-typography: mat-typography-config(
   $font-family: $font,
-  $body-1: mat-typography-level(13px, 24px, 400),
-  $headline: mat-typography-level(18px, 24px, 400),
-  $caption: mat-typography-level(13px, 24px, 400),
-  $button: mat-typography-level(13px, 24px, 400),
+  $body-1: mat-typography-level(13px, 20px, 400),
+  $headline: mat-typography-level(18px, 20px, 400),
+  $caption: mat-typography-level(13px, 20px, 400),
+  $button: mat-typography-level(13px, 20px, 400),
 );
 
 @include angular-material-typography($custom-typography);
@@ -13,3 +13,29 @@ $custom-typography: mat-typography-config(
 .mat-headline, .mat-h1 {
   margin-bottom: 0;
 }
+
+button {
+  font-family: $font;
+  font-size: 13px;
+}
+
+// .mat-card-content, .mat-button, .mat-tab-label, .mat-expansion-panel-header, .mat-menu-item,
+// .mat-table {
+//   font-size: mat-font-size($custom-typography, title) !important;
+// }
+
+// @use '@angular/material' as mat;
+
+// $custom-typography: mat.define-typography-config(
+//   $font-family: $font !important,
+//   $body-1: mat.define-typography-level(13px, 24px, 400),
+//   $button: mat.define-typography-level(13px, 24px, 400),
+// );
+
+// @include mat.core($custom-typography);
+// @include mat.button-typography($custom-typography);
+
+// .mat-card-content, .mat-button, .mat-tab-label, .mat-expansion-panel-header, .mat-menu-item {
+//   @include mat.typography-level($custom-typography, 'body-1');
+//   @include mat.typography-level($custom-typography, 'button');
+// }
