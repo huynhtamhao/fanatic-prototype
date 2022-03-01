@@ -108,6 +108,6 @@
   background-color: #f0f0f0;
 }
 
-:where(input, mat-select) {
-  background-color: white;
+.mat-row :where(input, mat-select) {
+  background-color: $background-color;
 }
