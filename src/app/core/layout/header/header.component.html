@@ -8,10 +8,68 @@
     {{ title | transloco }}
   </div>
   <div fxFlex></div>
-  <div fxLayoutAlign="end center" fxFlex="20">
-    <mat-icon matBadge="1" matBadgeColor="warn" [matBadgeHidden]="hidden" [matMenuTriggerFor]="menu"
-      matBadgeSize="small" (click)="toggleBadgeVisibility()" class="user-icon">account_circle</mat-icon>255：堀尾公彦
-    <mat-menu #menu="matMenu">
+  <div fxLayoutAlign="end center" fxFlex="20" class="header-system__icon">
+    <button type="button" matTooltip="Notifications" (focus)="toggleNotification()" (focusout)="toggleNotification()">
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <div class="notification mat-elevation-z8" id="notification">
+      <header class="notification__header">
+        <div>Notifications</div>
+        <button type="button" fxLayoutAlign="center center">
+          <mat-icon>delete</mat-icon>Clear All
+        </button>
+      </header>
+      <div class="notification__content">
+        <ul class="notification-list">
+          <li class="notification-item">
+            <a href="" class="notification-item__info">
+              <span class="notification-item__title">Hao Huynh</span>
+              <span class="notification-item__description">changed the issue's assignee</span>
+              <span class="notification-item__info-date">2022年02月22日 20:22</span>
+            </a>
+            <button type="button" class="notification-item__icon-close">
+              <mat-icon>close</mat-icon>
+            </button>
+          </li>
+          <li class="notification-item">
+            <a href="" class="notification-item__info">
+              <span class="notification-item__title">本山 博基/ファナティック</span>
+              <span class="notification-item__description">has added you to a spanroject.</span>
+              <span class="notification-item__date">2022年02月22日 20:22</span>
+            </a>
+            <button type="button" class="notification-item__icon-close">
+              <mat-icon>close</mat-icon>
+            </button>
+          </li>
+          <li class="notification-item">
+            <a href="" class="notification-item__info">
+              <span class="notification-item__title">Thu Tran</span>
+              <span class="notification-item__description">has added you to a spanroject.</span>
+              <span class="notification-item__date">2022年02月22日 20:22</span>
+            </a>
+            <button type="button" class="notification-item__icon-close">
+              <mat-icon>close</mat-icon>
+            </button>
+          </li>
+          <li class="notification-item">
+            <a href="" class="notification-item__info">
+              <span class="notification-item__title">Thu Tran</span>
+              <span class="notification-item__description">has added you to a spanroject.</span>
+              <span class="notification-item__date">2022年02月22日 20:22</span>
+            </a>
+            <button type="button" class="notification-item__icon-close">
+              <mat-icon>close</mat-icon>
+            </button>
+          </li>
+        </ul>
+        <div class="notification__footer"><a href="javascript:void(0)">Show more</a></div>
+      </div>
+    </div>
+    <button type="button">
+      <mat-icon matBadge="1" matBadgeColor="warn" [matBadgeHidden]="hidden" [matMenuTriggerFor]="menu"
+        matBadgeSize="small" (click)="toggleBadgeVisibility()" class="user-icon">account_circle</mat-icon>
+    </button>255：堀尾公彦
+    <mat-menu #menu>
       <button mat-menu-item>
         <mat-icon>lock</mat-icon>{{ 'header.userMenu.changePassword' | transloco }}
       </button>
