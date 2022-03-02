@@ -11,6 +11,8 @@ export class HeaderComponent implements OnInit {
   public title = '';
   public hidden = false;
 
+  private isOpenNotification = false;
+
   @Output() toggleSidebarEvent = new EventEmitter<void>();
 
   constructor(
@@ -29,5 +31,16 @@ export class HeaderComponent implements OnInit {
 
   toggleSidebar() {
     this.toggleSidebarEvent.emit();
+  }
+
+  toggleNotification() {
+    this.isOpenNotification = !this.isOpenNotification;
+    const element = document.getElementById('notification');
+
+    if (this.isOpenNotification) {
+      element?.classList.add('is-open');
+    } else {
+      element?.classList.remove('is-open');
+    }
   }
 }
